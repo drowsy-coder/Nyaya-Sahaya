@@ -6,7 +6,7 @@ import 'screens/login/login_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: LoginPage(),
+      home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
