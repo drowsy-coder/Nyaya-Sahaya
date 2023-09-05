@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "325755281925",
+    "project_id": "nyayasahaya-e4d18",
+    "storage_bucket": "nyayasahaya-e4d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325755281925:android:8aae2cb916e1bd6861326c",
+        "android_client_info": {
+          "package_name": "com.sunflower.nyaya_sahaya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325755281925-uvpki403lo8gd89cmnp83c526g0jqah7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8212hWBYhTsoKFWptD0y5oSWiS_UMMMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325755281925-uvpki403lo8gd89cmnp83c526g0jqah7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
