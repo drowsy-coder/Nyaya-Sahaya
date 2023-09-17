@@ -227,7 +227,7 @@ class _LoginPageState extends State<LoginPage> {
                     _userRole = newValue!;
                   });
                 },
-                items: [
+                items: const [
                   DropdownMenuItem(
                     value: UserRole.client,
                     child: Text('Client'),
@@ -268,7 +268,12 @@ class _LoginPageState extends State<LoginPage> {
                     ? 'Create an account'
                     : 'Have an account? Sign in'),
               ),
-              if (_isLoading) const CircularProgressIndicator(),
+              if (_isLoading)
+                CustomCircularProgressIndicator(
+                  size: 32.0, // Adjust the size as per your requirement
+                  color:
+                      Colors.blue, // Adjust the color as per your requirement
+                ),
             ],
           ),
         ),
@@ -280,5 +285,25 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _isLoginForm = !_isLoginForm;
     });
+  }
+}
+
+class CustomCircularProgressIndicator extends StatelessWidget {
+  final double size;
+  final Color color;
+
+  CustomCircularProgressIndicator({required this.size, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(color),
+        ),
+      ),
+    );
   }
 }
