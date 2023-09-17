@@ -210,16 +210,26 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900], // Dark background color
       appBar: AppBar(
-        title: Text(_isLoginForm ? 'Login' : 'Create Account'),
+        backgroundColor: Colors.transparent, // Transparent app bar
+        elevation: 0, // No shadow
+        title: Text(
+          _isLoginForm ? 'Login' : 'Create Account',
+          style: const TextStyle(
+            color: Colors.white, // App bar text color
+            fontSize: 24,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              // Role selection
+              const SizedBox(height: 20),
               DropdownButtonFormField<UserRole>(
                 value: _userRole,
                 onChanged: (UserRole? newValue) {
@@ -230,44 +240,96 @@ class _LoginPageState extends State<LoginPage> {
                 items: [
                   DropdownMenuItem(
                     value: UserRole.client,
-                    child: Text('Client'),
+                    child: Text('Client',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600)),
                   ),
                   DropdownMenuItem(
                     value: UserRole.lawyer,
-                    child: Text('Lawyer'),
+                    child: Text('Lawyer',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600)),
                   ),
                 ],
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[800],
+                  labelText: 'Select Role',
+                  border: OutlineInputBorder(
+                    // Input field border
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
               ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  filled: true,
+                  fillColor: Colors.grey[800],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
               ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  filled: true,
+                  fillColor: Colors.grey[800],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
                 obscureText: true,
               ),
-              if (_userRole == UserRole.lawyer)
-                TextFormField(
-                  controller: _identifierController,
-                  decoration: const InputDecoration(labelText: 'Bar Number'),
+              if (_userRole == UserRole.lawyer || _userRole == UserRole.client)
+                const SizedBox(height: 20), // Add spacing
+              TextFormField(
+                controller: _identifierController,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: _userRole == UserRole.lawyer
+                      ? 'Bar Number'
+                      : 'Case Number',
+                  filled: true,
+                  fillColor: Colors.grey[800],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
-              if (_userRole == UserRole.client)
-                TextFormField(
-                  controller: _identifierController,
-                  decoration: const InputDecoration(labelText: 'Case Number'),
-                ),
-              const SizedBox(height: 16.0),
+              ),
+              const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text(_isLoginForm ? 'Login' : 'Create Account'),
+                child: Text(
+                  _isLoginForm ? 'Login' : 'Create Account',
+                  style: const TextStyle(fontSize: 18),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  padding: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
+              const SizedBox(height: 10),
               TextButton(
                 onPressed: _toggleFormMode,
-                child: Text(_isLoginForm
-                    ? 'Create an account'
-                    : 'Have an account? Sign in'),
+                child: Text(
+                  _isLoginForm
+                      ? 'Create an account'
+                      : 'Have an account? Sign in',
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
+              if (_isLoading) const SizedBox(height: 20),
               if (_isLoading) const CircularProgressIndicator(),
             ],
           ),
