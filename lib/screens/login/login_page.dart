@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +25,7 @@ UserRole stringToUserRole(String role) {
 }
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isLoginForm = true;
   bool _isLoading = false;
-  UserRole _userRole = UserRole.client; // Default to client role
+  UserRole _userRole = UserRole.client;
 
   late SharedPreferences _prefs;
 
@@ -51,11 +53,38 @@ class _LoginPageState extends State<LoginPage> {
 
   void _initSharedPreferences() async {
     _prefs = await SharedPreferences.getInstance();
+    final bool isLoggedIn = _prefs.getBool('isLoggedIn') ?? false;
 
-    final String? uid = _prefs.getString('uid');
-    if (uid != null) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const ClientHomePage()));
+    if (isLoggedIn) {
+      final String? uid = _prefs.getString('uid');
+      final String? email = _prefs.getString('email');
+      final String? identifier = _prefs.getString('identifier');
+      final String? storedUserRole = _prefs.getString('userRole');
+
+      if (uid != null &&
+          email != null &&
+          identifier != null &&
+          storedUserRole != null) {
+        setState(() {
+          _userRole = stringToUserRole(storedUserRole);
+        });
+
+        if (_userRole == UserRole.client) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ClientHomePage(),
+            ),
+          );
+        } else if (_userRole == UserRole.lawyer) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LawyerHomePage(),
+            ),
+          );
+        }
+      }
     }
   }
 
@@ -63,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
     _prefs.setString('uid', uid);
     _prefs.setString('email', email);
     _prefs.setString('identifier', identifier);
+    _prefs.setString('userRole', userRoleToString(_userRole));
   }
 
   Future<void> _signInWithEmail(
@@ -93,53 +123,24 @@ class _LoginPageState extends State<LoginPage> {
           _saveUserDataToPrefs(uid, email, identifier);
 
           _prefs.setBool('isLoggedIn', true);
-
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const Text('Login Failed'),
-                content: const Text('Invalid credentials or user type.'),
-                actions: <Widget>[
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('OK'),
-                  ),
-                ],
-              );
-            },
-          );
+          Navigator.of(context).pop();
+          if (_userRole == UserRole.client) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ClientHomePage()));
+          } else if (_userRole == UserRole.lawyer) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const LawyerHomePage()));
+          }
         }
-      } else {
-        setState(() {
-          _isLoading = false;
-        });
-
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('Login Failed'),
-              content: const Text('User data not found.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;
       });
-
       print('Failed to sign in with email and password: ${e.message}');
     }
   }
