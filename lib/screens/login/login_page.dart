@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
           _saveUserDataToPrefs(uid, email, identifier);
 
           _prefs.setBool('isLoggedIn', true);
-          Navigator.of(context).pop();
+
           if (_userRole == UserRole.client) {
             Navigator.pushReplacement(
                 context,
