@@ -13,18 +13,11 @@ import 'package:flutter/material.dart';
 class LawyerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lawyer Side'),
-        leading: MenuWidget(),
-      ),
-      body: const Column(
-        children: [
-          SizedBox(height: 20),
-          DashboardHeader(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavBar(),
+    return Column(
+      children: [
+        SizedBox(height: 20),
+        DashboardHeader(),
+      ],
     );
   }
 }

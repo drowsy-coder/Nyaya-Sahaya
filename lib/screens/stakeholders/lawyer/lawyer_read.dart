@@ -5,20 +5,10 @@ class LawyerReadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Read Screen'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'This is the Read Screen',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
+    return Center(
+      child: Text(
+        'This is the Read Screen',
+        style: TextStyle(fontSize: 20),
       ),
     );
   }
