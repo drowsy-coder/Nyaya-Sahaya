@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:nyaya_sahaya/components/bottom_nav_bar.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_profile.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_read.dart';
 import 'package:nyaya_sahaya/widgets/buttons/menu_widget.dart';
 
-import '../../widgets/buttons/logout_button.dart';
+import '../../../widgets/buttons/logout_button.dart';
 
 import 'package:flutter/material.dart';
 
@@ -19,6 +24,7 @@ class LawyerHomePage extends StatelessWidget {
           DashboardHeader(),
         ],
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

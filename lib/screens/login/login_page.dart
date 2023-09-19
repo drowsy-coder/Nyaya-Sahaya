@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../stakeholders/client_home.dart';
+import '../stakeholders/client/client_home.dart';
 
 enum UserRole {
   lawyer,
