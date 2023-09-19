@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nyaya_sahaya/widgets/buttons/menu_widget.dart';
 
 import '../../widgets/buttons/logout_button.dart';
 
@@ -10,6 +11,7 @@ class LawyerHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lawyer Side'),
+        leading: MenuWidget(),
       ),
       body: const Column(
         children: [
