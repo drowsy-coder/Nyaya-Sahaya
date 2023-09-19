@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const LawyerHomePage(),
+              builder: (context) => LawyerHomePage(),
             ),
           );
         }
@@ -130,10 +130,8 @@ class _LoginPageState extends State<LoginPage> {
                 MaterialPageRoute(
                     builder: (context) => const ClientHomePage()));
           } else if (_userRole == UserRole.lawyer) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const LawyerHomePage()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => LawyerHomePage()));
           }
         }
       }
@@ -170,8 +168,8 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const ClientHomePage()));
       } else if (_userRole == UserRole.lawyer) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LawyerHomePage()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LawyerHomePage()));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
