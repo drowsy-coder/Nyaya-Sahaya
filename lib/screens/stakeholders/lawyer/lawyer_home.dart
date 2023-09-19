@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nyaya_sahaya/components/bottom_nav_bar.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_profile.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_read.dart';
-import 'package:nyaya_sahaya/widgets/buttons/menu_widget.dart';
-
-import '../../../widgets/buttons/logout_button.dart';
-
-import 'package:flutter/material.dart';
 
 class LawyerHomePage extends StatelessWidget {
   @override
@@ -17,16 +7,16 @@ class LawyerHomePage extends StatelessWidget {
       children: [
         SizedBox(height: 20),
         DashboardHeader(),
+        SizedBox(height: 20),
+        Expanded(
+          child: PlaceholderCardsColumn(),
+        ),
       ],
     );
   }
 }
 
 class DashboardHeader extends StatelessWidget {
-  const DashboardHeader({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -115,6 +105,85 @@ class _HoverCardState extends State<HoverCard> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PlaceholderCardsColumn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PlaceholderCard(
+            title: 'Card 1',
+            description: 'Description 1',
+          ),
+          PlaceholderCard(
+            title: 'Card 2',
+            description: 'Description 2',
+          ),
+          PlaceholderCard(
+            title: 'Card 3',
+            description: 'Description 3',
+          ),
+          PlaceholderCard(
+            title: 'Card 4',
+            description: 'Description 4',
+          ),
+          PlaceholderCard(
+            title: 'Card 5',
+            description: 'Description 5',
+          ),
+          PlaceholderCard(
+            title: 'Card 6',
+            description: 'Description 6',
+          ),
+          PlaceholderCard(
+            title: 'Card 7',
+            description: 'Description 7',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PlaceholderCard extends StatelessWidget {
+  final String title;
+  final String description;
+
+  PlaceholderCard({required this.title, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(10),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ],
         ),
       ),
     );
