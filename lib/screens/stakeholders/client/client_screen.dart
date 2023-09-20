@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/client/clinet_lawyer_map.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_profile.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_read.dart';
@@ -32,9 +33,7 @@ class _ClientScreenState extends State<ClientScreen> {
     ScreenModel(
         screen: LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
     ScreenModel(
-        screen: LawyerProfileScreen(),
-        icon: Icons.gps_fixed,
-        text: "Find Lawyer"),
+        screen: MapScreen(), icon: Icons.gps_fixed, text: "Find Lawyer"),
   ];
 
   @override
