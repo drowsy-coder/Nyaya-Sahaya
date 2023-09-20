@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const ClientHomePage(),
+              builder: (context) => ClientHomePage(),
             ),
           );
         } else if (_userRole == UserRole.lawyer) {
@@ -125,10 +125,8 @@ class _LoginPageState extends State<LoginPage> {
           _prefs.setBool('isLoggedIn', true);
 
           if (_userRole == UserRole.client) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ClientHomePage()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => ClientHomePage()));
           } else if (_userRole == UserRole.lawyer) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => LawyerHomePage()));
@@ -165,8 +163,8 @@ class _LoginPageState extends State<LoginPage> {
       _prefs.setBool('isLoggedIn', true);
 
       if (_userRole == UserRole.client) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ClientHomePage()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ClientHomePage()));
       } else if (_userRole == UserRole.lawyer) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LawyerHomePage()));
