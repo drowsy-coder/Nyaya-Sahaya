@@ -32,7 +32,9 @@ class _ClientScreenState extends State<ClientScreen> {
     ScreenModel(
         screen: LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
     ScreenModel(
-        screen: LawyerProfileScreen(), icon: Icons.person, text: "Profile"),
+        screen: LawyerProfileScreen(),
+        icon: Icons.gps_fixed,
+        text: "Find Lawyer"),
   ];
 
   @override
