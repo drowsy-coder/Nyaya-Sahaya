@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../stakeholders/client/client_home.dart';
@@ -73,14 +75,14 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => ClientHomePage(),
+              builder: (context) => ClientScreen(),
             ),
           );
         } else if (_userRole == UserRole.lawyer) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => LawyerHomePage(),
+              builder: (context) => LawyerScreen(),
             ),
           );
         }
@@ -126,10 +128,10 @@ class _LoginPageState extends State<LoginPage> {
 
           if (_userRole == UserRole.client) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => ClientHomePage()));
+                MaterialPageRoute(builder: (context) => ClientScreen()));
           } else if (_userRole == UserRole.lawyer) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LawyerHomePage()));
+                MaterialPageRoute(builder: (context) => LawyerScreen()));
           }
         } else {
           // Handle the case where userRole or identifier doesn't match
@@ -183,10 +185,10 @@ class _LoginPageState extends State<LoginPage> {
 
       if (_userRole == UserRole.client) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ClientHomePage()));
+            context, MaterialPageRoute(builder: (context) => ClientScreen()));
       } else if (_userRole == UserRole.lawyer) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LawyerHomePage()));
+            context, MaterialPageRoute(builder: (context) => LawyerScreen()));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
