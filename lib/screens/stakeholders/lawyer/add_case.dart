@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../widgets/buttons/logout_button.dart';
+
 class LawyerAddCase extends StatefulWidget {
   @override
   _LawyerAddCaseState createState() => _LawyerAddCaseState();
@@ -85,11 +87,12 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                 child: Column(
                   children: [
                     Image.asset('assets/images/2689736.png',
-                        height: 150, width: 150),
+                        height: 120, width: 120),
                     const SizedBox(height: 16),
                   ],
                 ),
               ),
+              LogoutButton(),
               Container(
                 width: 380,
                 padding: const EdgeInsets.all(16.0),
