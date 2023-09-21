@@ -3,26 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nyaya_sahaya/screens/login/login_ui.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../../models/user_role.dart';
 import '../stakeholders/client/client_home.dart';
-
-enum UserRole {
-  lawyer,
-  client,
-}
-
-String userRoleToString(UserRole role) {
-  return role.toString().split('.').last;
-}
-
-UserRole stringToUserRole(String role) {
-  return UserRole.values.firstWhere(
-    (e) => e.toString().split('.').last == role,
-    orElse: () => UserRole.client,
-  );
-}
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -225,132 +210,24 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[900], // Dark background color
-      appBar: AppBar(
-        backgroundColor: Colors.transparent, // Transparent app bar
-        elevation: 0, // No shadow
-        title: Text(
-          _isLoginForm ? 'Login' : 'Create Account',
-          style: const TextStyle(
-            color: Colors.white, // App bar text color
-            fontSize: 24,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(height: 20),
-              DropdownButtonFormField<UserRole>(
-                value: _userRole,
-                onChanged: (UserRole? newValue) {
-                  setState(() {
-                    _userRole = newValue!;
-                  });
-                },
-                items: [
-                  DropdownMenuItem(
-                    value: UserRole.client,
-                    child: Text('Client',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600)),
-                  ),
-                  DropdownMenuItem(
-                    value: UserRole.lawyer,
-                    child: Text('Lawyer',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600)),
-                  ),
-                ],
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  labelText: 'Select Role',
-                  border: OutlineInputBorder(
-                    // Input field border
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _emailController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _passwordController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                obscureText: true,
-              ),
-              if (_userRole == UserRole.lawyer || _userRole == UserRole.client)
-                const SizedBox(height: 20), // Add spacing
-              TextFormField(
-                controller: _identifierController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: _userRole == UserRole.lawyer
-                      ? 'Bar Number'
-                      : 'Case Number',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: _submitForm,
-                child: Text(
-                  _isLoginForm ? 'Login' : 'Create Account',
-                  style: const TextStyle(fontSize: 18),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                  padding: const EdgeInsets.all(16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextButton(
-                onPressed: _toggleFormMode,
-                child: Text(
-                  _isLoginForm
-                      ? 'Create an account'
-                      : 'Have an account? Sign in',
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-              if (_isLoading) const SizedBox(height: 20),
-              if (_isLoading) const CircularProgressIndicator(),
-            ],
-          ),
-        ),
-      ),
+    return LoginUI(
+      isLoginForm: _isLoginForm,
+      userRole: _userRole,
+      emailController: _emailController,
+      passwordController: _passwordController,
+      identifierController: _identifierController,
+      onUserRoleChanged: (UserRole? newValue) {
+        setState(() {
+          _userRole = newValue!;
+        });
+      },
+      onFormSubmitted: () {
+        _submitForm();
+      },
+      onToggleFormMode: () {
+        _toggleFormMode();
+      },
+      isLoading: _isLoading,
     );
   }
 

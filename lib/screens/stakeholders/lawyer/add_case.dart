@@ -23,11 +23,11 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     ))!;
-    if (picked != null && picked != _selectedDate)
+    if (picked != _selectedDate)
       setState(() {
         _selectedDate = picked;
         _nextHearingDateController.text = "${picked.toLocal()}"
-            .split(' ')[0]; // Display selected date in the TextFormField
+            .split(' ')[0]; 
       });
   }
 
