@@ -29,6 +29,13 @@
             {
               "client_id": "325755281925-uvpki403lo8gd89cmnp83c526g0jqah7.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "325755281925-8d00hjrh23gkctq3gv6bmrle6j72upj9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sunflower.nyayaSahaya.RunnerTests"
+              }
             }
           ]
         }
