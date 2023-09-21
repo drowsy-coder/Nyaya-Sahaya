@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: ClientScreen(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }

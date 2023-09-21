@@ -87,6 +87,8 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               title: 'Cases Pending',
               count: '$totalCases',
               icon: Icons.timer,
+              backgroundColor: Colors.blue,
+              textColor: Colors.white,
             ),
           ),
           GestureDetector(
@@ -97,6 +99,8 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               title: 'Total Cases',
               count: '$totalCases',
               icon: Icons.folder,
+              backgroundColor: Colors.green,
+              textColor: Colors.white,
             ),
           ),
           GestureDetector(
@@ -107,6 +111,8 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               title: 'Cases Closed',
               count: '0',
               icon: Icons.check_circle,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
             ),
           ),
         ],
@@ -119,12 +125,16 @@ class HoverCard extends StatefulWidget {
   final String title;
   final String count;
   final IconData icon;
+  final Color backgroundColor;
+  final Color textColor;
 
   HoverCard({
     Key? key,
     required this.title,
     required this.count,
     required this.icon,
+    required this.backgroundColor,
+    required this.textColor,
   }) : super(key: key);
 
   @override
@@ -151,6 +161,7 @@ class _HoverCardState extends State<HoverCard> {
         width: 150, // Adjust the width as needed
         child: Card(
           elevation: isHovered ? 10 : 2,
+          color: widget.backgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -159,22 +170,24 @@ class _HoverCardState extends State<HoverCard> {
                 Icon(
                   widget.icon,
                   size: 48,
-                  color: Colors.blue,
+                  color: widget.textColor,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   widget.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    color: widget.textColor,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   widget.count,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: widget.textColor,
                   ),
                 ),
               ],
