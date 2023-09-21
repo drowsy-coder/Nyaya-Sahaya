@@ -7,7 +7,7 @@ import 'package:nyaya_sahaya/screens/login/login_ui.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/user_role.dart';
-import '../stakeholders/client/client_home.dart';
+import '../stakeholders/client/client_home/client_home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});

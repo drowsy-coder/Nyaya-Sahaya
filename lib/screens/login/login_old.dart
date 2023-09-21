@@ -6,8 +6,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+<<<<<<< HEAD
 import '../../models/user_role.dart';
 import 'login_ui.dart';
+=======
+
+import '../stakeholders/client/client_home/client_home.dart';
+
+enum UserRole {
+  lawyer,
+  client,
+}
+
+String userRoleToString(UserRole role) {
+  return role.toString().split('.').last;
+}
+
+UserRole stringToUserRole(String role) {
+  return UserRole.values.firstWhere(
+    (e) => e.toString().split('.').last == role,
+    orElse: () => UserRole.client,
+  );
+}
+>>>>>>> 060d49f2413653e5b0217fdd1c620cc6265fdfa7
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
