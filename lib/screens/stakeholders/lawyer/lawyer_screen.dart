@@ -37,9 +37,6 @@ class _LawyerScreenState extends State<LawyerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lawyer Section'),
-      ),
       body: screens[_selectedIndex].screen, // Display the selected screen
       bottomNavigationBar: Container(
         color: Colors.black38,
