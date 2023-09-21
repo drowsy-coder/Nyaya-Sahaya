@@ -42,29 +42,33 @@ class _ClientScreenState extends State<ClientScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: screens[_selectedIndex].screen, 
+      body: screens[_selectedIndex].screen,
       bottomNavigationBar: Container(
         color: Colors.black38,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: GNav(
-            gap: 8,
-            tabBackgroundColor: Colors.grey.shade800,
+            gap: 7,
             padding: const EdgeInsets.all(16),
             tabs: List.generate(
               screens.length,
               (index) => GButton(
                 icon: screens[index].icon,
                 text: screens[index].text,
+                onPressed: () {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+                backgroundColor: _selectedIndex == index
+                    ? Colors.yellow
+                    : Colors.grey.shade800,
+                textColor:
+                    _selectedIndex == index ? Colors.black : Colors.white,
+                iconActiveColor: Colors.black,
               ),
             ),
             selectedIndex: _selectedIndex,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
           ),
         ),
       ),

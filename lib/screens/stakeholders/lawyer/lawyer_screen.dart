@@ -30,38 +30,37 @@ class _LawyerScreenState extends State<LawyerScreen> {
     ScreenModel(screen: LawyerHomePage(), icon: Icons.home, text: "Home"),
     ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
-        screen: LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
-    ScreenModel(screen: LawyerAddCase(), icon: Icons.add, text: "Profile"),
+        screen: const LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
+    ScreenModel(screen: LawyerAddCase(), icon: Icons.add, text: "Add Case"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lawyer Section'),
-      ),
-      body: screens[_selectedIndex].screen, // Display the selected screen
+      body: screens[_selectedIndex].screen,
       bottomNavigationBar: Container(
         color: Colors.black38,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: GNav(
-            gap: 8,
-            tabBackgroundColor: Colors.grey.shade800,
-            padding: EdgeInsets.all(16),
+            gap: 7,
+            padding: const EdgeInsets.all(16),
             tabs: List.generate(
               screens.length,
               (index) => GButton(
                 icon: screens[index].icon,
                 text: screens[index].text,
+                onPressed: () {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+                backgroundColor: _selectedIndex == index
+                    ? Colors.blue
+                    : Colors.grey.shade800,
               ),
             ),
             selectedIndex: _selectedIndex,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
           ),
         ),
       ),

@@ -23,11 +23,12 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     ))!;
-    if (picked != _selectedDate)
+    if (picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
         _nextHearingDateController.text = "${picked.toLocal()}".split(' ')[0];
       });
+    }
   }
 
   void _submitCase() async {
@@ -43,7 +44,6 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
         final String nextHearingDate = _nextHearingDateController.text.trim();
 
         try {
-          // Fetch the lawyer's name from the user data
           final DocumentSnapshot userData = await FirebaseFirestore.instance
               .collection('users')
               .doc(lawyerId)
@@ -58,15 +58,12 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
             'ipcSections': ipcSections,
             'nextHearingDate': nextHearingDate,
           });
-
-          // Reset the form after successful submission
           _clientEmailController.clear();
           _clientNameController.clear();
           _ipcSectionsController.clear();
           _nextHearingDateController.clear();
           _selectedDate = null;
         } catch (error) {
-          // Handle any potential errors here
           print('Error adding case: $error');
         }
       }
@@ -75,89 +72,135 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Form(
-        key: _formKey,
-        child: ListView(
-          children: [
-            TextFormField(
-              controller: _clientEmailController,
-              decoration: InputDecoration(
-                labelText: 'Client Email',
-                border: OutlineInputBorder(),
-                filled: true,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the client\'s email';
-                }
-                // Add additional validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: _clientNameController,
-              decoration: InputDecoration(
-                labelText: 'Client Name',
-                border: OutlineInputBorder(),
-                filled: true,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the client\'s name';
-                }
-                // Add additional validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: _ipcSectionsController,
-              decoration: InputDecoration(
-                labelText: 'IPC Sections Violated',
-                border: OutlineInputBorder(),
-                filled: true,
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter the IPC sections violated';
-                }
-                // Add additional validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 16),
-            GestureDetector(
-              onTap: () => _selectDate(context),
-              child: AbsorbPointer(
-                child: TextFormField(
-                  controller: _nextHearingDateController,
-                  decoration: InputDecoration(
-                    labelText: 'Next Hearing Date',
-                    border: OutlineInputBorder(),
-                    filled: true,
-                    suffixIcon: Icon(Icons.calendar_today),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please select the next hearing date';
-                    }
-                    // Add additional validation if needed
-                    return null;
-                  },
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Add Case'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Image.asset('assets/images/2689736.png',
+                        height: 150, width: 150),
+                    const SizedBox(height: 16),
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _submitCase,
-              child: Text('Submit'),
-            ),
-          ],
-        ),
-      ),
-    );
+              Container(
+                width: 380,
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey[900],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[800]!,
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextFormField(
+                        controller: _clientEmailController,
+                        decoration: InputDecoration(
+                          labelText: 'Client Email',
+                          border: const OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.grey[900],
+                          icon: const Icon(Icons.email, color: Colors.blue),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the client\'s email';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormField(
+                        controller: _clientNameController,
+                        decoration: InputDecoration(
+                          labelText: 'Client Name',
+                          border: const OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.grey[900],
+                          icon: const Icon(Icons.person, color: Colors.red),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the client\'s name';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormField(
+                        controller: _ipcSectionsController,
+                        decoration: InputDecoration(
+                          labelText: 'IPC Sections Violated',
+                          border: const OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.grey[900],
+                          icon: const Icon(Icons.assignment,
+                              color: Colors.yellow),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the IPC sections violated';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      GestureDetector(
+                        onTap: () => _selectDate(context),
+                        child: AbsorbPointer(
+                          child: TextFormField(
+                            controller: _nextHearingDateController,
+                            decoration: InputDecoration(
+                              labelText: 'Next Hearing Date',
+                              border: const OutlineInputBorder(),
+                              filled: true,
+                              fillColor: Colors.grey[900],
+                              suffixIcon: const Icon(Icons.calendar_today,
+                                  color: Colors.green),
+                              icon: const Icon(Icons.date_range,
+                                  color: Colors.white),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please select the next hearing date';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _submitCase,
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.purple),
+                        ),
+                        child: const Text('Submit'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

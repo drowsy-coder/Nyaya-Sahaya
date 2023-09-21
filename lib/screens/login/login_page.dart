@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nyaya_sahaya/screens/login/login_ui.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/user_role.dart';
-import '../stakeholders/client/client_home/client_home.dart';
+import 'login_ui.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key});
@@ -58,14 +58,14 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => ClientHomePage(),
+              builder: (context) => const ClientScreen(),
             ),
           );
         } else if (_userRole == UserRole.lawyer) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => LawyerHomePage(),
+              builder: (context) => LawyerScreen(),
             ),
           );
         }
@@ -105,29 +105,31 @@ class _LoginPageState extends State<LoginPage> {
         if (userRole == _userRole && userData['identifier'] == identifier) {
           await _storeUserData(uid, email, identifier);
 
-          final String displayName =
-              userData['name']; // Get the name from Firestore
-          await user
-              .updateDisplayName(displayName); // Update the user's display name
-
           _saveUserDataToPrefs(uid, email, identifier);
 
           _prefs.setBool('isLoggedIn', true);
 
           if (_userRole == UserRole.client) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => ClientHomePage()));
+                MaterialPageRoute(builder: (context) => const ClientScreen()));
           } else if (_userRole == UserRole.lawyer) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LawyerHomePage()));
+                MaterialPageRoute(builder: (context) => LawyerScreen()));
           }
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
         }
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       setState(() {
         _isLoading = false;
       });
-      print('Failed to sign in with email and password: ${e.message}');
     }
   }
 
@@ -146,33 +148,18 @@ class _LoginPageState extends State<LoginPage> {
       final User user = userCredential.user!;
       final String uid = user.uid;
 
-      final DocumentSnapshot userData =
-          await _firestore.collection('users').doc(uid).get();
+      await _storeUserData(uid, email, identifier);
 
-      if (userData.exists) {
-        final String storedUserRole = userData['userRole'];
-        final UserRole userRole = stringToUserRole(storedUserRole);
+      _saveUserDataToPrefs(uid, email, identifier);
 
-        if (userRole == _userRole && userData['identifier'] == identifier) {
-          final String displayName =
-              userData['name']; // Get the name from Firestore
-          await user
-              .updateDisplayName(displayName); // Update the user's display name
+      _prefs.setBool('isLoggedIn', true);
 
-          await _storeUserData(uid, email, identifier);
-
-          _saveUserDataToPrefs(uid, email, identifier);
-
-          _prefs.setBool('isLoggedIn', true);
-
-          if (_userRole == UserRole.client) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => ClientHomePage()));
-          } else if (_userRole == UserRole.lawyer) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LawyerHomePage()));
-          }
-        }
+      if (_userRole == UserRole.client) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ClientScreen()));
+      } else if (_userRole == UserRole.lawyer) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LawyerScreen()));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
