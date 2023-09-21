@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/add_case.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_profile.dart';
@@ -31,8 +32,7 @@ class _LawyerScreenState extends State<LawyerScreen> {
     ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
-    ScreenModel(
-        screen: LawyerProfileScreen(), icon: Icons.person, text: "Profile"),
+    ScreenModel(screen: LawyerAddCase(), icon: Icons.add, text: "Profile"),
   ];
 
   @override

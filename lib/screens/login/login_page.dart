@@ -120,6 +120,11 @@ class _LoginPageState extends State<LoginPage> {
         if (userRole == _userRole && userData['identifier'] == identifier) {
           await _storeUserData(uid, email, identifier);
 
+          final String displayName =
+              userData['name']; // Get the name from Firestore
+          await user
+              .updateDisplayName(displayName); // Update the user's display name
+
           _saveUserDataToPrefs(uid, email, identifier);
 
           _prefs.setBool('isLoggedIn', true);
@@ -156,18 +161,33 @@ class _LoginPageState extends State<LoginPage> {
       final User user = userCredential.user!;
       final String uid = user.uid;
 
-      await _storeUserData(uid, email, identifier);
+      final DocumentSnapshot userData =
+          await _firestore.collection('users').doc(uid).get();
 
-      _saveUserDataToPrefs(uid, email, identifier);
+      if (userData.exists) {
+        final String storedUserRole = userData['userRole'];
+        final UserRole userRole = stringToUserRole(storedUserRole);
 
-      _prefs.setBool('isLoggedIn', true);
+        if (userRole == _userRole && userData['identifier'] == identifier) {
+          final String displayName =
+              userData['name']; // Get the name from Firestore
+          await user
+              .updateDisplayName(displayName); // Update the user's display name
 
-      if (_userRole == UserRole.client) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ClientHomePage()));
-      } else if (_userRole == UserRole.lawyer) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LawyerHomePage()));
+          await _storeUserData(uid, email, identifier);
+
+          _saveUserDataToPrefs(uid, email, identifier);
+
+          _prefs.setBool('isLoggedIn', true);
+
+          if (_userRole == UserRole.client) {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => ClientHomePage()));
+          } else if (_userRole == UserRole.lawyer) {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => LawyerHomePage()));
+          }
+        }
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
