@@ -1,6 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:nyaya_sahaya/screens/login/login_old.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: LoginPage(),
+      home: ClientScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
