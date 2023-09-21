@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_home/no_cases_found.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+
 
 class ClientHomePage extends StatefulWidget {
   @override
@@ -11,9 +12,7 @@ class ClientHomePage extends StatefulWidget {
 
 class _ClientHomePageState extends State<ClientHomePage> {
   late String clientEmail; // Variable to hold the client's email
-  bool textScanning = false;
-  XFile? imageFile;
-  String scannedText = '';
+  FilePickerResult? result;
   @override
   void initState() {
     super.initState();
