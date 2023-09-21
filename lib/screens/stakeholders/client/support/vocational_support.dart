@@ -95,11 +95,11 @@ class VocationalSupportScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             WelcomeCard(),
-            const SizedBox(height: 40),
+            const SizedBox(height: 40), // Increase spacing
             Center(
               child: GridView.count(
                 crossAxisCount: 2,
-                shrinkWrap: true,
+                shrinkWrap: true, // Allow GridView to take minimum space
                 children: [
                   _buildCard(
                     title: 'Educational Courses',
@@ -136,7 +136,7 @@ class VocationalSupportScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      elevation: 6,
+      elevation: 6, // Add elevation
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -155,13 +155,13 @@ class VocationalSupportScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 8), // Add spacing
             Text(
               title,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Colors.blue,
+                color: Colors.blue, // Use your preferred color
               ),
               textAlign: TextAlign.center,
             ),
