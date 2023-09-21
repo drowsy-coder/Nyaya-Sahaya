@@ -1,14 +1,12 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:law/screens/stakeholders/client/client_screen.dart';
-import 'package:law/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../stakeholders/client/client_home/client_home.dart';
 
 enum UserRole {
   lawyer,
@@ -27,7 +25,7 @@ UserRole stringToUserRole(String role) {
 }
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -75,14 +73,14 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => ClientScreen(),
+              builder: (context) => const ClientScreen(),
             ),
           );
         } else if (_userRole == UserRole.lawyer) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => LawyerScreen(),
+              builder: (context) => const LawyerScreen(),
             ),
           );
         }
@@ -128,10 +126,10 @@ class _LoginPageState extends State<LoginPage> {
 
           if (_userRole == UserRole.client) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => ClientScreen()));
+                MaterialPageRoute(builder: (context) => const ClientScreen()));
           } else if (_userRole == UserRole.lawyer) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LawyerScreen()));
+                MaterialPageRoute(builder: (context) => const LawyerScreen()));
           }
         } else {
           // Handle the case where userRole or identifier doesn't match
@@ -151,12 +149,11 @@ class _LoginPageState extends State<LoginPage> {
         // Show an error message, e.g., using a Scaffold or AlertDialog
         // You can use a Flutter dialog or SnackBar to display the message.
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       // Handle Firebase authentication errors
       setState(() {
         _isLoading = false;
       });
-      print('Failed to sign in with email and password: ${e.message}');
       // Show an error message, e.g., using a Scaffold or AlertDialog
       // You can use a Flutter dialog or SnackBar to display the message.
     }
@@ -185,17 +182,16 @@ class _LoginPageState extends State<LoginPage> {
 
       if (_userRole == UserRole.client) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ClientScreen()));
+            context, MaterialPageRoute(builder: (context) => const ClientScreen()));
       } else if (_userRole == UserRole.lawyer) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LawyerScreen()));
+            context, MaterialPageRoute(builder: (context) => const LawyerScreen()));
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       setState(() {
         _isLoading = false;
       });
 
-      print('Failed to create user account: ${e.message}');
     }
   }
 
@@ -254,7 +250,7 @@ class _LoginPageState extends State<LoginPage> {
                     _userRole = newValue!;
                   });
                 },
-                items: [
+                items: const [
                   DropdownMenuItem(
                     value: UserRole.client,
                     child: Text('Client',
@@ -324,16 +320,16 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text(
-                  _isLoginForm ? 'Login' : 'Create Account',
-                  style: const TextStyle(fontSize: 18),
-                ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  backgroundColor: Colors.green,
                   padding: const EdgeInsets.all(16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                ),
+                child: Text(
+                  _isLoginForm ? 'Login' : 'Create Account',
+                  style: const TextStyle(fontSize: 18),
                 ),
               ),
               const SizedBox(height: 10),

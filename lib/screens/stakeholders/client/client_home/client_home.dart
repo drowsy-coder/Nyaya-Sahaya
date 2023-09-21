@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, unnecessary_null_comparison, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +8,8 @@ import 'package:image_picker_platform_interface/image_picker_platform_interface.
 import 'package:mime/mime.dart';
 
 class ClientHomePage extends StatefulWidget {
+  const ClientHomePage({super.key});
+
   @override
   _ClientHomePageState createState() => _ClientHomePageState();
 }
@@ -27,7 +31,6 @@ class _ClientHomePageState extends State<ClientHomePage> {
     if (user != null) {
       setState(() {
         clientEmail = user.email!;
-        print(clientEmail);
       });
     }
   }
@@ -35,7 +38,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
   @override
   Widget build(BuildContext context) {
     if (clientEmail == null) {
-      return CircularProgressIndicator();
+      return const CircularProgressIndicator();
     }
 
     return StreamBuilder<QuerySnapshot>(
@@ -46,12 +49,12 @@ class _ClientHomePageState extends State<ClientHomePage> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // If the stream is still waiting for data, show a loading indicator
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
 
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           // If there are no documents in the snapshot, display a message
-          return NoCasesFoundScreen();
+          return const NoCasesFoundScreen();
         }
 
         final document = snapshot.data!.docs.first;
@@ -60,16 +63,16 @@ class _ClientHomePageState extends State<ClientHomePage> {
           length: 3, // Number of tabs (Timeline, Section Info, Grid).
           child: Scaffold(
             appBar: AppBar(
-              title: Text('Case Details'),
+              title: const Text('Case Details'),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.info),
+                  icon: const Icon(Icons.info),
                   onPressed: () {
                     // Add a tooltip or navigation to the app's information page.
                   },
                 ),
               ],
-              bottom: TabBar(
+              bottom: const TabBar(
                 tabs: [
                   Tab(text: 'Timeline'),
                   Tab(text: 'Section Info'),
@@ -171,16 +174,16 @@ class _ClientHomePageState extends State<ClientHomePage> {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black, // Text color for the title (black).
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               content,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.black, // Text color for the content (black).
               ),
@@ -204,7 +207,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
     // Implement your grid widget here.
     // You can use a GridView.builder to create a grid of case facts.
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Number of columns in the grid.
       ),
       itemBuilder: (context, index) {

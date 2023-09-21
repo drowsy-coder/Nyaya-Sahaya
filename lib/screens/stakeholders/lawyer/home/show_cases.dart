@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +9,7 @@ class CaseListScreen extends StatefulWidget {
   final bool showClosed;
   final bool showOpen;
 
-  CaseListScreen({
+  const CaseListScreen({super.key, 
     required this.showClosed,
     required this.showOpen,
   });
@@ -54,7 +56,7 @@ class _CaseListScreenState extends State<CaseListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Case List'),
+        title: const Text('Case List'),
       ),
       body: ListView.builder(
         itemCount: cases.length,

@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +10,7 @@ import '../../models/user_role.dart';
 import 'login_ui.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => LawyerScreen(),
+              builder: (context) => const LawyerScreen(),
             ),
           );
         }
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                 MaterialPageRoute(builder: (context) => const ClientScreen()));
           } else if (_userRole == UserRole.lawyer) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LawyerScreen()));
+                MaterialPageRoute(builder: (context) => const LawyerScreen()));
           }
         } else {
           setState(() {
@@ -159,14 +159,14 @@ class _LoginPageState extends State<LoginPage> {
             MaterialPageRoute(builder: (context) => const ClientScreen()));
       } else if (_userRole == UserRole.lawyer) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LawyerScreen()));
+            context, MaterialPageRoute(builder: (context) => const LawyerScreen()));
       }
+    // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;
       });
 
-      print('Failed to create user account: ${e.message}');
     }
   }
 

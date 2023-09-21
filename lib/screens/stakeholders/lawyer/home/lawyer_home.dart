@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class LawyerHomePage extends StatelessWidget {
 }
 
 class DashboardHeader extends StatefulWidget {
-  const DashboardHeader({Key? key});
+  const DashboardHeader({super.key});
 
   @override
   _DashboardHeaderState createState() => _DashboardHeaderState();
@@ -47,7 +49,6 @@ class _DashboardHeaderState extends State<DashboardHeader> {
   }
 
   Future<void> fetchLawyerIdAndTotalCases() async {
-    print(lawyerId);
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
         .where('lawyerId', isEqualTo: lawyerId)
@@ -103,7 +104,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
             onTap: () {
               navigateToCaseListScreen(context, false, false);
             },
-            child: HoverCard(
+            child: const HoverCard(
               title: 'Cases Closed',
               count: '0',
               icon: Icons.check_circle,
@@ -120,7 +121,7 @@ class HoverCard extends StatefulWidget {
   final String count;
   final IconData icon;
 
-  HoverCard({
+  const HoverCard({
     Key? key,
     required this.title,
     required this.count,
@@ -147,7 +148,7 @@ class _HoverCardState extends State<HoverCard> {
           isHovered = false;
         });
       },
-      child: Container(
+      child: SizedBox(
         width: 150, // Adjust the width as needed
         child: Card(
           elevation: isHovered ? 10 : 2,
@@ -191,7 +192,7 @@ class PlaceholderCardsColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -234,7 +235,7 @@ class PlaceholderCard extends StatelessWidget {
   final String title;
   final String description;
 
-  PlaceholderCard({super.key, required this.title, required this.description});
+  const PlaceholderCard({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {

@@ -128,16 +128,16 @@ class LoginUI extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: onFormSubmitted,
-                child: Text(
-                  isLoginForm ? 'Login' : 'Create Account',
-                  style: const TextStyle(fontSize: 18),
-                ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  backgroundColor: Colors.green,
                   padding: const EdgeInsets.all(16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                ),
+                child: Text(
+                  isLoginForm ? 'Login' : 'Create Account',
+                  style: const TextStyle(fontSize: 18),
                 ),
               ),
               const SizedBox(height: 10),

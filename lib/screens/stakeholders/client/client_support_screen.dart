@@ -74,12 +74,12 @@ class ClientSupportScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return VocationalSupportScreen();
+                            return const VocationalSupportScreen();
                           },
                         ),
                       );
                     },
-                    gradientColors: [Colors.purple, Colors.deepPurple],
+                    gradientColors: const [Colors.purple, Colors.deepPurple],
                   ),
                   const SizedBox(height: 20),
                   SupportOptionCard(
@@ -91,12 +91,12 @@ class ClientSupportScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return MentalSupportScreen();
+                            return const MentalSupportScreen();
                           },
                         ),
                       );
                     },
-                    gradientColors: [Colors.teal, Colors.green],
+                    gradientColors: const [Colors.teal, Colors.green],
                   ),
                 ],
               ),

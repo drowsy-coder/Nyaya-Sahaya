@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:law/screens/stakeholders/lawyer/add_case.dart';
@@ -18,6 +20,8 @@ class ScreenModel {
 }
 
 class LawyerScreen extends StatefulWidget {
+  const LawyerScreen({super.key});
+
   @override
   _LawyerScreenState createState() => _LawyerScreenState();
 }
@@ -27,11 +31,11 @@ class _LawyerScreenState extends State<LawyerScreen> {
 
   // Define your screens as a static list
   static final List<ScreenModel> screens = [
-    ScreenModel(screen: LawyerHomePage(), icon: Icons.home, text: "Home"),
-    ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
+    ScreenModel(screen: const LawyerHomePage(), icon: Icons.home, text: "Home"),
+    ScreenModel(screen: const LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: const LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
-    ScreenModel(screen: LawyerAddCase(), icon: Icons.add, text: "Add Case"),
+    ScreenModel(screen: const LawyerAddCase(), icon: Icons.add, text: "Add Case"),
   ];
 
   @override

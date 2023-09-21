@@ -1,5 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -105,7 +106,7 @@ class _MapScreenState extends State<MapScreen> {
         Marker(
           markerId: MarkerId(i.toString()),
           position: _latLang[i],
-          icon: BitmapDescriptor.fromBytes(markerIcon!),
+          icon: BitmapDescriptor.fromBytes(markerIcon),
           onTap: () {
             showDialog<void>(
               context: context,
@@ -153,26 +154,13 @@ class CustomInfoWindow extends StatelessWidget {
   final String image;
   final int phoneNum;
 
-  CustomInfoWindow({
+  const CustomInfoWindow({
     Key? key,
     required this.title,
     required this.description,
     required this.image,
     required this.phoneNum,
   }) : super(key: key);
-
-  _launchPhoneDialer() async {
-    final url = 'tel:$phoneNum';
-    try {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } catch (e) {
-      print('Error launching phone dialer: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +174,7 @@ class CustomInfoWindow extends StatelessWidget {
           Container(
             height: 200,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
@@ -200,37 +188,57 @@ class CustomInfoWindow extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(description),
               ],
             ),
           ),
-          ElevatedButton(
-            onPressed:
-                _launchPhoneDialer, // Call the function to open the phone dialer
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(16)),
-              ),
-              primary: Colors.blue,
+          const SizedBox(height: 16),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () => launch("tel:$phoneNum"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green, // Change button color to green
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.phone,
+                    color: Colors.white, // Change icon color to white
+                  ),
+                  label: const Text(
+                    'Call',
+                    style: TextStyle(color: Colors.white), // Text color
+                  ),
+                ),
+                const SizedBox(width: 16), // Add spacing between buttons
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red, // Change button color to red
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white, // Change icon color to white
+                  ),
+                  label: const Text(
+                    'Close',
+                    style: TextStyle(color: Colors.white), // Text color
+                  ),
+                ),
+              ],
             ),
-            child: Text('Call'), // Change button text to "Call"
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(16)),
-              ),
-              primary: Colors.red, // Change button color to red
-            ),
-            child: Text('Close'),
           ),
         ],
       ),

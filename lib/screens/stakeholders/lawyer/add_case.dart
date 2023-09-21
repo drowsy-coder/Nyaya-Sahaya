@@ -1,10 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api, empty_catches
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../widgets/buttons/logout_button.dart';
 
 class LawyerAddCase extends StatefulWidget {
+  const LawyerAddCase({super.key});
+
   @override
   _LawyerAddCaseState createState() => _LawyerAddCaseState();
 }
@@ -66,7 +69,6 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
           _nextHearingDateController.clear();
           _selectedDate = null;
         } catch (error) {
-          print('Error adding case: $error');
         }
       }
     }

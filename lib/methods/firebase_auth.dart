@@ -38,9 +38,8 @@ class FirebaseAuthService {
           _storeUserData(uid, email, identifier, userRole);
         }
       }
-    } on FirebaseAuthException catch (e) {
-      print('Failed to sign in with email and password: ${e.message}');
-      throw e;
+    } on FirebaseAuthException {
+      rethrow;
     }
   }
 
@@ -76,9 +75,8 @@ class FirebaseAuthService {
           _storeUserData(uid, email, identifier, userRole);
         }
       }
-    } on FirebaseAuthException catch (e) {
-      print('Failed to create user account: ${e.message}');
-      throw e;
+    } on FirebaseAuthException {
+      rethrow;
     }
   }
 

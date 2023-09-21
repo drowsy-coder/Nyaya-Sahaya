@@ -1,6 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class WelcomeCard extends StatefulWidget {
+  const WelcomeCard({super.key});
+
   @override
   _WelcomeCardState createState() => _WelcomeCardState();
 }
@@ -81,7 +85,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
 }
 
 class VocationalSupportScreen extends StatelessWidget {
-  const VocationalSupportScreen({Key? key});
+  const VocationalSupportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +98,7 @@ class VocationalSupportScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WelcomeCard(),
+            const WelcomeCard(),
             const SizedBox(height: 40), // Increase spacing
             Center(
               child: GridView.count(
@@ -145,7 +149,7 @@ class VocationalSupportScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: Center(
                 child: Image.asset(

@@ -1,10 +1,12 @@
+// ignore_for_file: use_rethrow_when_possible
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CaseDetailScreen extends StatelessWidget {
   final String caseId;
 
-  CaseDetailScreen({required this.caseId});
+  const CaseDetailScreen({super.key, required this.caseId});
 
   Future<DocumentSnapshot> fetchCaseDetails() async {
     try {
@@ -15,7 +17,6 @@ class CaseDetailScreen extends StatelessWidget {
       return caseDocument;
     } catch (e) {
       // Handle any potential errors, e.g., Firestore exception
-      print('Error fetching case details: $e');
       throw e;
     }
   }
@@ -44,16 +45,16 @@ class CaseDetailScreen extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black, // Text color for the title (black).
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               content,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.black, // Text color for the content (black).
               ),
@@ -68,14 +69,14 @@ class CaseDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Case Details'),
+        title: const Text('Case Details'),
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: fetchCaseDetails(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // While waiting for data to load, you can display a loading indicator.
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             // If there's an error fetching the data, display an error message.
             return Center(
@@ -83,7 +84,7 @@ class CaseDetailScreen extends StatelessWidget {
             );
           } else if (!snapshot.hasData || !snapshot.data!.exists) {
             // If no data or the document does not exist, display a message.
-            return Center(child: Text('Case not found.'));
+            return const Center(child: Text('Case not found.'));
           } else {
             final caseData = snapshot.data!.data() as Map<String, dynamic>;
 
