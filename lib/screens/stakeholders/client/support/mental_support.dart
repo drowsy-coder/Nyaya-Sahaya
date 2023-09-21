@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MentalSupportScreen extends StatelessWidget {
+  const MentalSupportScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mental Health Support'),
+        title: const Text('Mental Health Support'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -19,7 +21,6 @@ class MentalSupportScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            // Add your content for mental health support here
           ],
         ),
       ),

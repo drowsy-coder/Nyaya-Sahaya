@@ -14,11 +14,10 @@ class ClientSupportScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            // Creative Welcome Section
             Container(
-              height: 200, // Reduced the height of the welcome section
+              height: 200,
               decoration: const BoxDecoration(
-                color: Colors.teal, // Changed the background color
+                color: Colors.teal,
               ),
               child: Stack(
                 children: <Widget>[
@@ -31,7 +30,7 @@ class ClientSupportScreen extends StatelessWidget {
                         const Text(
                           'Welcome to Our Support Center',
                           style: TextStyle(
-                            fontSize: 24, // Reduced the font size
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -47,10 +46,10 @@ class ClientSupportScreen extends StatelessWidget {
                   ),
                   Positioned(
                     top: 150,
-                    right: -10, // Adjusted the position of the arrow
+                    right: -10,
                     child: Transform.rotate(
-                      angle: 0.8, // Rotated the arrow slightly
-                      child: Icon(
+                      angle: 0.8,
+                      child: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,
                         size: 40,
@@ -60,8 +59,6 @@ class ClientSupportScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Support Options
             Container(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               child: Column(
@@ -116,7 +113,7 @@ class SupportOptionCard extends StatelessWidget {
   final VoidCallback onPressed;
   final List<Color> gradientColors;
 
-  SupportOptionCard({
+  const SupportOptionCard({
     super.key,
     required this.title,
     required this.description,
@@ -159,7 +156,7 @@ class SupportOptionCard extends StatelessWidget {
                     Text(
                       title,
                       style: const TextStyle(
-                        fontSize: 20, // Reduced the font size
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontFamily: 'Montserrat',

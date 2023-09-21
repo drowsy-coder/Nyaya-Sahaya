@@ -3,13 +3,15 @@
 import 'package:flutter/material.dart';
 
 class VocationalSupportScreen extends StatelessWidget {
+  const VocationalSupportScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vocational Support'),
+        title: const Text('Vocational Support'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -21,7 +23,6 @@ class VocationalSupportScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            // Add your content for vocational support here
           ],
         ),
       ),
