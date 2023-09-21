@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.sunflower" "\0"
-            VALUE "FileDescription", "nyaya_sahaya" "\0"
+            VALUE "FileDescription", "law" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "nyaya_sahaya" "\0"
+            VALUE "InternalName", "law" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.sunflower. All rights reserved." "\0"
-            VALUE "OriginalFilename", "nyaya_sahaya.exe" "\0"
-            VALUE "ProductName", "nyaya_sahaya" "\0"
+            VALUE "OriginalFilename", "law.exe" "\0"
+            VALUE "ProductName", "law" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

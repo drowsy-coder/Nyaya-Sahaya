@@ -1,4 +1,4 @@
-package com.sunflower.nyaya_sahaya
+package com.sunflower.law
 
 import io.flutter.embedding.android.FlutterActivity
 

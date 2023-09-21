@@ -31,7 +31,10 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -50,20 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD8212hWBYhTsoKFWptD0y5oSWiS_UMMMU',
-    appId: '1:325755281925:android:8aae2cb916e1bd6861326c',
-    messagingSenderId: '325755281925',
-    projectId: 'nyayasahaya-e4d18',
-    storageBucket: 'nyayasahaya-e4d18.appspot.com',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAikeET8Hms8XbseYMrLswBgb31hnOLPJU',
-    appId: '1:325755281925:ios:9d1d40ce14b4d9e161326c',
-    messagingSenderId: '325755281925',
-    projectId: 'nyayasahaya-e4d18',
-    storageBucket: 'nyayasahaya-e4d18.appspot.com',
-    iosClientId: '325755281925-8d00hjrh23gkctq3gv6bmrle6j72upj9.apps.googleusercontent.com',
-    iosBundleId: 'com.sunflower.nyayaSahaya.RunnerTests',
+    apiKey: 'AIzaSyBJuTdzZWhPBFzOC8LmToGjmFpktA1ZEvw',
+    appId: '1:1034164058516:android:0f6b48a5ea83e93461f781',
+    messagingSenderId: '1034164058516',
+    projectId: 'testlaw-7aced',
+    storageBucket: 'testlaw-7aced.appspot.com',
   );
 }

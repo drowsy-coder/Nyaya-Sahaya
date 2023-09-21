@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/case_details.dart';
+import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
 
 class CaseListScreen extends StatefulWidget {
   final bool showClosed;

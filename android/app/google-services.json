@@ -1,43 +1,26 @@
 {
   "project_info": {
-    "project_number": "325755281925",
-    "project_id": "nyayasahaya-e4d18",
-    "storage_bucket": "nyayasahaya-e4d18.appspot.com"
+    "project_number": "1034164058516",
+    "project_id": "testlaw-7aced",
+    "storage_bucket": "testlaw-7aced.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:325755281925:android:8aae2cb916e1bd6861326c",
+        "mobilesdk_app_id": "1:1034164058516:android:0f6b48a5ea83e93461f781",
         "android_client_info": {
-          "package_name": "com.sunflower.nyaya_sahaya"
+          "package_name": "com.sunflower.law"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "325755281925-uvpki403lo8gd89cmnp83c526g0jqah7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD8212hWBYhTsoKFWptD0y5oSWiS_UMMMU"
+          "current_key": "AIzaSyBJuTdzZWhPBFzOC8LmToGjmFpktA1ZEvw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "325755281925-uvpki403lo8gd89cmnp83c526g0jqah7.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "325755281925-8d00hjrh23gkctq3gv6bmrle6j72upj9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.sunflower.nyayaSahaya.RunnerTests"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

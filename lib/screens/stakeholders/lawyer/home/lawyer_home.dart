@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/show_cases.dart';
+import 'package:law/screens/stakeholders/lawyer/home/show_cases.dart';
 
 class LawyerHomePage extends StatelessWidget {
   const LawyerHomePage({super.key});
