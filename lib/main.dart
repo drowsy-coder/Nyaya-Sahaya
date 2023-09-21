@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:nyaya_sahaya/screens/login/login_old.dart';
+import 'package:nyaya_sahaya/screens/login/login_page.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 

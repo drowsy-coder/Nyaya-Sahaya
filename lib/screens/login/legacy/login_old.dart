@@ -8,7 +8,7 @@ import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../stakeholders/client/client_home/client_home.dart';
+import '../../stakeholders/client/client_home/client_home.dart';
 
 enum UserRole {
   lawyer,
