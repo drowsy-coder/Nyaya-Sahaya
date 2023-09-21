@@ -26,16 +26,15 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
     if (picked != _selectedDate)
       setState(() {
         _selectedDate = picked;
-        _nextHearingDateController.text = "${picked.toLocal()}"
-            .split(' ')[0]; 
+        _nextHearingDateController.text = "${picked.toLocal()}".split(' ')[0];
       });
   }
 
   void _submitCase() async {
     if (_formKey.currentState!.validate()) {
       final User? user = FirebaseAuth.instance.currentUser;
+
       if (user != null) {
-        final String lawyerName = user.displayName ?? "Lawyer Name";
         final String lawyerId = user.uid;
 
         final String clientEmail = _clientEmailController.text.trim();
@@ -44,6 +43,13 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
         final String nextHearingDate = _nextHearingDateController.text.trim();
 
         try {
+          // Fetch the lawyer's name from the user data
+          final DocumentSnapshot userData = await FirebaseFirestore.instance
+              .collection('users')
+              .doc(lawyerId)
+              .get();
+          final String lawyerName = userData['name'];
+
           await FirebaseFirestore.instance.collection('cases').add({
             'lawyerName': lawyerName,
             'lawyerId': lawyerId,
