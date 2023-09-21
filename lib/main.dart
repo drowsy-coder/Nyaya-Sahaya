@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:law/screens/stakeholders/client/client_screen.dart';
+import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
 
 import 'firebase_options.dart';
 import 'screens/login/legacy/login_old.dart';
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: LoginPage(),
+      home: LawyerScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
