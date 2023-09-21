@@ -50,7 +50,7 @@ android {
         applicationId "com.sunflower.nyaya_sahaya"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 21
+        minSdkVersion 20
         multiDexEnabled true
 
         targetSdkVersion flutter.targetSdkVersion
@@ -71,10 +71,4 @@ flutter {
     source '../..'
 }
 
-dependencies {
-    implementation 'com.google.mlkit:text-recognition:16.0.0'
-    compileOnly 'com.google.mlkit:text-recognition-chinese:16.0.0'
-    compileOnly 'com.google.mlkit:text-recognition-devanagari:16.0.0'
-    compileOnly 'com.google.mlkit:text-recognition-japanese:16.0.0'
-    compileOnly 'com.google.mlkit:text-recognition-korean:16.0.0'
-}
+dependencies {}
