@@ -116,9 +116,6 @@ class _LoginPageState extends State<LoginPage> {
       if (userData.exists) {
         final String storedUserRole = userData['userRole'];
         final UserRole userRole = stringToUserRole(storedUserRole);
-        // Update the display name
-        final String displayName = userData['name'];
-        await user.updateDisplayName(displayName);
 
         if (userRole == _userRole && userData['identifier'] == identifier) {
           await _storeUserData(uid, email, identifier);
@@ -134,13 +131,32 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => LawyerHomePage()));
           }
+        } else {
+          // Handle the case where userRole or identifier doesn't match
+          // Set _isLoading to false and possibly show an error message
+          setState(() {
+            _isLoading = false;
+          });
+          // Show an error message, e.g., using a Scaffold or AlertDialog
+          // You can use a Flutter dialog or SnackBar to display the message.
         }
+      } else {
+        // Handle the case where userData doesn't exist
+        // Set _isLoading to false and possibly show an error message
+        setState(() {
+          _isLoading = false;
+        });
+        // Show an error message, e.g., using a Scaffold or AlertDialog
+        // You can use a Flutter dialog or SnackBar to display the message.
       }
     } on FirebaseAuthException catch (e) {
+      // Handle Firebase authentication errors
       setState(() {
         _isLoading = false;
       });
       print('Failed to sign in with email and password: ${e.message}');
+      // Show an error message, e.g., using a Scaffold or AlertDialog
+      // You can use a Flutter dialog or SnackBar to display the message.
     }
   }
 
@@ -158,10 +174,6 @@ class _LoginPageState extends State<LoginPage> {
       );
       final User user = userCredential.user!;
       final String uid = user.uid;
-
-      // Update the display name
-      final String displayName = email.split("@")[-1];
-      await user.updateDisplayName(displayName);
 
       await _storeUserData(uid, email, identifier);
 
