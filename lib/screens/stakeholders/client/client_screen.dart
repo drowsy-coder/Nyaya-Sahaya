@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/client/client_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/client/client_home/client_home.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_support_screen.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/clinet_lawyer_map.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
