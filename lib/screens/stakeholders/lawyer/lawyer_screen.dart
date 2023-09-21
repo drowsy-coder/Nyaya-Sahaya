@@ -56,8 +56,11 @@ class _LawyerScreenState extends State<LawyerScreen> {
                   });
                 },
                 backgroundColor: _selectedIndex == index
-                    ? Colors.blue
+                    ? Colors.yellow
                     : Colors.grey.shade800,
+                textColor:
+                    _selectedIndex == index ? Colors.black : Colors.white,
+                iconActiveColor: Colors.black,
               ),
             ),
             selectedIndex: _selectedIndex,
