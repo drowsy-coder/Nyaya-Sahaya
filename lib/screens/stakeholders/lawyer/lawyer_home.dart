@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 
 class LawyerHomePage extends StatelessWidget {
+  const LawyerHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 20),
-        DashboardHeader(),
-        SizedBox(height: 20),
-        Expanded(
-          child: PlaceholderCardsColumn(),
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Lawyer Home'),
         ),
-      ],
-    );
+        body: const Column(
+          children: [
+            SizedBox(height: 20),
+            DashboardHeader(),
+            SizedBox(height: 20),
+            Expanded(
+              child: PlaceholderCardsColumn(),
+            ),
+          ],
+        ));
   }
 }
 
 class DashboardHeader extends StatelessWidget {
+  const DashboardHeader({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -50,7 +58,11 @@ class HoverCard extends StatefulWidget {
   final String count;
   final IconData icon;
 
-  HoverCard({required this.title, required this.count, required this.icon});
+  HoverCard(
+      {super.key,
+      required this.title,
+      required this.count,
+      required this.icon});
 
   @override
   _HoverCardState createState() => _HoverCardState();
@@ -86,18 +98,18 @@ class _HoverCardState extends State<HoverCard> {
                   size: 48,
                   color: Colors.blue,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   widget.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   widget.count,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -112,6 +124,8 @@ class _HoverCardState extends State<HoverCard> {
 }
 
 class PlaceholderCardsColumn extends StatelessWidget {
+  const PlaceholderCardsColumn({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -157,12 +171,12 @@ class PlaceholderCard extends StatelessWidget {
   final String title;
   final String description;
 
-  PlaceholderCard({required this.title, required this.description});
+  PlaceholderCard({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -171,15 +185,15 @@ class PlaceholderCard extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
