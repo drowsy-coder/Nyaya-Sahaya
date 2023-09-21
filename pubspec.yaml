@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.1.0 <4.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,6 +31,7 @@ dependencies:
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.9.1
   cupertino_icons: ^1.0.2
+  file_picker: ^5.5.0
   firebase_auth: ^4.9.0
   firebase_core: ^2.15.1
   flutter:
@@ -45,13 +46,24 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  ##tesseract_ocr:
-  ##  path: 
+  google_ml_kit: ^0.16.2
+  google_mlkit_text_recognition: 0.10.0 
+  image_picker: ^1.0.4
+  camera: ^0.10.5+2
+  path: ^1.8.3
+  path_provider: ^2.0.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.google_mlkit_text_recognition
+        pluginClass: GoogleMlKitTextRecognitionPlugin
+      ios:
+        pluginClass: GoogleMlKitTextRecognitionPlugin
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
