@@ -92,7 +92,6 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                   ],
                 ),
               ),
-              LogoutButton(),
               Container(
                 width: 380,
                 padding: const EdgeInsets.all(16.0),

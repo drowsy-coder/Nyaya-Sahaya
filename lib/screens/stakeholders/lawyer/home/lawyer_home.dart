@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/show_cases.dart';
 
 class LawyerHomePage extends StatelessWidget {
   const LawyerHomePage({super.key});
@@ -22,8 +25,52 @@ class LawyerHomePage extends StatelessWidget {
   }
 }
 
-class DashboardHeader extends StatelessWidget {
-  const DashboardHeader({super.key});
+class DashboardHeader extends StatefulWidget {
+  const DashboardHeader({Key? key});
+
+  @override
+  _DashboardHeaderState createState() => _DashboardHeaderState();
+}
+
+class _DashboardHeaderState extends State<DashboardHeader> {
+  late String lawyerId;
+  int totalCases = 0; // Initialize totalCases with 0
+
+  @override
+  void initState() {
+    super.initState();
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      lawyerId = user.uid;
+      fetchLawyerIdAndTotalCases();
+    }
+  }
+
+  Future<void> fetchLawyerIdAndTotalCases() async {
+    print(lawyerId);
+    final casesQuery = await FirebaseFirestore.instance
+        .collection('cases')
+        .where('lawyerId', isEqualTo: lawyerId)
+        .get();
+
+    // Set the totalCases to the length of the documents returned
+    setState(() {
+      totalCases = casesQuery.docs.length;
+    });
+  }
+
+  void navigateToCaseListScreen(
+      BuildContext context, bool showClosed, bool showOpen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CaseListScreen(
+          showClosed: showClosed,
+          showOpen: showOpen,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +79,35 @@ class DashboardHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          HoverCard(
-            title: 'Cases Pending',
-            count: '15',
-            icon: Icons.timer,
+          GestureDetector(
+            onTap: () {
+              navigateToCaseListScreen(context, false, true);
+            },
+            child: HoverCard(
+              title: 'Cases Pending',
+              count: '$totalCases',
+              icon: Icons.timer,
+            ),
           ),
-          HoverCard(
-            title: 'Total Cases',
-            count: '50',
-            icon: Icons.folder,
+          GestureDetector(
+            onTap: () {
+              navigateToCaseListScreen(context, true, true);
+            },
+            child: HoverCard(
+              title: 'Total Cases',
+              count: '$totalCases',
+              icon: Icons.folder,
+            ),
           ),
-          HoverCard(
-            title: 'Cases Closed',
-            count: '35',
-            icon: Icons.check_circle,
+          GestureDetector(
+            onTap: () {
+              navigateToCaseListScreen(context, false, false);
+            },
+            child: HoverCard(
+              title: 'Cases Closed',
+              count: '0',
+              icon: Icons.check_circle,
+            ),
           ),
         ],
       ),
@@ -58,11 +120,12 @@ class HoverCard extends StatefulWidget {
   final String count;
   final IconData icon;
 
-  HoverCard(
-      {super.key,
-      required this.title,
-      required this.count,
-      required this.icon});
+  HoverCard({
+    Key? key,
+    required this.title,
+    required this.count,
+    required this.icon,
+  }) : super(key: key);
 
   @override
   _HoverCardState createState() => _HoverCardState();

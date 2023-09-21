@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/add_case.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_chat.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_read.dart';
 
 class ScreenModel {
