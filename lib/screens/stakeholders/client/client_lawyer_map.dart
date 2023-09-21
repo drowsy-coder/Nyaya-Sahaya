@@ -130,7 +130,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Nearby Hospitals"),
+        title: const Text("Nearby Lawyers"),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height * 0.8,
@@ -174,7 +174,8 @@ class CustomInfoWindow extends StatelessWidget {
           Container(
             height: 200,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(16)),
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
@@ -188,7 +189,8 @@ class CustomInfoWindow extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(description),
@@ -203,7 +205,8 @@ class CustomInfoWindow extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () => launch("tel:$phoneNum"),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green, // Change button color to green
+                    backgroundColor:
+                        Colors.green, // Change button color to green
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
