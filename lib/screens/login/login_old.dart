@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_screen.dart';
-import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_home.dart';
+import 'package:nyaya_sahaya/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
