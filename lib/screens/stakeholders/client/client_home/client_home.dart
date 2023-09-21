@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_home/no_cases_found.dart';
-import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
-import 'package:mime/mime.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ClientHomePage extends StatefulWidget {
   @override
