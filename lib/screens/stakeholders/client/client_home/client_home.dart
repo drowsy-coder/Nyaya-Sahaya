@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nyaya_sahaya/screens/stakeholders/client/client_home/no_cases_found.dart';
+import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
+import 'package:mime/mime.dart';
 
 class ClientHomePage extends StatefulWidget {
   @override
@@ -10,7 +12,9 @@ class ClientHomePage extends StatefulWidget {
 
 class _ClientHomePageState extends State<ClientHomePage> {
   late String clientEmail; // Variable to hold the client's email
-
+  bool textScanning = false;
+  XFile? imageFile;
+  String scannedText = '';
   @override
   void initState() {
     super.initState();
@@ -209,4 +213,22 @@ class _ClientHomePageState extends State<ClientHomePage> {
       },
     );
   }
+
+  /**void getImage() async {
+    try {
+      final _picker = ImagePicker();
+      // ignore: unused_local_variable
+      final pickedImage = await _picker.getImage(source: ImageSource.camera);
+      if (pickedImage != null) {
+        textScanning = true;
+        imageFile = pickedImage;
+        setState(() {});
+      }
+    } catch (e) {
+      textScanning = false;
+      imageFile = null;
+      setState(() {});
+      scannedText = "Error Occured";
+    }
+  }**/
 }
