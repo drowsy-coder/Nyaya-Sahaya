@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:law/screens/stakeholders/lawyer/home/show_cases.dart';
 
+import 'place_holder_column.dart';
+
 class LawyerHomePage extends StatelessWidget {
   const LawyerHomePage({super.key});
 
@@ -159,7 +161,7 @@ class _HoverCardState extends State<HoverCard> {
         });
       },
       child: SizedBox(
-        width: 150, // Adjust the width as needed
+        width: 150,
         child: Card(
           elevation: isHovered ? 10 : 2,
           color: widget.backgroundColor,
@@ -194,87 +196,6 @@ class _HoverCardState extends State<HoverCard> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PlaceholderCardsColumn extends StatelessWidget {
-  const PlaceholderCardsColumn({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          PlaceholderCard(
-            title: 'Card 1',
-            description: 'Description 1',
-          ),
-          PlaceholderCard(
-            title: 'Card 2',
-            description: 'Description 2',
-          ),
-          PlaceholderCard(
-            title: 'Card 3',
-            description: 'Description 3',
-          ),
-          PlaceholderCard(
-            title: 'Card 4',
-            description: 'Description 4',
-          ),
-          PlaceholderCard(
-            title: 'Card 5',
-            description: 'Description 5',
-          ),
-          PlaceholderCard(
-            title: 'Card 6',
-            description: 'Description 6',
-          ),
-          PlaceholderCard(
-            title: 'Card 7',
-            description: 'Description 7',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PlaceholderCard extends StatelessWidget {
-  final String title;
-  final String description;
-
-  const PlaceholderCard({super.key, required this.title, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              description,
-              style: const TextStyle(
-                fontSize: 14,
-              ),
-            ),
-          ],
         ),
       ),
     );

@@ -1,6 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/computer_training.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/featured_programs.dart';
+// import 'package:law/screens/stakeholders/client/support/vocational_support/screens/vocational_support.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/educational_courses.dart'
+    as eduCourses;
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/vocational_training.dart';
 
 class WelcomeCard extends StatefulWidget {
   const WelcomeCard({super.key});
@@ -85,20 +89,18 @@ class _WelcomeCardState extends State<WelcomeCard> {
 }
 
 class VocationalSupportScreen extends StatelessWidget {
-  const VocationalSupportScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Education for Undertrials'),
+        title: Text('Education for Undertrials'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const WelcomeCard(),
+            WelcomeCard(),
             const SizedBox(height: 40),
             Center(
               child: GridView.count(
@@ -108,22 +110,47 @@ class VocationalSupportScreen extends StatelessWidget {
                   _buildCard(
                     title: 'Educational Courses',
                     imageAsset: 'assets/images/education.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              eduCourses.EducationalCoursesScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Vocational Training',
                     imageAsset: 'assets/images/learn.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => VocationalCoursesScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Featured Programs',
                     imageAsset: 'assets/images/light-bulb.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => FeaturedProgramsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Computer Training',
                     imageAsset: 'assets/images/computer.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ComputerTrainingScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -174,4 +201,10 @@ class VocationalSupportScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: VocationalSupportScreen(),
+  ));
 }
