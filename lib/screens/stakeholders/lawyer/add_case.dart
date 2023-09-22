@@ -201,24 +201,26 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BailAppView(
-                            clientName: _clientNameController.text,
-                            ipcSections: _ipcSectionsController.text,
-                            firNumber: 'Your FIR number here')),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                  foregroundColor: MaterialStateProperty.all(Colors.black),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BailAppView(
+                              clientName: _clientNameController.text,
+                              ipcSections: _ipcSectionsController.text,
+                              firNumber: 'Your FIR number here')),
+                    );
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.yellow),
+                    foregroundColor: MaterialStateProperty.all(Colors.black),
+                  ),
+                  child: const Text('Generate Bail Application'),
                 ),
-                child: const Text('Generate Bail Application'),
               ),
             ),
           ],

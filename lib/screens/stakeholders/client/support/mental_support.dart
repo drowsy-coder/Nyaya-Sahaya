@@ -77,7 +77,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Image.asset(
-                    'assets/images/welcome.png',
+                    'assets/images/mental.png',
                     height: 120,
                     width: 120,
                   ),
@@ -176,7 +176,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
   }
 
   Widget _buildResourceCard(BuildContext context, String title,
-      String description, Function onPressed) {
+      String description, Function onPressed, String imagePath) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       elevation: 4,
@@ -184,9 +184,30 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
-        title: Text(title),
-        subtitle: Text(description),
+        contentPadding: const EdgeInsets.all(16),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            description,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey[600],
+            ),
+          ),
+        ),
         onTap: onPressed as void Function(),
+        leading: Image.asset(
+          imagePath,
+          width: 50,
+          height: 50,
+        ),
       ),
     );
   }
@@ -205,18 +226,23 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             _buildCallChatCards(context),
             const SizedBox(height: 40),
             _buildResourceCard(
-                context, 'Resource 1 Title', 'Description of Resource 1', () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => MentalHealthIssuesScreen(),
-                ),
-              );
-            }),
+              context,
+              'Common Issues',
+              'You are not Alone',
+              () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => MentalHealthIssuesScreen(),
+                  ),
+                );
+              },
+              'assets/images/hug.png',
+            ),
             const SizedBox(height: 16),
             _buildResourceCard(
               context,
-              'Resource 2 Title',
-              'Description of Resource 2',
+              'Video Resolution',
+              'Hear from the experts',
               () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -224,17 +250,8 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
                   ),
                 );
               },
+              'assets/images/4404094.png', // Specify the image asset path for Resource 2
             ),
-            const SizedBox(height: 16),
-            _buildResourceCard(
-              context,
-              'Resource 3 Title',
-              'Description of Resource 3',
-              () {
-                // Add action for Resource 3 here.
-              },
-            ),
-            const SizedBox(height: 16),
           ],
         ),
       ),

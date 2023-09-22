@@ -31,24 +31,65 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
 
   List<FirInfo> firData = [
     FirInfo(
-      ipcSection: '498A',
-      nameOfCrime: 'Dowry',
-      punishment: '10 years in jail',
-      bailable: "",
-    ),
-    FirInfo(
-      ipcSection: '55A',
-      nameOfCrime: 'Rape',
-      punishment: '8 years in jail',
-      bailable: "",
-    ),
-    FirInfo(
-      ipcSection: '690',
+      ipcSection: '300',
       nameOfCrime: 'Murder',
-      punishment: '15 years in jail',
-      bailable: "",
+      punishment: 'Death or life sentence and fine',
+      bailable: 'Non-bailable',
     ),
-    // Add more FIR data as needed
+    FirInfo(
+      ipcSection: '375',
+      nameOfCrime: 'Sexual Assault',
+      punishment: '7 years to life sentence in jail',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '307',
+      nameOfCrime: 'Attempted Murder',
+      punishment: '10 years to life imprisonment',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '359',
+      nameOfCrime: 'Attempted Kidnapping',
+      punishment: '7 years and fine',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '366-B',
+      nameOfCrime: 'Importation of a Girl from a Foreign Country',
+      punishment: '10 years and fine',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '378',
+      nameOfCrime: 'Theft',
+      punishment: '3 years in jail',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '383',
+      nameOfCrime: 'Extortion',
+      punishment: '3 years in jail',
+      bailable: 'Bailable',
+    ),
+    FirInfo(
+      ipcSection: '391',
+      nameOfCrime: 'Dacoity',
+      punishment: '10 years and fine',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '390',
+      nameOfCrime: 'Robbery',
+      punishment: '10 to 14 years and fine',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '415',
+      nameOfCrime: 'Cheating',
+      punishment: '1 year and fine',
+      bailable: 'Bailable',
+    ),
   ];
 
   Future<void> pickAndParsePDF() async {
@@ -75,7 +116,6 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
           setState(() {
             pdfText = '';
             displayedCards = matchingFirs.map((info) {
-              // Create a beautiful card for matching FIR info
               return Card(
                 elevation: 5.0,
                 margin: const EdgeInsets.all(10.0),
@@ -87,6 +127,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                       Text('IPC Section: ${info.ipcSection}'),
                       Text('Name of Crime: ${info.nameOfCrime}'),
                       Text('Punishment: ${info.punishment}'),
+                      Text('Baillable: ${info.bailable}'),
                     ],
                   ),
                 ),

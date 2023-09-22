@@ -6,33 +6,40 @@ class VideoListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mental Health Videos'),
+        title: const Text(
+          'Mental Health Videos',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.grey[900],
       ),
       body: ListView(
-        children: [
+        children: const [
           VideoCard(
-            videoId: 'JbaxHSPohrY',
-            title: 'Shephard\'s Pie',
-            thumbnailUrl: 'thumbnail_url_1',
-            description: 'Description for Video 1',
+            videoId: 'rkZl2gsLUp4',
+            title: 'Manage your mental health',
+            thumbnailUrl: 'assets/images/hq720.jpg',
+            description: 'TEDxClapham',
           ),
           VideoCard(
-            videoId: 'video_id_2',
-            title: 'Video Title 2',
-            thumbnailUrl: 'thumbnail_url_2',
-            description: 'Description for Video 2',
+            videoId: 'TFbv757kup4',
+            title: 'Becoming Mentally Strong',
+            thumbnailUrl: 'assets/images/hqdefault.jpg',
+            description: 'TEDxOcala',
           ),
           VideoCard(
-            videoId: 'video_id_3',
-            title: 'Video Title 3',
-            thumbnailUrl: 'thumbnail_url_3',
-            description: 'Description for Video 3',
+            videoId: 'WWloIAQpMcQ',
+            title: 'Cope with Anxiety',
+            thumbnailUrl: 'assets/images/hqdefault-2.jpg',
+            description: 'TEDxUHasselt',
           ),
           VideoCard(
-            videoId: 'video_id_4',
-            title: 'Video Title 4',
-            thumbnailUrl: 'thumbnail_url_4',
-            description: 'Description for Video 4',
+            videoId: 'v1ojZKWfShQ',
+            title: 'Eliminate Self Doubt',
+            thumbnailUrl: 'assets/images/hqdefault-3.jpg',
+            description: 'TEDxClapham',
           ),
         ],
       ),
@@ -46,7 +53,7 @@ class VideoCard extends StatelessWidget {
   final String thumbnailUrl;
   final String description;
 
-  VideoCard({
+  const VideoCard({
     required this.videoId,
     required this.title,
     required this.thumbnailUrl,
@@ -56,7 +63,12 @@ class VideoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(16.0),
+      margin: const EdgeInsets.all(16.0),
+      elevation: 12, // Increased elevation for a stronger card effect
+      shape: RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.circular(16.0), // Rounded corners for the card
+      ),
       child: InkWell(
         onTap: () {
           // Navigate to the player screen with the selected video
@@ -71,18 +83,70 @@ class VideoCard extends StatelessWidget {
             ),
           );
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.network(thumbnailUrl),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                title,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+                16.0), // Rounded corners for the container
+            gradient: LinearGradient(
+              colors: [
+                Colors.grey[700]!.withOpacity(0.8),
+                Colors.grey[850]!.withOpacity(0.9)
+              ], // Grey gradient
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
             ),
-          ],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.8),
+                spreadRadius: 4,
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16.0),
+                  child: Image.asset(
+                    thumbnailUrl,
+                    width: 140,
+                    height: 120,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 7,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        description,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
