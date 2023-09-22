@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, empty_catches
+
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
@@ -15,6 +17,8 @@ class FirInfo {
 }
 
 class LawyerChatScreen extends StatefulWidget {
+  const LawyerChatScreen({super.key});
+
   @override
   _LawyerChatScreenState createState() => _LawyerChatScreenState();
 }
@@ -35,7 +39,7 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
       punishment: '8 years in jail',
     ),
     FirInfo(
-      ipcSection: '46',
+      ipcSection: '690',
       nameOfCrime: 'Murder',
       punishment: '15 years in jail',
     ),
@@ -69,7 +73,7 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
               // Create a beautiful card for matching FIR info
               return Card(
                 elevation: 5.0,
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -90,9 +94,7 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
             displayedCards = [];
           });
         }
-      } catch (e) {
-        print('Error parsing PDF: $e');
-      }
+      } catch (e) {}
     }
   }
 
@@ -100,7 +102,7 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FIR Information Analyzer'),
+        title: const Text('FIR Information Analyzer'),
       ),
       body: Center(
         child: Column(
@@ -108,14 +110,14 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
           children: <Widget>[
             ElevatedButton(
               onPressed: pickAndParsePDF,
-              child: Text('Pick and Analyze PDF'),
+              child: const Text('Pick and Analyze PDF'),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Text(
               pdfText,
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Expanded(
               child: ListView(
                 children: displayedCards,
