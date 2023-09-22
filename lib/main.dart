@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: AuthWrapper(), // Use AuthWrapper as the initial widget
+      home: AuthWrapper(),
       debugShowCheckedModeBanner: false,
     );
   }

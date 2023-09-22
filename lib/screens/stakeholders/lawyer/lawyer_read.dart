@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as htmlParser;
-import 'package:html/dom.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
 class LawyerReadScreen extends StatefulWidget {
@@ -115,10 +114,4 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
     final urlString = uri.toString();
     return await canLaunchUrl(urlString as Uri);
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: LawyerReadScreen(),
-  ));
 }

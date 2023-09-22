@@ -28,7 +28,7 @@ class _IntroScreenState extends State<IntroScreen> {
               });
             },
             controller: _controller,
-            children: [Page3(), Page2(), Page1()],
+            children: [Page1(), Page2(), Page3()],
           ),
           Container(
             alignment: Alignment(0, 0.5),
