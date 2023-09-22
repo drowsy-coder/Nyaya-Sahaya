@@ -29,6 +29,16 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
         .where('clientEmail', isEqualTo: currentUser.email)
         .get();
 
+    final lawyerId = casesQuery.docs.toList()[0]['lawyerId'] as String;
+    // Get the user where userId is equal to lawyerId
+    final lawyerDataSnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(lawyerId)
+        .get();
+    final lawyerData = lawyerDataSnapshot.data() as Map<String, dynamic>;
+    // Get the lawyerName from the lawyerData
+    lawyerName = lawyerData['name'] as String;
+
     // Filter cases based on the logged-in user's email matching the clientEmail
     setState(() {
       cases = casesQuery.docs.toList();
