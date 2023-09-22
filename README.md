@@ -2,15 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## TODO
+- [ ] Update the login screen to remove the unecessary cols
+- [ ] Need support for chatbot.
+    - User will enter the problem in natural language
+    - The chatbot will display all the clickable sections under which they could be procecuted and est intime
+     
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
