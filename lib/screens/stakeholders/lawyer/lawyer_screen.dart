@@ -34,7 +34,7 @@ class _LawyerScreenState extends State<LawyerScreen> {
     ScreenModel(screen: const LawyerHomePage(), icon: Icons.home, text: "Home"),
     ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
-        screen: const LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
+        screen: LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
     ScreenModel(
         screen: const LawyerAddCase(), icon: Icons.add, text: "Add Case"),
   ];

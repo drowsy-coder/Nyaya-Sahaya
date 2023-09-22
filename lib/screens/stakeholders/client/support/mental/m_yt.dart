@@ -127,10 +127,10 @@ class VideoCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.yellow[700],
+                          color: Colors.green,
                         ),
                       ),
                       const SizedBox(height: 8),
