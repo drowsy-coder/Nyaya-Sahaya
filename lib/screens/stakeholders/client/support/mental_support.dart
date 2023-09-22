@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/chat/chat_support.dart';
 import 'package:law/screens/stakeholders/client/support/mental/m_issues.dart';
 import 'package:law/screens/stakeholders/client/support/mental/m_yt.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -135,7 +136,15 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
   Widget _buildSupportCard(BuildContext context, String text, IconData icon,
       Color color, Function onPressed) {
     return GestureDetector(
-      onTap: onPressed as void Function(),
+      onTap: () {
+        // Navigate to another screen when tapped
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatBot(),
+          ),
+        );
+      },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.43,
         padding: const EdgeInsets.all(16),
