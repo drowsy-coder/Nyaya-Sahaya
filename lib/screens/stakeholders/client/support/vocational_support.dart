@@ -45,7 +45,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
               ),
               child: Center(
                 child: Image.asset(
-                  'assets/images/welcome.png', // Replace with your image path
+                  'assets/images/welcome.png',
                   height: 120,
                   width: 120,
                 ),
@@ -99,30 +99,30 @@ class VocationalSupportScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const WelcomeCard(),
-            const SizedBox(height: 40), // Increase spacing
+            const SizedBox(height: 40),
             Center(
               child: GridView.count(
                 crossAxisCount: 2,
-                shrinkWrap: true, // Allow GridView to take minimum space
+                shrinkWrap: true,
                 children: [
                   _buildCard(
                     title: 'Educational Courses',
-                    imageAsset: 'assets/images/2689736.png',
+                    imageAsset: 'assets/images/education.png',
                     onTap: () {},
                   ),
                   _buildCard(
                     title: 'Vocational Training',
-                    imageAsset: 'assets/images/2689736.png',
+                    imageAsset: 'assets/images/learn.png',
                     onTap: () {},
                   ),
                   _buildCard(
                     title: 'Featured Programs',
-                    imageAsset: 'assets/images/2689736.png',
+                    imageAsset: 'assets/images/light-bulb.png',
                     onTap: () {},
                   ),
                   _buildCard(
                     title: 'Featured Programs',
-                    imageAsset: 'assets/images/2689736.png',
+                    imageAsset: 'assets/images/settings-2.png',
                     onTap: () {},
                   ),
                 ],

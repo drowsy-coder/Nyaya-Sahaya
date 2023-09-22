@@ -13,7 +13,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Anxiety',
-              'assets/images/mental.png', // Replace with your image asset
+              'assets/images/anxiety.png', // Replace with your image asset
               [
                 'Feeling constantly worried or on edge',
                 'Restlessness and difficulty concentrating',
@@ -23,7 +23,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Depression',
-              'assets/images/mental.png', // Replace with your image asset
+              'assets/images/depression.png', // Replace with your image asset
               [
                 'Persistent sadness and loss of interest in activities',
                 'Fatigue and lack of energy',
@@ -33,7 +33,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Stress',
-              'assets/images/mental.png',
+              'assets/images/stress.png',
               [
                 'Feeling overwhelmed by life events',
                 'Muscle tension and irritability',
@@ -43,7 +43,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Trauma',
-              'assets/images/mental.png',
+              'assets/images/frustrated.png',
               [
                 'Flashbacks and intrusive memories',
                 'Feeling emotionally numb or detached',
@@ -68,11 +68,10 @@ class MentalHealthIssuesScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            height: 200,
+            height: 150,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(imagePath),
-                fit: BoxFit.cover,
               ),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
@@ -94,7 +93,10 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: bulletPoints.map((point) {
               return ListTile(
-                leading: const Icon(Icons.check_circle, color: Colors.green),
+                leading: const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
                 title: Text(point),
               );
             }).toList(),
