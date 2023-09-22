@@ -14,6 +14,8 @@ class _BailAppViewState extends State<BailAppView> {
   String ipcSections = '';
   String firNumber = '';
   String father = '';
+  String und = "___________";
+  String dot = "...........";
 
   Future<void> createPdf(
     BuildContext context,
@@ -26,13 +28,13 @@ class _BailAppViewState extends State<BailAppView> {
 IN THE COURT OF COURTS OF, ADDITIONAL DISTRICT AND SESSION JUDGE, COURTS
 
 IN THE MATTER OF:
-$clientName, Son of $father,  25 Years of Age, Working as ____________ Residing at ____________
-…………Petitioner
+$clientName, Son of $father,  25 Years of Age, Working as $und Residing at $und
+$dot Petitioner
 
 Versus
-State of ___________, Through PQR, Son of Years of age, Working as
-Residing at_______________
-…………Respondent
+State of $und, Through PQR, Son of Years of age, Working as
+Residing at $und
+$dot Respondent
 
 FIR No.: $firNumber
 
@@ -46,7 +48,7 @@ Most Respectfully Show:
 
 2. That the Petitioner is innocent and is being falsely implicated in the above said case as he has nothing to do with the matter.
 
-3. That the Petitioner is a law-abiding citizen of India. The petitioner is gainfully carrying on the business of (Give details)__________ at ___________.
+3. That the Petitioner is a law-abiding citizen of India. The petitioner is gainfully carrying on the business of (Give details) $und at $und.
 
 4. That the Petitioner is a responsible person and is living at the above mentioned address.
 
@@ -60,12 +62,12 @@ Most Respectfully Show:
 
 PRAYER:
 In view of the above stated facts and circumstances it is most respectfully prayed that this Honorable Court may be pleased to
-a. Grant bail to the Petitioner in connection with FIR No. $firNumber registered under section $ipcSections for the offence of ____________ (give sections) at Police Station ____________ (give place).
+a. Grant bail to the Petitioner in connection with FIR No. $firNumber registered under section $ipcSections for the offence of $und (give sections) at Police Station $und (give place).
 b. Pass any other such order as this Honorable Court may deem fit and proper in the interest of justice.
 
-.............Petitioner
+$dot Petitioner
 Through
-……….....Counsel
+$dot Counsel
 Place:
 Dated: 
 ''';
