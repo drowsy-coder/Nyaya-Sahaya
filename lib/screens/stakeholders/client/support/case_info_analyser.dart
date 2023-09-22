@@ -119,15 +119,57 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
               return Card(
                 elevation: 5.0,
                 margin: const EdgeInsets.all(10.0),
-                child: Padding(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black,
+                        Colors.grey[850]!
+                      ], // Gradient colors
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('IPC Section: ${info.ipcSection}'),
-                      Text('Name of Crime: ${info.nameOfCrime}'),
-                      Text('Punishment: ${info.punishment}'),
-                      Text('Baillable: ${info.bailable}'),
+                      Text(
+                        'IPC Section: ${info.ipcSection}',
+                        style: const TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8.0),
+                      Text(
+                        'Name of Crime: ${info.nameOfCrime}',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8.0),
+                      Text(
+                        'Punishment: ${info.punishment}',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 8.0),
+                      Text(
+                        'Baillable: ${info.bailable}',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -151,25 +193,42 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
         title: const Text('FIR Information Analyzer'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: pickAndParsePDF,
-              child: const Text('Pick and Analyze PDF'),
-            ),
-            const SizedBox(height: 20.0),
-            Text(
-              pdfText,
-              style: const TextStyle(fontSize: 16.0),
-            ),
-            const SizedBox(height: 20.0),
-            Expanded(
-              child: ListView(
-                children: displayedCards,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: pickAndParsePDF,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(16.0),
+                    elevation: 8.0,
+                    primary: Colors.yellow,
+                    onPrimary: Colors.black,
+                  ),
+                  child: const Text(
+                    'Pick and Analyze PDF',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
               ),
-            ),
-          ],
+              Text(
+                pdfText,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              Expanded(
+                child: ListView(
+                  children: displayedCards,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
