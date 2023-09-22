@@ -23,12 +23,25 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
 
   Future<void> fetchCases() async {
     currentUser = FirebaseAuth.instance.currentUser!;
-    print(currentUser.email!);
+    print(currentUser.email!); // Move this line after initializing currentUser
+
+    // Query Firestore to get all cases where clientEmail matches the current user's email
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
         .where('clientEmail', isEqualTo: currentUser.email)
         .get();
 
+    final lawyerId = casesQuery.docs.toList()[0]['lawyerId'] as String;
+    // Get the user where userId is equal to lawyerId
+    final lawyerDataSnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(lawyerId)
+        .get();
+    final lawyerData = lawyerDataSnapshot.data() as Map<String, dynamic>;
+    // Get the lawyerName from the lawyerData
+    lawyerName = lawyerData['name'] as String;
+
+    // Filter cases based on the logged-in user's email matching the clientEmail
     setState(() {
       cases = casesQuery.docs.toList();
     });
@@ -94,4 +107,3 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
     );
   }
 }
-

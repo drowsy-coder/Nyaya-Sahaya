@@ -43,6 +43,7 @@ dependencies:
   google_maps_flutter: ^2.5.0
   google_nav_bar: ^5.0.6
   image_picker: ^1.0.4
+  local_auth: ^2.1.7
   path: ^1.8.3
   path_provider: ^2.1.1
   read_pdf_text: ^0.2.1
