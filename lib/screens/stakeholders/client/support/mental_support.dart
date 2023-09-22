@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law/screens/stakeholders/client/support/mental/m_issues.dart';
+import 'package:law/screens/stakeholders/client/support/mental/m_yt.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MentalSupportScreen extends StatefulWidget {
@@ -217,7 +218,11 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
               'Resource 2 Title',
               'Description of Resource 2',
               () {
-                // Add action for Resource 2 here.
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => VideoListScreen(),
+                  ),
+                );
               },
             ),
             const SizedBox(height: 16),

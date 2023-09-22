@@ -7,10 +7,10 @@ class NoCasesFoundScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        const Expanded(
+        Expanded(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -5,7 +5,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mental Health Issues'),
+        title: const Text('Mental Health Issues'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -33,7 +33,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Stress',
-              'assets/images/mental.png', // Replace with your image asset
+              'assets/images/mental.png',
               [
                 'Feeling overwhelmed by life events',
                 'Muscle tension and irritability',
@@ -43,7 +43,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             _buildMentalHealthIssueCard(
               context,
               'Trauma',
-              'assets/images/mental.png', // Replace with your image asset
+              'assets/images/mental.png',
               [
                 'Flashbacks and intrusive memories',
                 'Feeling emotionally numb or detached',
@@ -59,7 +59,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
   Widget _buildMentalHealthIssueCard(BuildContext context, String title,
       String imagePath, List<String> bulletPoints) {
     return Card(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -74,17 +74,17 @@ class MentalHealthIssuesScreen extends StatelessWidget {
                 image: AssetImage(imagePath),
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -94,7 +94,7 @@ class MentalHealthIssuesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: bulletPoints.map((point) {
               return ListTile(
-                leading: Icon(Icons.check_circle, color: Colors.green),
+                leading: const Icon(Icons.check_circle, color: Colors.green),
                 title: Text(point),
               );
             }).toList(),
@@ -103,10 +103,4 @@ class MentalHealthIssuesScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: MentalHealthIssuesScreen(),
-  ));
 }
