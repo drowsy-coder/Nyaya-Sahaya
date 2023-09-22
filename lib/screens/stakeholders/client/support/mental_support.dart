@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/mental/m_issues.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MentalSupportScreen extends StatefulWidget {
-  const MentalSupportScreen({super.key});
+  const MentalSupportScreen({Key? key}) : super(key: key);
 
   @override
   _MentalSupportScreenState createState() => _MentalSupportScreenState();
@@ -110,7 +112,9 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             'Crisis Helpline',
             Icons.phone,
             Colors.green,
-            () {},
+            () {
+              launch("tel:123");
+            },
           ),
           const SizedBox(width: 16),
           _buildSupportCard(
@@ -118,7 +122,9 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             'Chat Support',
             Icons.chat,
             Colors.orange,
-            () {},
+            () {
+              // Add chat action here.
+            },
           ),
         ],
       ),
@@ -128,11 +134,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
   Widget _buildSupportCard(BuildContext context, String text, IconData icon,
       Color color, Function onPressed) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SupportDetailsPage(text),
-        ));
-      },
+      onTap: onPressed as void Function(),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.43,
         padding: const EdgeInsets.all(16),
@@ -172,7 +174,8 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
     );
   }
 
-  Widget _buildResourceCard() {
+  Widget _buildResourceCard(BuildContext context, String title,
+      String description, Function onPressed) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       elevation: 4,
@@ -180,11 +183,9 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
-        title: const Text('Resource Title'),
-        subtitle: const Text('Description of the resource.'),
-        onTap: () {
-          // Handle resource card tap.
-        },
+        title: Text(title),
+        subtitle: Text(description),
+        onTap: onPressed as void Function(),
       ),
     );
   }
@@ -202,34 +203,34 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             const SizedBox(height: 16),
             _buildCallChatCards(context),
             const SizedBox(height: 40),
-            _buildResourceCard(),
+            _buildResourceCard(
+                context, 'Resource 1 Title', 'Description of Resource 1', () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MentalHealthIssuesScreen(),
+                ),
+              );
+            }),
             const SizedBox(height: 16),
-            _buildResourceCard(),
+            _buildResourceCard(
+              context,
+              'Resource 2 Title',
+              'Description of Resource 2',
+              () {
+                // Add action for Resource 2 here.
+              },
+            ),
             const SizedBox(height: 16),
-            _buildResourceCard(),
+            _buildResourceCard(
+              context,
+              'Resource 3 Title',
+              'Description of Resource 3',
+              () {
+                // Add action for Resource 3 here.
+              },
+            ),
             const SizedBox(height: 16),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class SupportDetailsPage extends StatelessWidget {
-  final String supportType;
-
-  SupportDetailsPage(this.supportType);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(supportType),
-      ),
-      body: Center(
-        child: Text(
-          'Details of $supportType go here',
-          style: const TextStyle(fontSize: 18),
         ),
       ),
     );

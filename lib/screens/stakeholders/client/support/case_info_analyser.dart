@@ -8,11 +8,13 @@ class FirInfo {
   final String ipcSection;
   final String nameOfCrime;
   final String punishment;
+  final String bailable;
 
   FirInfo({
     required this.ipcSection,
     required this.nameOfCrime,
     required this.punishment,
+    required this.bailable,
   });
 }
 
@@ -32,17 +34,19 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
       ipcSection: '498A',
       nameOfCrime: 'Dowry',
       punishment: '10 years in jail',
-      
+      bailable: "",
     ),
     FirInfo(
       ipcSection: '55A',
       nameOfCrime: 'Rape',
       punishment: '8 years in jail',
+      bailable: "",
     ),
     FirInfo(
       ipcSection: '690',
       nameOfCrime: 'Murder',
       punishment: '15 years in jail',
+      bailable: "",
     ),
     // Add more FIR data as needed
   ];
