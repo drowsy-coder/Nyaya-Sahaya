@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:law/screens/stakeholders/client/client_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MapScreen extends StatefulWidget {
@@ -155,6 +156,17 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Nearby Lawyers"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigate back to the ClientScreen() page
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ClientScreen(),
+              ),
+            );
+          },
+        ),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height * 0.8,

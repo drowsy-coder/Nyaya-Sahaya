@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:law/screens/intro_screen/screen1.dart';
-import 'package:law/screens/intro_screen/screen2.dart';
-import 'package:law/screens/intro_screen/screen3.dart';
 import 'package:law/screens/login/login_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
