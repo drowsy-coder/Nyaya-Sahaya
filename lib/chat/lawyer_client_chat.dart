@@ -55,12 +55,18 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
             child: StreamBuilder<QuerySnapshot>(
               stream: _chatCollection.orderBy('timestamp').snapshots(),
               builder: (context, snapshot) {
+                // Only keep the messages where receieverEmail is equal to widget.recvEmail
+
                 if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-                final messages = snapshot.data!.docs.reversed;
+                final messages = snapshot.data!.docs.where((element) {
+                  return (element['receiverEmail'] == widget.recvEmail ||
+                      element['senderEmail'] == widget.recvEmail);
+                }).toList();
+                // final messages = snapshot.data!.docs.reversed;
                 List<Widget> messageWidgets = [];
                 for (var message in messages) {
                   final messageText = message['message'];
@@ -73,7 +79,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                   messageWidgets.add(messageWidget);
                 }
                 return ListView(
-                  reverse: true,
+                  // reverse: true,
                   children: messageWidgets,
                 );
               },
