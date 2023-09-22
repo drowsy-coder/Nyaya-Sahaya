@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:law/screens/stakeholders/client/client_screen.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'firebase_options.dart';
-import 'screens/login/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: ClientScreen(),
+      home: LawyerScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

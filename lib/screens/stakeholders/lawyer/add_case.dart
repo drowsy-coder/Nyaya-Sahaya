@@ -76,6 +76,17 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Case'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add), // You can use any icon you prefer
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BailAppView()),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -201,24 +212,6 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
               ),
             ),
             Spacer(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BailAppView()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                    foregroundColor: MaterialStateProperty.all(Colors.black),
-                  ),
-                  child: const Text('Generate Bail Application'),
-                ),
-              ),
-            ),
           ],
         ),
       ),
