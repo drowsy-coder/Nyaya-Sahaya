@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/mental/m_issues.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MentalSupportScreen extends StatefulWidget {
@@ -122,8 +123,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             Icons.chat,
             Colors.orange,
             () {
-              // Navigator.pushReplacement(context,
-              //     MaterialPageRoute(builder: (context) => ChatScreen()));
+              // Add chat action here.
             },
           ),
         ],
@@ -174,7 +174,8 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
     );
   }
 
-  Widget _buildResourceCard() {
+  Widget _buildResourceCard(BuildContext context, String title,
+      String description, Function onPressed) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       elevation: 4,
@@ -182,9 +183,9 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
         borderRadius: BorderRadius.circular(12),
       ),
       child: ListTile(
-        title: const Text('Resource Title'),
-        subtitle: const Text('Description of the resource.'),
-        onTap: () {},
+        title: Text(title),
+        subtitle: Text(description),
+        onTap: onPressed as void Function(),
       ),
     );
   }
@@ -202,11 +203,32 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             const SizedBox(height: 16),
             _buildCallChatCards(context),
             const SizedBox(height: 40),
-            _buildResourceCard(),
+            _buildResourceCard(
+                context, 'Resource 1 Title', 'Description of Resource 1', () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MentalHealthIssuesScreen(),
+                ),
+              );
+            }),
             const SizedBox(height: 16),
-            _buildResourceCard(),
+            _buildResourceCard(
+              context,
+              'Resource 2 Title',
+              'Description of Resource 2',
+              () {
+                // Add action for Resource 2 here.
+              },
+            ),
             const SizedBox(height: 16),
-            _buildResourceCard(),
+            _buildResourceCard(
+              context,
+              'Resource 3 Title',
+              'Description of Resource 3',
+              () {
+                // Add action for Resource 3 here.
+              },
+            ),
             const SizedBox(height: 16),
           ],
         ),
