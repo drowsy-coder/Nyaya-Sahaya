@@ -20,29 +20,26 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
   final TextEditingController messageController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late CollectionReference _chatCollection;
-  final ScrollController _scrollController = ScrollController(); // Add this
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    // Define the Firestore collection for this chat
     _chatCollection = _firestore.collection('chats');
   }
 
   void sendMessage() {
     String messageText = messageController.text.trim();
     if (messageText.isNotEmpty) {
-      // Send the message to Firestore
       _chatCollection.add({
-        'senderEmail': widget.senderEmail, // Sender's email
-        'receiverEmail': widget.recvEmail, // Receiver's email
-        'receiverName': widget.recvName, // Receiver's name
+        'senderEmail': widget.senderEmail,
+        'receiverEmail': widget.recvEmail,
+        'receiverName': widget.recvName,
         'message': messageText,
         'timestamp': FieldValue.serverTimestamp(),
       });
       messageController.clear();
 
-      // Scroll to the bottom of the list when a new message arrives
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: Duration(milliseconds: 300),
@@ -57,62 +54,91 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
       appBar: AppBar(
         title: Text('Chat with ${widget.recvName}'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _chatCollection.orderBy('timestamp').snapshots(),
-              builder: (context, snapshot) {
-                // Only keep the messages where receieverEmail is equal to widget.recvEmail
-
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                final messages = snapshot.data!.docs.where((element) {
-                  return (element['receiverEmail'] == widget.recvEmail ||
-                      element['senderEmail'] == widget.recvEmail);
-                }).toList();
-                List<Widget> messageWidgets = [];
-                for (var message in messages) {
-                  final messageText = message['message'];
-
-                  final messageWidget = MessageWidget(
-                    text: messageText,
-                    isMe: widget.senderEmail == message['senderEmail'],
-                    recvName: widget.recvName,
-                  );
-                  messageWidgets.add(messageWidget);
-                }
-                return ListView(
-                  controller:
-                      _scrollController, // Attach the ScrollController here
-                  children: messageWidgets,
-                );
-              },
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.blue[50]!,
+              Colors.blue[500]!,
+              Colors.green[700]!
+            ], // Adjust gradient colors
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    controller: messageController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter your message...',
+        ),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _chatCollection.orderBy('timestamp').snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  final messages = snapshot.data!.docs.where((element) {
+                    return (element['receiverEmail'] == widget.recvEmail ||
+                        element['senderEmail'] == widget.recvEmail);
+                  }).toList();
+                  List<Widget> messageWidgets = [];
+                  for (var message in messages) {
+                    final messageText = message['message'];
+
+                    final messageWidget = MessageWidget(
+                      text: messageText,
+                      isMe: widget.senderEmail == message['senderEmail'],
+                      recvName: widget.recvName,
+                    );
+                    messageWidgets.add(messageWidget);
+                  }
+                  return ListView(
+                    controller: _scrollController,
+                    children: messageWidgets,
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color:
+                      Colors.grey[900], // Adjust input field background color
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
                     ),
-                  ),
+                  ],
                 ),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: sendMessage,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        controller: messageController,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your message...',
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 14),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: sendMessage,
+                      color: Colors.blue, // Adjust send button color
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -141,18 +167,41 @@ class MessageWidget extends StatelessWidget {
             isMe ? 'Me' : recvName,
             style: TextStyle(
               fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: isMe ? Colors.blue : Colors.red,
             ),
           ),
           SizedBox(height: 4),
-          Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: isMe ? Colors.blue : Colors.grey[300],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              text,
-              style: TextStyle(fontSize: 16),
+          Hero(
+            tag: 'chat_bubble_${text.hashCode}',
+            child: Material(
+              color: isMe ? Colors.yellow : Colors.grey[300],
+              borderRadius: BorderRadius.circular(16),
+              elevation: 2,
+              child: InkWell(
+                onTap: () {
+                  // Handle chat bubble tap
+                },
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (!isMe) Icon(Icons.person, color: Colors.blue),
+                      SizedBox(width: 8),
+                      Text(
+                        text,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: isMe ? Colors.black : Colors.black,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      if (isMe)
+                        Icon(Icons.check, color: Colors.green, size: 16),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ],

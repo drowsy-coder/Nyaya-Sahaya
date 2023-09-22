@@ -5,7 +5,6 @@ import 'package:law/screens/stakeholders/client/client_chat/client_chat_screen.d
 import 'package:law/screens/stakeholders/client/client_home/client_home.dart';
 import 'package:law/screens/stakeholders/client/client_support_screen.dart';
 import 'package:law/screens/stakeholders/client/client_lawyer_map.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_chat/lawyer_chat.dart';
 
 class ScreenModel {
   final Widget screen;

@@ -31,7 +31,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
 
   List<FirInfo> firData = [
     FirInfo(
-      ipcSection: '300',
+      ipcSection: '498A',
       nameOfCrime: 'Murder',
       punishment: 'Death or life sentence and fine',
       bailable: 'Non-bailable',
