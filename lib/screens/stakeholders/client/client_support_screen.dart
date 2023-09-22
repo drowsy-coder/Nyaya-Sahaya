@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law/screens/stakeholders/client/support/mental_support.dart';
-import 'package:law/screens/stakeholders/client/support/vocational_support.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/vocational_support.dart';
 import 'package:law/widgets/buttons/logout_button.dart';
 
 class ClientSupportScreen extends StatelessWidget {
@@ -82,7 +82,7 @@ class ClientSupportScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return const VocationalSupportScreen();
+                            return VocationalSupportScreen();
                           },
                         ),
                       );
