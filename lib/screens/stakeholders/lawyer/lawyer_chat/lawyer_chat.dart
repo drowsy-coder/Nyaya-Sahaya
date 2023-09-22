@@ -41,8 +41,11 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
     final caseData = cases.firstWhere((element) => element.id == caseId);
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-            LawyerClientChat(clientEmail: caseData['clientEmail']),
+        builder: (context) => LawyerClientChat(
+          recvEmail: caseData['clientEmail'],
+          recvName: caseData['clientName'],
+          senderEmail: currentUser.email!,
+        ),
       ),
     );
   }
