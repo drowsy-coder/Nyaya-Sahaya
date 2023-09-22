@@ -236,38 +236,38 @@ class CustomInfoWindow extends StatelessWidget {
                   onPressed: () => launch("tel:$phoneNum"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                        Colors.green, // Change button color to green
+                        Colors.green, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   icon: const Icon(
                     Icons.phone,
-                    color: Colors.white, // Change icon color to white
+                    color: Colors.white, 
                   ),
                   label: const Text(
                     'Call',
-                    style: TextStyle(color: Colors.white), // Text color
+                    style: TextStyle(color: Colors.white), 
                   ),
                 ),
-                const SizedBox(width: 16), // Add spacing between buttons
+                const SizedBox(width: 16), 
                 ElevatedButton.icon(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red, // Change button color to red
+                    backgroundColor: Colors.red, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   icon: const Icon(
                     Icons.close,
-                    color: Colors.white, // Change icon color to white
+                    color: Colors.white, 
                   ),
                   label: const Text(
                     'Close',
-                    style: TextStyle(color: Colors.white), // Text color
+                    style: TextStyle(color: Colors.white), 
                   ),
                 ),
               ],
