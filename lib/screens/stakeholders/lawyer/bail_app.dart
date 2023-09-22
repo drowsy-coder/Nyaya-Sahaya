@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:text2pdf/text2pdf.dart';
 import 'package:date_field/date_field.dart';
@@ -41,7 +43,7 @@ class _BailAppViewState extends State<BailAppView> {
 IN THE COURT OF COURTS OF, ADDITIONAL DISTRICT AND SESSION JUDGE, COURTS
 
 IN THE MATTER OF:
-$clientName, Son of $father,  $age Years of Age, Working as $und Residing at $und
+$clientName, Son of $father,  $age Years of Age, Working as $occ Residing at $pS
 $dot Petitioner
 
 Versus
@@ -89,14 +91,14 @@ Dated: $dated
       await Text2Pdf.generatePdf(content);
       // Display a snackbar indicating PDF creation
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('PDF generated successfully!'),
         ),
       );
     } else {
       // Display a snackbar if content is empty
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Content cannot be empty for PDF generation.'),
         ),
       );
@@ -117,13 +119,13 @@ Dated: $dated
               'Details',
               style: TextStyle(fontSize: 24.0),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Form(
               key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Client Name'),
+                    decoration: const InputDecoration(labelText: 'Client Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter client name';
@@ -135,7 +137,8 @@ Dated: $dated
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'IPC Sections'),
+                    decoration:
+                        const InputDecoration(labelText: 'IPC Sections'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter IPC sections';
@@ -147,7 +150,7 @@ Dated: $dated
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'FIR Number'),
+                    decoration: const InputDecoration(labelText: 'FIR Number'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter FIR number';
@@ -159,7 +162,7 @@ Dated: $dated
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Father Name'),
+                    decoration: const InputDecoration(labelText: 'Father Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter Father name';
@@ -171,7 +174,7 @@ Dated: $dated
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'State'),
+                    decoration: const InputDecoration(labelText: 'State'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter the State';
