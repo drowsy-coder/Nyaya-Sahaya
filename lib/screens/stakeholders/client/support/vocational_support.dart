@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 
 class WelcomeCard extends StatefulWidget {
@@ -84,21 +82,87 @@ class _WelcomeCardState extends State<WelcomeCard> {
   }
 }
 
-class VocationalSupportScreen extends StatelessWidget {
-  const VocationalSupportScreen({super.key});
-
+class EducationalCoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Education for Undertrials'),
+        title: Text('Educational Courses'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Educational Courses Screen',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class VocationalCoursesScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Vocational Training'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Vocational Training Screen',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class FeaturedProgramsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Featured Programs'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Featured Programs Screen',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class ComputerTrainingScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Computer Training'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Computer Training Screen',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+class VocationalSupportScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Education for Undertrials'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const WelcomeCard(),
+            WelcomeCard(),
             const SizedBox(height: 40),
             Center(
               child: GridView.count(
@@ -108,22 +172,46 @@ class VocationalSupportScreen extends StatelessWidget {
                   _buildCard(
                     title: 'Educational Courses',
                     imageAsset: 'assets/images/education.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => EducationalCoursesScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Vocational Training',
                     imageAsset: 'assets/images/learn.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => VocationalCoursesScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Featured Programs',
                     imageAsset: 'assets/images/light-bulb.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => FeaturedProgramsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildCard(
                     title: 'Computer Training',
                     imageAsset: 'assets/images/computer.png',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ComputerTrainingScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -174,4 +262,10 @@ class VocationalSupportScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: VocationalSupportScreen(),
+  ));
 }
