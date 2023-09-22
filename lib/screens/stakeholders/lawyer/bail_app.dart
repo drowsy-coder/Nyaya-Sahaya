@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:text2pdf/text2pdf.dart';
+import 'package:date_field/date_field.dart';
 
 class BailAppView extends StatefulWidget {
   BailAppView({Key? key}) : super(key: key);
@@ -14,6 +17,14 @@ class _BailAppViewState extends State<BailAppView> {
   String ipcSections = '';
   String firNumber = '';
   String father = '';
+  String state = '';
+  String age = '';
+  String city = '';
+  String pS = '';
+  String dated = '';
+  String occ = '';
+  String und = "___________";
+  String dot = "...........";
 
   Future<void> createPdf(
     BuildContext context,
@@ -21,23 +32,29 @@ class _BailAppViewState extends State<BailAppView> {
     String ipcSections,
     String firNumber,
     String father,
+    String state,
+    String age,
+    String city,
+    String pS,
+    String dated,
+    String occ,
   ) async {
     String content = '''
 IN THE COURT OF COURTS OF, ADDITIONAL DISTRICT AND SESSION JUDGE, COURTS
 
 IN THE MATTER OF:
-$clientName, Son of $father,  25 Years of Age, Working as ____________ Residing at ____________
-…………Petitioner
+$clientName, Son of $father,  $age Years of Age, Working as $occ Residing at $pS
+$dot Petitioner
 
 Versus
-State of ___________, Through PQR, Son of Years of age, Working as
-Residing at_______________
-…………Respondent
+State of $state, Through $und, Son of $und, $und Years of age, Working as $und
+Residing at $city
+$dot Respondent
 
 FIR No.: $firNumber
 
-U/s:
-P.S.: 
+U/s: $ipcSections
+P.S.: $pS
 
 APPLICATION UNDER SECTION 439 OF THE CODE OF CRIMINAL PROCEDURE 1973 FOR GRANT OF BAIL
 Most Respectfully Show:
@@ -46,7 +63,7 @@ Most Respectfully Show:
 
 2. That the Petitioner is innocent and is being falsely implicated in the above said case as he has nothing to do with the matter.
 
-3. That the Petitioner is a law-abiding citizen of India. The petitioner is gainfully carrying on the business of (Give details)__________ at ___________.
+3. That the Petitioner is a law-abiding citizen of India. The petitioner is gainfully carrying on the business of (Give details) $occ at $city.
 
 4. That the Petitioner is a responsible person and is living at the above mentioned address.
 
@@ -60,28 +77,28 @@ Most Respectfully Show:
 
 PRAYER:
 In view of the above stated facts and circumstances it is most respectfully prayed that this Honorable Court may be pleased to
-a. Grant bail to the Petitioner in connection with FIR No. $firNumber registered under section $ipcSections for the offence of ____________ (give sections) at Police Station ____________ (give place).
+a. Grant bail to the Petitioner in connection with FIR No. $firNumber registered under section $ipcSections for the offence of $ipcSections (give sections) at Police Station $pS (give place).
 b. Pass any other such order as this Honorable Court may deem fit and proper in the interest of justice.
 
-.............Petitioner
+$dot Petitioner
 Through
-……….....Counsel
-Place:
-Dated: 
+Counsel
+Place: $city
+Dated: $dated 
 ''';
 
     if (content.isNotEmpty) {
       await Text2Pdf.generatePdf(content);
       // Display a snackbar indicating PDF creation
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('PDF generated successfully!'),
         ),
       );
     } else {
       // Display a snackbar if content is empty
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Content cannot be empty for PDF generation.'),
         ),
       );
@@ -98,17 +115,17 @@ Dated:
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'This is the Bail App View.',
+            const Text(
+              'Details',
               style: TextStyle(fontSize: 24.0),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 16.0),
             Form(
               key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Client Name'),
+                    decoration: const InputDecoration(labelText: 'Client Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter client name';
@@ -120,7 +137,8 @@ Dated:
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'IPC Sections'),
+                    decoration:
+                        const InputDecoration(labelText: 'IPC Sections'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter IPC sections';
@@ -132,7 +150,7 @@ Dated:
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'FIR Number'),
+                    decoration: const InputDecoration(labelText: 'FIR Number'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter FIR number';
@@ -144,7 +162,7 @@ Dated:
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Father Name'),
+                    decoration: const InputDecoration(labelText: 'Father Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter Father name';
@@ -155,12 +173,84 @@ Dated:
                       father = value!;
                     },
                   ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: 'State'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the State';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      state = value!;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Age'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter Age of bailee';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      age = value!;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'City'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the City';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      city = value!;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Police Station'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the PS';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      pS = value!;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Date'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the Date';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      dated = value!;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: 'Occupation'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter the Occupation';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      occ = value!;
+                    },
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         createPdf(context, clientName, ipcSections, firNumber,
-                            father);
+                            father, state, age, city, pS, dated, occ);
                       }
                     },
                     child: Text('Generate PDF'),
