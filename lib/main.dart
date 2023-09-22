@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-<<<<<<< HEAD
-import 'package:law/screens/login/login_page.dart';
-=======
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:law/screens/intro_screen/intro_screen.dart';
 import 'package:law/screens/login/login_page.dart';
 
->>>>>>> 2f77740f8825e79643894a568f87cdeb7c502809
 import 'firebase_options.dart';
 
 void main() async {
@@ -24,11 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-<<<<<<< HEAD
-      home: LoginPage(),
-=======
-      home: AuthWrapper(), // Use AuthWrapper as the initial widget
->>>>>>> 2f77740f8825e79643894a568f87cdeb7c502809
+      home: AuthWrapper(),
       debugShowCheckedModeBanner: false,
     );
   }
