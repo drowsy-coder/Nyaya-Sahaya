@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:law/screens/stakeholders/client/client_home/no_cases_found.dart';
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
+import 'package:law/screens/stakeholders/client/support/case_info_analyser.dart';
 import 'package:mime/mime.dart';
 
 class ClientHomePage extends StatefulWidget {
@@ -60,15 +61,20 @@ class _ClientHomePageState extends State<ClientHomePage> {
         final document = snapshot.data!.docs.first;
 
         return DefaultTabController(
-          length: 3, // Number of tabs (Timeline, Section Info, Grid).
+          length: 3,
           child: Scaffold(
             appBar: AppBar(
               title: const Text('Case Details'),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.info),
+                  icon: const Icon(Icons.question_mark),
                   onPressed: () {
-                    // Add a tooltip or navigation to the app's information page.
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CaseInfoAnalyzer(),
+                      ),
+                    );
                   },
                 ),
               ],
