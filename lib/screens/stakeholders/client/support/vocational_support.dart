@@ -121,8 +121,8 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {},
                   ),
                   _buildCard(
-                    title: 'Featured Programs',
-                    imageAsset: 'assets/images/settings-2.png',
+                    title: 'Computer Training',
+                    imageAsset: 'assets/images/computer.png',
                     onTap: () {},
                   ),
                 ],
@@ -140,7 +140,7 @@ class VocationalSupportScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      elevation: 6, // Add elevation
+      elevation: 6,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -159,13 +159,13 @@ class VocationalSupportScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 8), // Add spacing
+            const SizedBox(height: 8),
             Text(
               title,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Colors.blue, // Use your preferred color
+                color: Colors.blue,
               ),
               textAlign: TextAlign.center,
             ),

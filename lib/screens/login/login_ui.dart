@@ -13,7 +13,7 @@ class LoginUI extends StatelessWidget {
   final bool isLoading;
 
   const LoginUI({
-    Key? key,
+    super.key,
     required this.isLoginForm,
     required this.userRole,
     required this.emailController,
@@ -42,118 +42,114 @@ class LoginUI extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(height: 20),
-              DropdownButtonFormField<UserRole>(
-                value: userRole,
-                onChanged: onUserRoleChanged,
-                items: const [
-                  DropdownMenuItem(
-                    value: UserRole.client,
-                    child: Text(
-                      'Client',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () => onUserRoleChanged(UserRole.client),
+                  style: ElevatedButton.styleFrom(
+                    primary: userRole == UserRole.client
+                        ? Colors.red
+                        : Colors.grey[800],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  DropdownMenuItem(
-                    value: UserRole.lawyer,
-                    child: Text(
-                      'Lawyer',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  child: Text(
+                    'Client',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: userRole == UserRole.client
+                          ? Colors.white
+                          : Colors.grey[600],
                     ),
-                  ),
-                ],
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  labelText: 'Select Role',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () => onUserRoleChanged(UserRole.lawyer),
+                  style: ElevatedButton.styleFrom(
+                    primary: userRole == UserRole.lawyer
+                        ? Colors.red
+                        : Colors.grey[800],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Lawyer',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: userRole == UserRole.lawyer
+                          ? Colors.white
+                          : Colors.grey[600],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+            _buildTextFormField(emailController, 'Email'),
+            const SizedBox(height: 20),
+            _buildTextFormField(passwordController, 'Password',
+                isPassword: true),
+            if (userRole == UserRole.lawyer) const SizedBox(height: 20),
+            if (userRole == UserRole.lawyer)
+              _buildTextFormField(identifierController, 'Bar Number'),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: onFormSubmitted,
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                padding: const EdgeInsets.all(16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: emailController,
+              child: Text(
+                isLoginForm ? 'Login' : 'Create Account',
+                style: const TextStyle(fontSize: 18),
+              ),
+            ),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: onToggleFormMode,
+              child: Text(
+                isLoginForm ? 'Create an account' : 'Have an account? Sign in',
                 style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: passwordController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                obscureText: true,
-              ),
-              if (userRole == UserRole.lawyer) const SizedBox(height: 20),
-              if (userRole == UserRole.lawyer) // Show only for lawyers
-                TextFormField(
-                  controller: identifierController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    labelText: 'Bar Number',
-                    filled: true,
-                    fillColor: Colors.grey[800],
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: onFormSubmitted,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding: const EdgeInsets.all(16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  isLoginForm ? 'Login' : 'Create Account',
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextButton(
-                onPressed: onToggleFormMode,
-                child: Text(
-                  isLoginForm
-                      ? 'Create an account'
-                      : 'Have an account? Sign in',
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-              if (isLoading) const SizedBox(height: 20),
-              if (isLoading) const CircularProgressIndicator(),
-            ],
-          ),
+            ),
+            if (isLoading) const SizedBox(height: 20),
+            if (isLoading) const CircularProgressIndicator(),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTextFormField(TextEditingController controller, String labelText,
+      {bool isPassword = false}) {
+    return TextFormField(
+      controller: controller,
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        labelText: labelText,
+        filled: true,
+        fillColor: Colors.grey[800],
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+      obscureText: isPassword,
     );
   }
 }

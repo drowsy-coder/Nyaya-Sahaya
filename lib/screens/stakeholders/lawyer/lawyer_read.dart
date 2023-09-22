@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as htmlParser;
-import 'package:html/dom.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
 class LawyerReadScreen extends StatelessWidget {
@@ -65,7 +64,6 @@ class LawyerReadScreen extends StatelessWidget {
               }
             },
           ),
-          // Add more ArticleCard instances as needed
         ],
       ),
     );
@@ -78,10 +76,4 @@ class LawyerReadScreen extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: LawyerReadScreen(),
-  ));
 }

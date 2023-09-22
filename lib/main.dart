@@ -1,8 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:law/screens/stakeholders/client/client_screen.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
+import 'package:law/screens/login/login_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -29,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: LawyerScreen(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
