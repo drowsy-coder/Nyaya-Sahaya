@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/computer_training.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/featured_programs.dart';
+// import 'package:law/screens/stakeholders/client/support/vocational_support/screens/vocational_support.dart';
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/educational_courses.dart'
+    as eduCourses;
+import 'package:law/screens/stakeholders/client/support/vocational_support/screens/vocational_training.dart';
 
 class WelcomeCard extends StatefulWidget {
   const WelcomeCard({super.key});
@@ -82,74 +88,6 @@ class _WelcomeCardState extends State<WelcomeCard> {
   }
 }
 
-class EducationalCoursesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Educational Courses'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the Educational Courses Screen',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-class VocationalCoursesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Vocational Training'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the Vocational Training Screen',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-class FeaturedProgramsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Featured Programs'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the Featured Programs Screen',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
-class ComputerTrainingScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Computer Training'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the Computer Training Screen',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-}
-
 class VocationalSupportScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -175,7 +113,8 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => EducationalCoursesScreen(),
+                          builder: (context) =>
+                              eduCourses.EducationalCoursesScreen(),
                         ),
                       );
                     },
