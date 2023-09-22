@@ -31,6 +31,12 @@ class _MapScreenState extends State<MapScreen> {
     "S.Maran, Advocate",
     "PRV Law Firm",
     "Advocate J.N.NARESH KUMAR",
+    "Shape Legal",
+    "Advocate Robin Budhiraja",
+    "Advocate Arnab Biswas",
+    "Jubina Begum",
+    "Advocate Sidhant Singh",
+    "JNM Associates",
   ];
 
   List<String> descriptions = [
@@ -40,6 +46,12 @@ class _MapScreenState extends State<MapScreen> {
     "Probate, Real Estate, Wills etc.",
     "Sexual Harrasement, Drugs, Personal Defence etc.",
     "Criminal Litigation, Disability Rights, Human Rights etc.",
+    " Adoption, Appellate Practice, Arbitration, Banking etc.",
+    " Business Litigation, Child Custody, Civil Litigation, Civil Rights etc.",
+    " Adoption, Appellate Practice, Arbitration, Mediation, Banking etc.",
+    " Criminal, Divorce/Domestic Relations, Family Law, Land Use etc.",
+    " Criminal law, Domestic Relations, Drugs, Terrorism Law etc.",
+    " Arbitration, Mediation, Banking, Child Custody, Child Support, etc.",
   ];
 
   List<String> infoImages = [
@@ -49,15 +61,27 @@ class _MapScreenState extends State<MapScreen> {
     'assets/images/smaran.jpeg',
     'assets/images/prv.png',
     'assets/images/naresh.jpeg',
+    'assets/images/iff.png',
+    'assets/images/advkrish.jpeg',
+    'assets/images/aran.jpeg',
+    'assets/images/smaran.jpeg',
+    'assets/images/prv.png',
+    'assets/images/naresh.jpeg',
   ];
 
   List<int> phoneNum = [
-    09791175404,
-    09442388179,
-    04448135125,
-    09650587881,
-    07972229171,
-    09444017750,
+    9791175404,
+    9442388179,
+    4448135125,
+    9650587881,
+    7972229171,
+    9444017750,
+    9582948804,
+    9780776459,
+    9831834759,
+    7002487140,
+    7783844011,
+    9323393300,
   ];
 
   final List<Marker> _markers = <Marker>[];
@@ -72,6 +96,12 @@ class _MapScreenState extends State<MapScreen> {
     const LatLng(12.935979501187928, 80.2344732943938), // PRV Law Firm
     const LatLng(
         13.07144724710327, 80.26503448074426), //Mr.J.N.NARESH KUMAR //Pro Bono
+    const LatLng(28.629692294194797, 77.0824938248511), //shape legal
+    const LatLng(31.326788753293773, 75.5957976740784), //Advocate Robin
+    const LatLng(22.554520036216307, 88.35016110645994), //Advocate Arnab
+    const LatLng(26.105578833459877, 91.71980282444129), // Advocate Jubina
+    const LatLng(23.440114289675172, 85.42511679098702), //  advocate s singh
+    const LatLng(19.058179212109053, 72.8448911928204), // J
   ];
 
   Future<Uint8List> getBytesFromAssets(String path, int width) async {

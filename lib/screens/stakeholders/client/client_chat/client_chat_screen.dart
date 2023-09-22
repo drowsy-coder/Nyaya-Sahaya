@@ -80,7 +80,7 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
                     await _onCaseTap(caseId, clientName);
                     setState(() {});
                   },
-                  leading: CircleAvatar(
+                  leading: const CircleAvatar(
                     backgroundColor: Colors.blue,
                     child: Icon(
                       Icons.person,
@@ -94,3 +94,4 @@ class _ClientChatScreenState extends State<ClientChatScreen> {
     );
   }
 }
+
