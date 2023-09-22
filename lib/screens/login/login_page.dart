@@ -10,7 +10,7 @@ import '../../models/user_role.dart';
 import 'login_ui.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -102,29 +102,32 @@ class _LoginPageState extends State<LoginPage> {
         final String storedUserRole = userData['userRole'];
         final UserRole userRole = stringToUserRole(storedUserRole);
 
-        if (userRole == _userRole && userData['identifier'] == identifier) {
-          await _storeUserData(uid, email, identifier);
-
-          _saveUserDataToPrefs(uid, email, identifier);
-
-          _prefs.setBool('isLoggedIn', true);
-
+        if (userRole == _userRole) {
           if (_userRole == UserRole.client) {
+            _saveUserDataToPrefs(uid, email, identifier);
+            // await _storeUserData(uid, email, identifier);
+            _prefs.setBool('isLoggedIn', true);
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const ClientScreen()));
-          } else if (_userRole == UserRole.lawyer) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const LawyerScreen()));
           }
-        } else {
+          if (_userRole == UserRole.lawyer) {
+            final String storedIdentifier = userData['identifier'];
+            if (storedIdentifier == identifier) {
+              _saveUserDataToPrefs(uid, email, identifier);
+
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const LawyerScreen()));
+            }
+          }
+
           setState(() {
             _isLoading = false;
           });
         }
       } else {
-        setState(() {
-          _isLoading = false;
-        });
+        print("Identifier doesn't match");
       }
     } on FirebaseAuthException {
       setState(() {
@@ -158,29 +161,32 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const ClientScreen()));
       } else if (_userRole == UserRole.lawyer) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const LawyerScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LawyerScreen()));
       }
-    // ignore: unused_catch_clause
+      // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
       setState(() {
         _isLoading = false;
       });
-
     }
   }
 
   Future<void> _storeUserData(
       String uid, String email, String identifier) async {
-    await _firestore.collection('users').doc(uid).set({
+    final userData = {
       'name': email.split('@')[0],
       'email': email,
-      'identifier': identifier,
       'userRole': userRoleToString(_userRole),
-      if (_userRole == UserRole.client) 'caseNumber': identifier,
-      if (_userRole == UserRole.lawyer) 'barNumber': identifier,
       'uid': uid,
-    });
+    };
+
+    if (_userRole == UserRole.lawyer) {
+      userData['identifier'] = identifier;
+      userData['barNumber'] = identifier;
+    }
+
+    await _firestore.collection('users').doc(uid).set(userData);
   }
 
   void _submitForm() {
