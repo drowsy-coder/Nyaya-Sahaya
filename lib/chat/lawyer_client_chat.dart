@@ -20,6 +20,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
   final TextEditingController messageController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late CollectionReference _chatCollection;
+  final ScrollController _scrollController = ScrollController(); // Add this
 
   @override
   void initState() {
@@ -40,6 +41,13 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
         'timestamp': FieldValue.serverTimestamp(),
       });
       messageController.clear();
+
+      // Scroll to the bottom of the list when a new message arrives
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
     }
   }
 
@@ -66,7 +74,6 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                   return (element['receiverEmail'] == widget.recvEmail ||
                       element['senderEmail'] == widget.recvEmail);
                 }).toList();
-                // final messages = snapshot.data!.docs.reversed;
                 List<Widget> messageWidgets = [];
                 for (var message in messages) {
                   final messageText = message['message'];
@@ -79,7 +86,8 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                   messageWidgets.add(messageWidget);
                 }
                 return ListView(
-                  // reverse: true,
+                  controller:
+                      _scrollController, // Attach the ScrollController here
                   children: messageWidgets,
                 );
               },
@@ -113,12 +121,12 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
 class MessageWidget extends StatelessWidget {
   final String text;
   final bool isMe;
-  final String recvName; // Add this
+  final String recvName;
 
   MessageWidget({
     required this.text,
     required this.isMe,
-    required this.recvName, // Add this
+    required this.recvName,
   });
 
   @override
@@ -130,7 +138,7 @@ class MessageWidget extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
-            isMe ? 'Me' : recvName, // Use recvName here
+            isMe ? 'Me' : recvName,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
