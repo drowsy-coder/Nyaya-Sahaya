@@ -1,5 +1,6 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/chat/messages.dart';
 import '../../client_support/Messages.dart';
 
 class ChatBot extends StatelessWidget {
