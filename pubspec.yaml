@@ -48,6 +48,7 @@ dependencies:
   read_pdf_text: ^0.2.1
   text2pdf: ^0.0.2
   youtube_player_flutter: ^8.1.2
+  date_field: ^3.0.5
 
 
 dev_dependencies:
