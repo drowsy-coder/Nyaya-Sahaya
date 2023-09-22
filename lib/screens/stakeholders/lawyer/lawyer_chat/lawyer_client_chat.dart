@@ -33,9 +33,9 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
     if (messageText.isNotEmpty) {
       // Send the message to Firestore
       _chatCollection.add({
-        'senderEmail': widget.senderEmail, // Sender's email
-        'receiverEmail': widget.recvEmail, // Receiver's email
-        'receiverName': widget.recvName, // Receiver's name
+        'senderEmail': widget.senderEmail,
+        'receiverEmail': widget.recvEmail,
+        'receiverName': widget.recvName,
         'message': messageText,
         'timestamp': FieldValue.serverTimestamp(),
       });
@@ -53,11 +53,20 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
         children: <Widget>[
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: _chatCollection.orderBy('timestamp').snapshots(),
+              stream: _chatCollection
+                  .where('receiverEmail', isEqualTo: widget.recvEmail)
+                  .orderBy('timestamp')
+                  .snapshots(),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  // Show a loading indicator while data is being fetched
                   return Center(
                     child: CircularProgressIndicator(),
+                  );
+                } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  // Show "No conversation" message when there are no messages
+                  return Center(
+                    child: Text('No conversation'),
                   );
                 }
                 final messages = snapshot.data!.docs.reversed;
@@ -107,12 +116,12 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
 class MessageWidget extends StatelessWidget {
   final String text;
   final bool isMe;
-  final String recvName; // Add this
+  final String recvName;
 
   MessageWidget({
     required this.text,
     required this.isMe,
-    required this.recvName, // Add this
+    required this.recvName,
   });
 
   @override
@@ -124,7 +133,7 @@ class MessageWidget extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
-            isMe ? 'Me' : recvName, // Use recvName here
+            isMe ? 'Me' : recvName,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
