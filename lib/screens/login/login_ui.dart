@@ -13,7 +13,7 @@ class LoginUI extends StatelessWidget {
   final bool isLoading;
 
   const LoginUI({
-    super.key,
+    Key? key,
     required this.isLoginForm,
     required this.userRole,
     required this.emailController,
@@ -109,22 +109,20 @@ class LoginUI extends StatelessWidget {
                 ),
                 obscureText: true,
               ),
-              if (userRole == UserRole.lawyer || userRole == UserRole.client)
-                const SizedBox(height: 20),
-              TextFormField(
-                controller: identifierController,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  labelText: userRole == UserRole.lawyer
-                      ? 'Bar Number'
-                      : 'Case Number',
-                  filled: true,
-                  fillColor: Colors.grey[800],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+              if (userRole == UserRole.lawyer) const SizedBox(height: 20),
+              if (userRole == UserRole.lawyer) // Show only for lawyers
+                TextFormField(
+                  controller: identifierController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: 'Bar Number',
+                    filled: true,
+                    fillColor: Colors.grey[800],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                   ),
                 ),
-              ),
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: onFormSubmitted,
