@@ -30,7 +30,9 @@ environment:
 dependencies:
   cloud_firestore: ^4.9.2
   cupertino_icons: ^1.0.2
+  date_field: ^3.0.5
   dialog_flowtter: ^0.3.3
+  excel: ^2.1.0
   file_picker: ^5.5.0
   firebase_auth: ^4.10.0
   firebase_core: ^2.16.0
@@ -46,15 +48,10 @@ dependencies:
   text2pdf: ^0.0.2
   url_launcher: ^6.1.14
   youtube_player_flutter: ^8.1.2
-  date_field: ^3.0.5
+  bubble: ^1.2.1
+  dialogflow_flutter: ^1.0.0
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -71,7 +68,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-  #   - images/a_dot_ham.jpeg
+    - assets/json/
+    - assets/json/dialog_flow_auth.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

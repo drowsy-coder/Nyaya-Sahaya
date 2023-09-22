@@ -141,7 +141,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ChatBot(),
+            builder: (context) => ChatBotScreen(),
           ),
         );
       },

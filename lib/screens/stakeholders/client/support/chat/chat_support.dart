@@ -1,94 +1,140 @@
-import 'package:dialog_flowtter/dialog_flowtter.dart';
+import 'package:bubble/bubble.dart';
+import 'package:dialogflow_flutter/googleAuth.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:law/screens/stakeholders/client/support/chat/messages.dart';
 import '../../client_support/Messages.dart';
+=======
+import 'package:dialogflow_flutter/dialogflowFlutter.dart';
+>>>>>>> 8c78284d0697ecd68c671b2346f0e208581f4701
 
-class ChatBot extends StatelessWidget {
-  const ChatBot({Key? key}) : super(key: key);
+class ChatBotScreen extends StatefulWidget {
+  @override
+  _ChatBotScreenState createState() => _ChatBotScreenState();
+}
+
+class _ChatBotScreenState extends State<ChatBotScreen> {
+  final messageInsert = TextEditingController();
+  List<Map<String, dynamic>> messsages = [];
+
+  void response(query) async {
+    AuthGoogle authGoogle =
+        await AuthGoogle(fileJson: "assets/json/dialog_flow_auth.json").build();
+    DialogFlow dialogflow = DialogFlow(authGoogle: authGoogle, language: "en");
+    AIResponse aiResponse = await dialogflow.detectIntent(query);
+    setState(() {
+      messsages.insert(0, {
+        "data": 0,
+        "message": aiResponse.getListMessage()![0]["text"]["text"][0].toString()
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chatbot'),
+        centerTitle: true,
+        toolbarHeight: 70,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+        ),
+        elevation: 10,
+        title: Text("Dialog Flow Chatbot"),
       ),
-      body: Home(),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Flexible(
+              child: ListView.builder(
+                  reverse: true,
+                  itemCount: messsages.length,
+                  itemBuilder: (context, index) => chat(
+                      messsages[index]["message"].toString(),
+                      messsages[index]["data"])),
+            ),
+            Divider(
+              height: 6.0,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                children: <Widget>[
+                  Flexible(
+                      child: TextField(
+                    controller: messageInsert,
+                    decoration: InputDecoration.collapsed(
+                        hintText: "Send your message",
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0)),
+                  )),
+                  Container(
+                      margin: EdgeInsets.symmetric(horizontal: 4.0),
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.send,
+                            size: 30.0,
+                          ),
+                          onPressed: () {
+                            if (messageInsert.text.isEmpty) {
+                              print("empty message");
+                            } else {
+                              setState(() {
+                                messsages.insert(0,
+                                    {"data": 1, "message": messageInsert.text});
+                              });
+                              response(messageInsert.text);
+                              messageInsert.clear();
+                            }
+                          }))
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15.0,
+            )
+          ],
+        ),
+      ),
     );
   }
-}
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  late DialogFlowtter dialogFlowtter;
-  final TextEditingController _controller = TextEditingController();
-
-  List<Map<String, dynamic>> messages = [];
-
-  @override
-  void initState() {
-    DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(child: MessagesScreen(messages: messages)),
-        Container(
-          padding: EdgeInsets.all(16),
-          color: Colors.deepPurple,
+  Widget chat(String message, int data) {
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Bubble(
+        radius: Radius.circular(15.0),
+        color: data == 0 ? Colors.blue : Colors.orangeAccent,
+        elevation: 0.0,
+        alignment: data == 0 ? Alignment.topLeft : Alignment.topRight,
+        nip: data == 0 ? BubbleNip.leftBottom : BubbleNip.rightTop,
+        child: Padding(
+          padding: EdgeInsets.all(2.0),
           child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    hintText: 'Type your message...',
-                    hintStyle: TextStyle(color: Colors.white70),
-                  ),
-                ),
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: AssetImage(data == 0
+                    ? "assets/images/bot.png"
+                    : "assets/images/profile.png"),
               ),
-              IconButton(
-                onPressed: () {
-                  sendMessage(_controller.text);
-                  _controller.clear();
-                },
-                icon: Icon(Icons.send, color: Colors.white),
+              SizedBox(
+                width: 10.0,
               ),
+              Flexible(
+                  child: Text(
+                message,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ))
             ],
           ),
         ),
-      ],
+      ),
     );
-  }
-
-  sendMessage(String text) async {
-    if (text.isEmpty) {
-      print('Message is empty');
-    } else {
-      setState(() {
-        addMessage(Message(text: DialogText(text: [text])), true);
-      });
-
-      DetectIntentResponse response = await dialogFlowtter.detectIntent(
-        queryInput: QueryInput(text: TextInput(text: text)),
-      );
-      if (response.message == null) return;
-      setState(() {
-        addMessage(response.message!);
-      });
-    }
-  }
-
-  addMessage(Message message, [bool isUserMessage = false]) {
-    messages.add({'message': message, 'isUserMessage': isUserMessage});
   }
 }
