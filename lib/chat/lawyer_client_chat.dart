@@ -79,7 +79,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                   messageWidgets.add(messageWidget);
                 }
                 return ListView(
-                  reverse: true,
+                  // reverse: true,
                   children: messageWidgets,
                 );
               },
