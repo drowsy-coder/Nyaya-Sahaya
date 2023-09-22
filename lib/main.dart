@@ -1,10 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:law/screens/stakeholders/client/client_screen.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:law/screens/intro_screen/intro_screen.dart';
+import 'package:law/screens/login/login_page.dart';
+
 import 'firebase_options.dart';
-import 'screens/login/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,26 +12,25 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Firebase Login',
       theme: ThemeData.dark(),
-      home: ClientScreen(),
+      home: AuthWrapper(), // Use AuthWrapper as the initial widget
       debugShowCheckedModeBanner: false,
     );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    return user != null ? LoginPage() : IntroScreen();
   }
 }

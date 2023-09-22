@@ -89,14 +89,12 @@ Dated: $dated
 
     if (content.isNotEmpty) {
       await Text2Pdf.generatePdf(content);
-      // Display a snackbar indicating PDF creation
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('PDF generated successfully!'),
         ),
       );
     } else {
-      // Display a snackbar if content is empty
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Content cannot be empty for PDF generation.'),
@@ -109,15 +107,16 @@ Dated: $dated
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bail App View'),
+        title: const Text('Generate Bail Application'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
           children: <Widget>[
             const Text(
-              'Details',
+              'Client Details',
               style: TextStyle(fontSize: 24.0),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16.0),
             Form(
@@ -125,7 +124,10 @@ Dated: $dated
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: const InputDecoration(labelText: 'Client Name'),
+                    decoration: const InputDecoration(
+                      labelText: 'Client Name',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter client name';
@@ -136,9 +138,12 @@ Dated: $dated
                       clientName = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration:
-                        const InputDecoration(labelText: 'IPC Sections'),
+                    decoration: const InputDecoration(
+                      labelText: 'IPC Sections',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter IPC sections';
@@ -149,11 +154,15 @@ Dated: $dated
                       ipcSections = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: 'FIR Number'),
+                    decoration: const InputDecoration(
+                      labelText: 'Fir Number',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter FIR number';
+                        return 'Please enter FIR Number';
                       }
                       return null;
                     },
@@ -161,11 +170,15 @@ Dated: $dated
                       firNumber = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: 'Father Name'),
+                    decoration: const InputDecoration(
+                      labelText: 'Father\'s Name',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter Father name';
+                        return 'Please enter Father\'s name';
                       }
                       return null;
                     },
@@ -173,11 +186,15 @@ Dated: $dated
                       father = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: 'State'),
+                    decoration: const InputDecoration(
+                      labelText: 'State',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter the State';
+                        return 'Please enter State';
                       }
                       return null;
                     },
@@ -185,23 +202,15 @@ Dated: $dated
                       state = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Age'),
+                    decoration: const InputDecoration(
+                      labelText: 'City',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter Age of bailee';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      age = value!;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'City'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter the City';
+                        return 'Please enter City';
                       }
                       return null;
                     },
@@ -209,11 +218,31 @@ Dated: $dated
                       city = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Police Station'),
+                    decoration: const InputDecoration(
+                      labelText: 'Age',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter the PS';
+                        return 'Please enter Age';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      age = value!;
+                    },
+                  ),
+                  const SizedBox(height: 16.0),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Police Station',
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter Police Station';
                       }
                       return null;
                     },
@@ -221,11 +250,15 @@ Dated: $dated
                       pS = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Date'),
+                    decoration: const InputDecoration(
+                      labelText: 'Dated',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter the Date';
+                        return 'Please enter Date';
                       }
                       return null;
                     },
@@ -233,18 +266,23 @@ Dated: $dated
                       dated = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Occupation'),
+                    decoration: const InputDecoration(
+                      labelText: 'OCC',
+                      border: OutlineInputBorder(),
+                    ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter the Occupation';
+                        return 'Please enter IPC sections';
                       }
                       return null;
                     },
                     onSaved: (value) {
-                      occ = value!;
+                      ipcSections = value!;
                     },
                   ),
+                  const SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -253,7 +291,7 @@ Dated: $dated
                             father, state, age, city, pS, dated, occ);
                       }
                     },
-                    child: Text('Generate PDF'),
+                    child: const Text('Generate PDF'),
                   ),
                 ],
               ),
