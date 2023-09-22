@@ -44,6 +44,12 @@ dependencies:
   google_maps_flutter: ^2.5.0
   url_launcher: ^6.1.14
   google_nav_bar: ^5.0.6
+  camera: ^0.10.5+4
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  permission_handler: ^11.0.0
+  file_picker: ^5.5.0
+  image_picker: ^1.0.4
 
 dev_dependencies:
   flutter_test:
