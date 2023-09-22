@@ -11,66 +11,7 @@ class LawyerReadScreen extends StatefulWidget {
 
 class _LawyerReadScreenState extends State<LawyerReadScreen> {
   List<Map<String, dynamic>> articleDetailsList = [
-    {
-      'url':
-          'https://www.livelaw.in/supreme-court/certified-copy-can-be-produced-to-prove-original-sale-deed-in-trial-supreme-court-238454',
-      'title':
-          'Certified Copy Can Be Produced to Prove Original Sale Deed in Trial: Supreme Court',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/top-stories/suprem-court-hearing-contempt-plea-reservation-list-revision-indra-sawhney-judgement-238434',
-      'title':
-          'Supreme Court Hearing Contempt Plea for Reservation List Revision in Indra Sawhney Judgement',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/top-stories/supreme-court-krishna-janmabhoomi-shahi-eidgah-scientific-survey-238429',
-      'title':
-          'Supreme Court Orders Scientific Survey at Krishna Janmabhoomi in Mathura',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/supreme-court/suprem-court-tamil-paper-mandatory-10th-class-exam-minority-linguistic-language-tamilnadu-tamil-learning-act-238394',
-      'title':
-          'Supreme Court: Tamil Paper for Mandatory 10th Class Exam for Minority Linguistic Language in Tamil Nadu',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/high-court/allahabad-high-court/allahabad-high-court-ruling-amendment-application-hindu-marriage-act-238450',
-      'title':
-          'Allahabad High Court Rules on Amendment Application under Hindu Marriage Act',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/high-court/punjab-and-haryana-high-court/punjab-haryana-high-court-passport-police-verification-complete-status-fir-238445',
-      'title':
-          'Punjab & Haryana High Court: Passport Police Verification - Complete Status Must be Provided in FIR',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/news-updates/delhi-court-acquit-rajasthan-chief-minister-ashok-gehlot-defamation-case-union-minister-gajendra-singh-shekhawat-238184',
-      'title':
-          'Delhi Court Acquits Rajasthan Chief Minister Ashok Gehlot in Defamation Case Against Union Minister Gajendra Singh Shekhawat',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/supreme-court/validity-execution-of-will-supreme-court-explains-238387',
-      'title':
-          'Validity of Execution of Will: Supreme Court Explains the Legal Position',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/high-court/kerala-high-court/kerala-high-court-motor-accidents-legal-representatives-entitled-to-compensation-238452',
-      'title':
-          'Kerala High Court: Motor Accidents - Legal Representatives Entitled to Compensation Even Without Medical Bills',
-    },
-    {
-      'url':
-          'https://www.livelaw.in/high-court/punjab-and-haryana-high-court/punjab-haryana-high-court-virtual-court-traffic-challan-rti-portal-238436',
-      'title':
-          'Punjab & Haryana High Court: Virtual Court for Traffic Challan - Use RTI Portal for Information',
-    },
+    // Add your article details here
   ];
 
   Future<void> fetchArticleDetails() async {
@@ -107,20 +48,42 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Article Cards Example'),
+        title: const Text('Legal News'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: <Widget>[
           for (var article in articleDetailsList)
             Card(
-              elevation: 3,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               margin: const EdgeInsets.all(10),
               child: ListTile(
+                contentPadding: const EdgeInsets.all(10),
                 leading: article['thumbnail'] != null
-                    ? Image.network(article['thumbnail'])
-                    : SizedBox(),
-                title: Text(article['title']),
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          article['thumbnail'],
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Icon(
+                          Icons.image,
+                          size: 50,
+                        ),
+                      ),
+                title: Text(
+                  article['title'],
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 onTap: () {
                   _launchURL(article['url']);
                 },
@@ -141,8 +104,8 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
 
   Future<void> launchUrl(Uri uri) async {
     final urlString = uri.toString();
-    if (await canLaunch(urlString)) {
-      await launch(urlString);
+    if (await canLaunchUrl(urlString as Uri)) {
+      await launchUrl(urlString as Uri);
     } else {
       throw 'Could not launch $urlString';
     }
@@ -150,7 +113,7 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
 
   Future<bool> canLaunchUrl(Uri uri) async {
     final urlString = uri.toString();
-    return await canLaunch(urlString);
+    return await canLaunchUrl(urlString as Uri);
   }
 }
 
