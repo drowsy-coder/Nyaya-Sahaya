@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class LawyerAddCase extends StatefulWidget {
   const LawyerAddCase({super.key});
 
@@ -68,8 +67,7 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
           _ipcSectionsController.clear();
           _nextHearingDateController.clear();
           _selectedDate = null;
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
   }

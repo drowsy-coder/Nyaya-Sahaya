@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:law/screens/stakeholders/client/support/Sakhi/chat_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MentalSupportScreen extends StatefulWidget {
   const MentalSupportScreen({Key? key}) : super(key: key);
@@ -112,7 +112,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             Icons.phone,
             Colors.green,
             () {
-              // Add your call action here.
+              launch("tel:123");
             },
           ),
           const SizedBox(width: 16),
@@ -122,8 +122,8 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             Icons.chat,
             Colors.orange,
             () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => ChatScreen()));
+              // Navigator.pushReplacement(context,
+              //     MaterialPageRoute(builder: (context) => ChatScreen()));
             },
           ),
         ],
