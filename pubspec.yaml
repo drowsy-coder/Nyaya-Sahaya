@@ -46,6 +46,7 @@ dependencies:
   text2pdf: ^0.0.2
   url_launcher: ^6.1.14
   youtube_player_flutter: ^8.1.2
+  date_field: ^3.0.5
 
 dev_dependencies:
 
