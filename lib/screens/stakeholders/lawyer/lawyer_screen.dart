@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:law/screens/stakeholders/lawyer/add_case.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_chat.dart';
+import 'package:law/screens/stakeholders/lawyer/lawyer_chat/lawyer_chat.dart';
 import 'package:law/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_read.dart';
 
@@ -32,7 +32,7 @@ class _LawyerScreenState extends State<LawyerScreen> {
   // Define your screens as a static list
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const LawyerHomePage(), icon: Icons.home, text: "Home"),
-    ScreenModel(screen: const LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
+    ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: const LawyerReadScreen(), icon: Icons.read_more, text: "Read"),
     ScreenModel(

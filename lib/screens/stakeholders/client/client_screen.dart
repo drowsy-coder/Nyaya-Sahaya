@@ -1,10 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:law/screens/stakeholders/client/client_chat/client_chat_screen.dart';
 import 'package:law/screens/stakeholders/client/client_home/client_home.dart';
 import 'package:law/screens/stakeholders/client/client_support_screen.dart';
 import 'package:law/screens/stakeholders/client/client_lawyer_map.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_chat.dart';
+import 'package:law/screens/stakeholders/lawyer/lawyer_chat/lawyer_chat.dart';
 
 class ScreenModel {
   final Widget screen;
@@ -30,8 +31,12 @@ class _ClientScreenState extends State<ClientScreen> {
 
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const ClientHomePage(), icon: Icons.home, text: "Home"),
+<<<<<<< HEAD
     ScreenModel(
         screen: const LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
+=======
+    ScreenModel(screen: ClientChatScreen(), icon: Icons.chat, text: "Chat"),
+>>>>>>> 82e1089a97abc368da29df5c8cb4196171144caf
     ScreenModel(
         screen: const ClientSupportScreen(),
         icon: Icons.support_agent,
