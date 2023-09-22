@@ -53,19 +53,10 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat with ${widget.recvName}'),
+        backgroundColor: Colors.black, // Adjust the app bar color
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blue[50]!,
-              Colors.blue[500]!,
-              Colors.green[700]!
-            ], // Adjust gradient colors
-          ),
-        ),
+        color: Colors.grey[900], // Adjust the background color
         child: Column(
           children: <Widget>[
             Expanded(
@@ -104,7 +95,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
               child: Container(
                 decoration: BoxDecoration(
                   color:
-                      Colors.grey[900], // Adjust input field background color
+                      Colors.grey[800], // Adjust input field background color
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
@@ -120,8 +111,12 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                     Expanded(
                       child: TextField(
                         controller: messageController,
+                        style:
+                            TextStyle(color: Colors.white), // Adjust text color
                         decoration: InputDecoration(
                           hintText: 'Enter your message...',
+                          hintStyle: TextStyle(
+                              color: Colors.white70), // Adjust hint text color
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 16, vertical: 14),
                           border: InputBorder.none,
@@ -168,14 +163,16 @@ class MessageWidget extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
-              color: isMe ? Colors.blue : Colors.red,
+              color: isMe ? Colors.blue : Colors.green, // Adjust text color
             ),
           ),
           SizedBox(height: 4),
           Hero(
             tag: 'chat_bubble_${text.hashCode}',
             child: Material(
-              color: isMe ? Colors.yellow : Colors.grey[300],
+              color: isMe
+                  ? Colors.blue[700]
+                  : Colors.grey[700], // Adjust bubble color
               borderRadius: BorderRadius.circular(16),
               elevation: 2,
               child: InkWell(
@@ -193,7 +190,9 @@ class MessageWidget extends StatelessWidget {
                         text,
                         style: TextStyle(
                             fontSize: 16,
-                            color: isMe ? Colors.black : Colors.black,
+                            color: isMe
+                                ? Colors.white
+                                : Colors.white, // Adjust text color
                             fontWeight: FontWeight.w600),
                       ),
                       if (isMe)
@@ -208,4 +207,14 @@ class MessageWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: LawyerClientChat(
+      recvEmail: 'receiver@example.com',
+      recvName: 'Receiver Name',
+      senderEmail: 'sender@example.com',
+    ),
+  ));
 }
