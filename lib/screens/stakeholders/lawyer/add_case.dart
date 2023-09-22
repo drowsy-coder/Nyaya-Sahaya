@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:law/screens/stakeholders/lawyer/bail_app.dart';
-import 'package:text2pdf/text2pdf.dart';
-import 'add_case.dart'; // Assuming createPdf is in this file
 
 class LawyerAddCase extends StatefulWidget {
   const LawyerAddCase({Key? key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:text2pdf/text2pdf.dart';
-import 'add_case.dart'; // assuming createPdf is in this file
 
 class BailAppView extends StatelessWidget {
   final String clientName;
