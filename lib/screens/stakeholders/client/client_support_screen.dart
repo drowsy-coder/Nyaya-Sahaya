@@ -17,43 +17,51 @@ class ClientSupportScreen extends StatelessWidget {
           children: <Widget>[
             Container(
               height: 200,
-              decoration: const BoxDecoration(
-                color: Colors.teal,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.grey[800]!, Colors.grey[900]!],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Stack(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
                 children: <Widget>[
-                  Positioned(
-                    top: 50,
-                    left: 20,
+                  Expanded(
+                    flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text(
-                          'Welcome to Our Support Center',
+                        Text(
+                          'Sahayata',
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        Image.asset(
-                          'assets/images/welcome.png',
-                          width: 80,
-                          height: 80,
+                        SizedBox(height: 10),
+                        Text(
+                          'Get answers to all your questions',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  Positioned(
-                    top: 150,
-                    right: -10,
-                    child: Transform.rotate(
-                      angle: 0.8,
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 40,
+                  Expanded(
+                    flex: 1,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Image.asset(
+                        'assets/images/welcome.png',
+                        width: 100,
+                        height: 100,
                       ),
                     ),
                   ),
@@ -91,7 +99,7 @@ class ClientSupportScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return  MentalSupportScreen();
+                            return MentalSupportScreen();
                           },
                         ),
                       );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/client/support/Sakhi/chat_screen.dart';
 
 class MentalSupportScreen extends StatefulWidget {
-  const MentalSupportScreen({super.key});
+  const MentalSupportScreen({Key? key}) : super(key: key);
 
   @override
   _MentalSupportScreenState createState() => _MentalSupportScreenState();
@@ -110,7 +111,9 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             'Crisis Helpline',
             Icons.phone,
             Colors.green,
-            () {},
+            () {
+              // Add your call action here.
+            },
           ),
           const SizedBox(width: 16),
           _buildSupportCard(
@@ -118,7 +121,10 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             'Chat Support',
             Icons.chat,
             Colors.orange,
-            () {},
+            () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => ChatScreen()));
+            },
           ),
         ],
       ),
@@ -128,11 +134,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
   Widget _buildSupportCard(BuildContext context, String text, IconData icon,
       Color color, Function onPressed) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SupportDetailsPage(text),
-        ));
-      },
+      onTap: onPressed as void Function(),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.43,
         padding: const EdgeInsets.all(16),
@@ -182,9 +184,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
       child: ListTile(
         title: const Text('Resource Title'),
         subtitle: const Text('Description of the resource.'),
-        onTap: () {
-          // Handle resource card tap.
-        },
+        onTap: () {},
       ),
     );
   }
@@ -209,27 +209,6 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             _buildResourceCard(),
             const SizedBox(height: 16),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class SupportDetailsPage extends StatelessWidget {
-  final String supportType;
-
-  SupportDetailsPage(this.supportType);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(supportType),
-      ),
-      body: Center(
-        child: Text(
-          'Details of $supportType go here',
-          style: const TextStyle(fontSize: 18),
         ),
       ),
     );
