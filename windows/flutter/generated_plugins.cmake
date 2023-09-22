@@ -6,11 +6,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   firebase_auth
   firebase_core
-<<<<<<< HEAD
-  flutter_tts
-=======
-  printing
->>>>>>> 1758e5c38ac0e4d598a29f584495507729e87766
   url_launcher_windows
 )
 
