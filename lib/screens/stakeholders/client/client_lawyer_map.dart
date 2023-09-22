@@ -119,12 +119,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    _loadMapStyles();
     loadData();
-  }
-
-  Future<void> _loadMapStyles() async {
-    _darkMapStyle = await rootBundle.loadString('assets/json/dark_theme.json');
   }
 
   void loadData() async {
@@ -235,39 +230,38 @@ class CustomInfoWindow extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () => launch("tel:$phoneNum"),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Colors.green, 
+                    backgroundColor: Colors.green,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   icon: const Icon(
                     Icons.phone,
-                    color: Colors.white, 
+                    color: Colors.white,
                   ),
                   label: const Text(
                     'Call',
-                    style: TextStyle(color: Colors.white), 
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const SizedBox(width: 16), 
+                const SizedBox(width: 16),
                 ElevatedButton.icon(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red, 
+                    backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   icon: const Icon(
                     Icons.close,
-                    color: Colors.white, 
+                    color: Colors.white,
                   ),
                   label: const Text(
                     'Close',
-                    style: TextStyle(color: Colors.white), 
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
