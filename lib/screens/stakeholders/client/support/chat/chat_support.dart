@@ -1,12 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:dialogflow_flutter/googleAuth.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:law/screens/stakeholders/client/support/chat/messages.dart';
-import '../../client_support/Messages.dart';
-=======
 import 'package:dialogflow_flutter/dialogflowFlutter.dart';
->>>>>>> 8c78284d0697ecd68c671b2346f0e208581f4701
 
 class ChatBotScreen extends StatefulWidget {
   @override
