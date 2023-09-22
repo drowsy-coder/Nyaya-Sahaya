@@ -18,7 +18,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
 
     _animation = Tween<double>(
@@ -52,7 +52,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
               margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
@@ -74,13 +74,13 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Image.asset(
-                    'assets/images/welcome.png', // Replace with your image path
+                    'assets/images/welcome.png',
                     height: 120,
                     width: 120,
                   ),
-                  SizedBox(height: 16),
-                  Center(
-                    child: const Text(
+                  const SizedBox(height: 16),
+                  const Center(
+                    child: Text(
                       'Niketan',
                       style: TextStyle(
                         fontSize: 24,
@@ -89,7 +89,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -201,7 +201,11 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             _buildWelcomeSection(context),
             const SizedBox(height: 16),
             _buildCallChatCards(context),
-            const SizedBox(height: 24),
+            const SizedBox(height: 40),
+            _buildResourceCard(),
+            const SizedBox(height: 16),
+            _buildResourceCard(),
+            const SizedBox(height: 16),
             _buildResourceCard(),
             const SizedBox(height: 16),
           ],
@@ -225,7 +229,7 @@ class SupportDetailsPage extends StatelessWidget {
       body: Center(
         child: Text(
           'Details of $supportType go here',
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );

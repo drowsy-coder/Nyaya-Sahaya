@@ -1,12 +1,9 @@
 // ignore_for_file: unused_import, unnecessary_null_comparison, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:law/screens/stakeholders/client/client_home/no_cases_found.dart';
-import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
 import 'package:law/screens/stakeholders/client/support/case_info_analyser.dart';
-import 'package:mime/mime.dart';
 
 class ClientHomePage extends StatefulWidget {
   const ClientHomePage({super.key});
@@ -16,14 +13,12 @@ class ClientHomePage extends StatefulWidget {
 }
 
 class _ClientHomePageState extends State<ClientHomePage> {
-  late String clientEmail; // Variable to hold the client's email
+  late String clientEmail;
   bool textScanning = false;
-  XFile? imageFile;
   String scannedText = '';
   @override
   void initState() {
     super.initState();
-    // Call the method to fetch the user's email when the widget initializes
     getClientEmail();
   }
 
@@ -49,12 +44,10 @@ class _ClientHomePageState extends State<ClientHomePage> {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          // If the stream is still waiting for data, show a loading indicator
           return const CircularProgressIndicator();
         }
 
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          // If there are no documents in the snapshot, display a message
           return const NoCasesFoundScreen();
         }
 
@@ -91,7 +84,6 @@ class _ClientHomePageState extends State<ClientHomePage> {
                 // Timeline Tab
                 _buildTimeline(),
 
-                // Section Info Tab
                 SingleChildScrollView(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -112,12 +104,10 @@ class _ClientHomePageState extends State<ClientHomePage> {
                       _buildSectionInfoCard(
                           "Sections Violated:", document['ipcSections']),
                       const SizedBox(height: 20),
-                      // Add more relevant case-related facts or features here.
                     ],
                   ),
                 ),
 
-                // Grid Tab
                 _buildGrid(),
               ],
             ),
@@ -132,14 +122,14 @@ class _ClientHomePageState extends State<ClientHomePage> {
       margin: const EdgeInsets.symmetric(horizontal: 10.0),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Colors.blue, // Background color for the container.
+        color: Colors.blue,
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2), // Shadow color.
+            color: Colors.black.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), // Offset of the shadow.
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -148,8 +138,8 @@ class _ClientHomePageState extends State<ClientHomePage> {
           fact,
           style: const TextStyle(
             fontSize: 18.0,
-            color: Colors.white, // Text color for carousel items.
-            fontWeight: FontWeight.bold, // Make the text bold.
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
