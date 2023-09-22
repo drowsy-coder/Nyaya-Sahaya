@@ -6,7 +6,8 @@ class VideoPlayerScreen extends StatelessWidget {
   final String title;
   final String description;
 
-  VideoPlayerScreen({
+  const VideoPlayerScreen({
+    super.key,
     required this.videoId,
     required this.title,
     required this.description,

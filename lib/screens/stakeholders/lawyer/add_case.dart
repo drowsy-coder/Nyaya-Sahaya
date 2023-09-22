@@ -208,11 +208,7 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => BailAppView(
-                              clientName: _clientNameController.text,
-                              ipcSections: _ipcSectionsController.text,
-                              firNumber: 'Your FIR number here')),
+                      MaterialPageRoute(builder: (context) => BailAppView()),
                     );
                   },
                   style: ButtonStyle(
