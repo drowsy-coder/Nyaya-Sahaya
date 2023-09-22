@@ -67,7 +67,7 @@ b. Pass any other such order as this Honorable Court may deem fit and proper in 
 
 $dot Petitioner
 Through
-$dot Counsel
+Counsel
 Place:
 Dated: 
 ''';
