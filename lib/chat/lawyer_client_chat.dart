@@ -33,9 +33,9 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
     if (messageText.isNotEmpty) {
       // Send the message to Firestore
       _chatCollection.add({
-        'senderEmail': widget.senderEmail,
-        'receiverEmail': widget.recvEmail,
-        'receiverName': widget.recvName,
+        'senderEmail': widget.senderEmail, // Sender's email
+        'receiverEmail': widget.recvEmail, // Receiver's email
+        'receiverName': widget.recvName, // Receiver's name
         'message': messageText,
         'timestamp': FieldValue.serverTimestamp(),
       });
@@ -53,23 +53,20 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
         children: <Widget>[
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: _chatCollection
-                  .where('receiverEmail', isEqualTo: widget.recvEmail)
-                  .orderBy('timestamp')
-                  .snapshots(),
+              stream: _chatCollection.orderBy('timestamp').snapshots(),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  // Show a loading indicator while data is being fetched
+                // Only keep the messages where receieverEmail is equal to widget.recvEmail
+
+                if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  // Show "No conversation" message when there are no messages
-                  return Center(
-                    child: Text('No conversation'),
-                  );
                 }
-                final messages = snapshot.data!.docs.reversed;
+                final messages = snapshot.data!.docs.where((element) {
+                  return (element['receiverEmail'] == widget.recvEmail ||
+                      element['senderEmail'] == widget.recvEmail);
+                }).toList();
+                // final messages = snapshot.data!.docs.reversed;
                 List<Widget> messageWidgets = [];
                 for (var message in messages) {
                   final messageText = message['message'];
@@ -116,12 +113,12 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
 class MessageWidget extends StatelessWidget {
   final String text;
   final bool isMe;
-  final String recvName;
+  final String recvName; // Add this
 
   MessageWidget({
     required this.text,
     required this.isMe,
-    required this.recvName,
+    required this.recvName, // Add this
   });
 
   @override
@@ -133,7 +130,7 @@ class MessageWidget extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
-            isMe ? 'Me' : recvName,
+            isMe ? 'Me' : recvName, // Use recvName here
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),

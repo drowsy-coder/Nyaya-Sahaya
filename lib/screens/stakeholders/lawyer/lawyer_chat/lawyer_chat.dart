@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:law/screens/stakeholders/client/client_chat/client_chat_screen.dart';
 import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
-import 'package:law/screens/stakeholders/lawyer/lawyer_chat/lawyer_client_chat.dart';
+import 'package:law/chat/lawyer_client_chat.dart';
 
 class LawyerChatScreen extends StatefulWidget {
   @override
