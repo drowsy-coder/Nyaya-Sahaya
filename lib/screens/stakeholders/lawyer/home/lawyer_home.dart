@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
 import 'package:law/screens/stakeholders/lawyer/home/show_cases.dart';
 
 import 'place_holder_column.dart';
@@ -22,7 +23,10 @@ class LawyerHomePage extends StatelessWidget {
             DashboardHeader(),
             SizedBox(height: 20),
             Expanded(
-              child: PlaceholderCardsColumn(),
+              child: CaseList(
+                showClosed: true,
+                showOpen: true,
+              ),
             ),
           ],
         ));

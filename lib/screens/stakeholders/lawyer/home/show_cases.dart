@@ -5,20 +5,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
 
-class CaseListScreen extends StatefulWidget {
+class CaseList extends StatefulWidget {
   final bool showClosed;
   final bool showOpen;
 
-  const CaseListScreen({super.key, 
+  const CaseList({
+    super.key,
     required this.showClosed,
     required this.showOpen,
   });
 
   @override
-  _CaseListScreenState createState() => _CaseListScreenState();
+  _CaseListState createState() => _CaseListState();
 }
 
-class _CaseListScreenState extends State<CaseListScreen> {
+class _CaseListState extends State<CaseList> {
   late User currentUser; // To store the current user
   List<DocumentSnapshot> cases = []; // To store the filtered cases
 
@@ -54,27 +55,48 @@ class _CaseListScreenState extends State<CaseListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: cases.length,
+      itemBuilder: (context, index) {
+        final caseData = cases[index].data() as Map<String, dynamic>;
+        final clientName = caseData['clientName'] as String;
+        final caseId = cases[index].id;
+
+        return ListTile(
+          onTap: () {
+            // When a list item is tapped, open the CaseDetailScreen
+            _onCaseTap(caseId);
+          },
+          title: Text('Client: $clientName'),
+          subtitle: Text('Next hearing: ${caseData['nextHearingDate']}'),
+        );
+      },
+    );
+  }
+}
+
+class CaseListScreen extends StatefulWidget {
+  final bool showClosed;
+  final bool showOpen;
+
+  const CaseListScreen({
+    super.key,
+    required this.showClosed,
+    required this.showOpen,
+  });
+
+  @override
+  _CaseListScreenState createState() => _CaseListScreenState();
+}
+
+class _CaseListScreenState extends State<CaseListScreen> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Case List'),
       ),
-      body: ListView.builder(
-        itemCount: cases.length,
-        itemBuilder: (context, index) {
-          final caseData = cases[index].data() as Map<String, dynamic>;
-          final clientName = caseData['clientName'] as String;
-          final caseId = cases[index].id;
-
-          return ListTile(
-            onTap: () {
-              // When a list item is tapped, open the CaseDetailScreen
-              _onCaseTap(caseId);
-            },
-            title: Text('Client: $clientName'),
-            subtitle: Text('Next hearing: ${caseData['nextHearingDate']}'),
-          );
-        },
-      ),
+      body: CaseList(showClosed: widget.showClosed, showOpen: widget.showOpen),
     );
   }
 }
