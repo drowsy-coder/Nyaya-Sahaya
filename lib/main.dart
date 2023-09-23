@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:law/screens/intro_screen/intro_screen.dart';
 import 'package:law/screens/login/login_page.dart';
-import 'package:law/screens/stakeholders/client/client_home/client_home.dart';
 import 'package:law/screens/stakeholders/client/client_screen.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_screen.dart';
 import 'package:local_auth/local_auth.dart';
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nyaya-Sahaya',
+      title: 'Nyaya Sahaya',
       theme: ThemeData.dark(),
       home: AuthWrapper(),
       debugShowCheckedModeBanner: false,
@@ -56,6 +55,6 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    return user != null ? const ClientScreen() : const IntroScreen();
+    return user != null ? LoginPage() : const IntroScreen();
   }
 }
