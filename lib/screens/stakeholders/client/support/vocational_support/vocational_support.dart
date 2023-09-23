@@ -125,7 +125,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => VocationalCoursesScreen(),
+                          builder: (context) => VocationalTrainingScreen(),
                         ),
                       );
                     },
