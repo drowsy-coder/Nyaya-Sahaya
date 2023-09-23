@@ -55,6 +55,6 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    return user != null ? const LawyerScreen() : const IntroScreen();
+    return user != null ? LoginPage() : const IntroScreen();
   }
 }

@@ -11,12 +11,6 @@ void main() {
 class ComputerTrainingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Computer Training'),
-=======
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -25,7 +19,6 @@ class ComputerTrainingScreen extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
->>>>>>> f8b8769fed4c0c0c0785c466b7df58e02e0ec85c
         ),
         backgroundColor: Colors.grey[900],
       ),
@@ -67,55 +60,11 @@ class VideoCard extends StatelessWidget {
   final String thumbnailUrl;
   final String description;
 
-<<<<<<< HEAD
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Number of columns
-      ),
-      itemCount: cardItems.length,
-      itemBuilder: (context, index) {
-        return MyCard(
-          image: cardItems[index].image,
-          header: cardItems[index].header,
-          onTap: () {
-            launch(cardItems[index].externalLink); // Open external link
-          },
-        );
-      },
-    );
-  }
-}
-
-class CardItem {
-  final String image;
-  final String header;
-  final String externalLink;
-
-  CardItem({
-    required this.image,
-    required this.header,
-    required this.externalLink,
-  });
-}
-
-class MyCard extends StatelessWidget {
-  final String image;
-  final String header;
-  final VoidCallback? onTap;
-
-  MyCard({
-    required this.image,
-    required this.header,
-    this.onTap,
-=======
   const VideoCard({
     required this.videoId,
     required this.title,
     required this.thumbnailUrl,
     required this.description,
->>>>>>> f8b8769fed4c0c0c0785c466b7df58e02e0ec85c
   });
 
   @override
@@ -128,27 +77,6 @@ class MyCard extends StatelessWidget {
             BorderRadius.circular(16.0), // Rounded corners for the card
       ),
       child: InkWell(
-<<<<<<< HEAD
-        onTap: onTap, // Invoke the onTap callback when clicked
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Image.asset(
-              image,
-              height: 130,
-              width: double.infinity,
-              fit: BoxFit
-                  .cover, // Ensure the image fits within the available space
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                header,
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-=======
         onTap: () {
           // Navigate to the player screen with the selected video
           Navigator.push(
@@ -158,7 +86,6 @@ class MyCard extends StatelessWidget {
                 videoId: videoId,
                 title: title,
                 description: description,
->>>>>>> f8b8769fed4c0c0c0785c466b7df58e02e0ec85c
               ),
             ),
           );

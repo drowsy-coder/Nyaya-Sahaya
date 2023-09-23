@@ -6,11 +6,6 @@ class VocationalTrainingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
-        title: const Text('Vocational Training'),
-      ),
-      body: const Placeholder(),
-=======
         title: const Text(
           'Vocational Training',
           style: TextStyle(
@@ -154,7 +149,6 @@ class VideoCard extends StatelessWidget {
           ),
         ),
       ),
->>>>>>> f8b8769fed4c0c0c0785c466b7df58e02e0ec85c
     );
   }
 }
