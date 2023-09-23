@@ -136,7 +136,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => FeaturedProgramsScreen(),
+                          builder: (context) => FeaturedScreen(),
                         ),
                       );
                     },

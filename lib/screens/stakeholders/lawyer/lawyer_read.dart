@@ -109,7 +109,7 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
                   child: Image.asset(
                     article['image'],
                     width: 100,
-                    height: 100,
+                    height: 199,
                     fit: BoxFit.cover,
                   ),
                 ),
