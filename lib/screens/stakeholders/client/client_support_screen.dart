@@ -68,7 +68,6 @@ class ClientSupportScreen extends StatelessWidget {
                 ],
               ),
             ),
-            LogoutButton(),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               child: Column(
