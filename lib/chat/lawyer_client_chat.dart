@@ -6,7 +6,7 @@ class LawyerClientChat extends StatefulWidget {
   final String recvName;
   final String senderEmail;
 
-  LawyerClientChat({
+  LawyerClientChat({super.key, 
     required this.recvEmail,
     required this.recvName,
     required this.senderEmail,
@@ -42,7 +42,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
 
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
     }
@@ -64,7 +64,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                 stream: _chatCollection.orderBy('timestamp').snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
@@ -102,7 +102,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                       color: Colors.grey.withOpacity(0.3),
                       spreadRadius: 2,
                       blurRadius: 4,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
@@ -112,8 +112,8 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                       child: TextField(
                         controller: messageController,
                         style:
-                            TextStyle(color: Colors.white), // Adjust text color
-                        decoration: InputDecoration(
+                            const TextStyle(color: Colors.white), // Adjust text color
+                        decoration: const InputDecoration(
                           hintText: 'Enter your message...',
                           hintStyle: TextStyle(
                               color: Colors.white70), // Adjust hint text color
@@ -124,7 +124,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.send),
+                      icon: const Icon(Icons.send),
                       onPressed: sendMessage,
                       color: Colors.blue, // Adjust send button color
                     ),
@@ -144,7 +144,7 @@ class MessageWidget extends StatelessWidget {
   final bool isMe;
   final String recvName;
 
-  MessageWidget({
+  MessageWidget({super.key, 
     required this.text,
     required this.isMe,
     required this.recvName,
@@ -166,7 +166,7 @@ class MessageWidget extends StatelessWidget {
               color: isMe ? Colors.blue : Colors.green, // Adjust text color
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Hero(
             tag: 'chat_bubble_${text.hashCode}',
             child: Material(
@@ -180,12 +180,12 @@ class MessageWidget extends StatelessWidget {
                   // Handle chat bubble tap
                 },
                 child: Container(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (!isMe) Icon(Icons.person, color: Colors.blue),
-                      SizedBox(width: 8),
+                      if (!isMe) const Icon(Icons.person, color: Colors.blue),
+                      const SizedBox(width: 8),
                       Text(
                         text,
                         style: TextStyle(
@@ -196,7 +196,7 @@ class MessageWidget extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                       if (isMe)
-                        Icon(Icons.check, color: Colors.green, size: 16),
+                        const Icon(Icons.check, color: Colors.green, size: 16),
                     ],
                   ),
                 ),

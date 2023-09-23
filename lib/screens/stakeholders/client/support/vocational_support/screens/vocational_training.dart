@@ -5,9 +5,9 @@ class VocationalCoursesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vocational Training'),
+        title: const Text('Vocational Training'),
       ),
-      body: Placeholder(),
+      body: const Placeholder(),
     );
   }
 }

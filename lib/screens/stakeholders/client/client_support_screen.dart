@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law/screens/stakeholders/client/support/mental_support.dart';
 import 'package:law/screens/stakeholders/client/support/vocational_support/vocational_support.dart';
-import 'package:law/widgets/buttons/logout_button.dart';
 
 class ClientSupportScreen extends StatelessWidget {
   const ClientSupportScreen({super.key});
@@ -26,10 +25,10 @@ class ClientSupportScreen extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 children: <Widget>[
-                  Expanded(
+                  const Expanded(
                     flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +97,7 @@ class ClientSupportScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return MentalSupportScreen();
+                            return const MentalSupportScreen();
                           },
                         ),
                       );

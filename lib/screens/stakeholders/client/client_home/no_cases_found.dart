@@ -23,7 +23,7 @@ class NoCasesFoundScreen extends StatelessWidget {
             },
           ),
         ]),
-        body: Column(
+        body: const Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Expanded(

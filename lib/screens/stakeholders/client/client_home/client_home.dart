@@ -102,7 +102,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [Color(0xFF232323), Color(0xFF121212)],
@@ -139,17 +139,17 @@ class _ClientHomePageState extends State<ClientHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.calendar_today,
                   color: Colors.blue,
                   size: 20,
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 Text(
                   'Date: September 23, 2023',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     color: Colors.white54,
                   ),

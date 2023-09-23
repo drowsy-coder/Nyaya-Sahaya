@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Firebase Login',
+      title: 'Nyaya Sahaya',
       theme: ThemeData.dark(),
       home: AuthWrapper(),
       debugShowCheckedModeBanner: false,
@@ -55,6 +55,6 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    return user != null ? const ClientScreen() : IntroScreen();
+    return user != null ? const LawyerScreen() : const IntroScreen();
   }
 }

@@ -7,7 +7,7 @@ class ComputerTrainingScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Computer Training'),
+          title: const Text('Computer Training'),
         ),
         body: MyGridView(),
       ),
@@ -52,7 +52,7 @@ class MyGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Number of columns
       ),
       itemCount: cardItems.length,
@@ -115,7 +115,7 @@ class MyCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 header,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),

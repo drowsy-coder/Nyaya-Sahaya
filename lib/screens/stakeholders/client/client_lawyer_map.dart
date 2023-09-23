@@ -157,12 +157,12 @@ class _MapScreenState extends State<MapScreen> {
       appBar: AppBar(
         title: const Text("Nearby Lawyers"),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             // Navigate back to the ClientScreen() page
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ClientScreen(),
+                builder: (context) => const ClientScreen(),
               ),
             );
           },

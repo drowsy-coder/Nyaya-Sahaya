@@ -5,9 +5,9 @@ class EducationalCoursesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Educational Courses'),
+        title: const Text('Educational Courses'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'This is the Educational Courses Screenss',
           style: TextStyle(fontSize: 20),

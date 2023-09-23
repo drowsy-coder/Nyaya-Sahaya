@@ -203,10 +203,8 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                 child: ElevatedButton(
                   onPressed: pickAndParsePDF,
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(16.0),
+                    foregroundColor: Colors.black, padding: const EdgeInsets.all(16.0), backgroundColor: Colors.yellow,
                     elevation: 8.0,
-                    primary: Colors.yellow,
-                    onPrimary: Colors.black,
                   ),
                   child: const Text(
                     'Pick and Analyze PDF',

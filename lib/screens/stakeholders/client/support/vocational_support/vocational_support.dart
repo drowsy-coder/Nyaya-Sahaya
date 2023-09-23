@@ -93,14 +93,14 @@ class VocationalSupportScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Education for Undertrials'),
+        title: const Text('Education for Undertrials'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WelcomeCard(),
+            const WelcomeCard(),
             const SizedBox(height: 40),
             Center(
               child: GridView.count(
