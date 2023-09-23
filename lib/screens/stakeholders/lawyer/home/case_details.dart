@@ -23,42 +23,64 @@ class CaseDetailScreen extends StatelessWidget {
 
   Widget _buildSectionInfoCard(String title, String content) {
     return Container(
-      width:
-          double.infinity, // Make the card stretch to the whole screen width.
+      width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
-        color: Colors.grey[300], // Background color for the card (grey).
-        borderRadius: BorderRadius.circular(12.0),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF232323), Color(0xFF121212)],
+        ),
+        borderRadius: BorderRadius.circular(16.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5), // Shadow color.
+            color: Colors.grey.withOpacity(0.3),
             spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3), // Offset of the shadow.
+            blurRadius: 8,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.black, // Text color for the title (black).
+                color: Colors.white,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 16),
             Text(
               content,
               style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black, // Text color for the content (black).
+                fontSize: 18,
+                color: Colors.white70,
               ),
             ),
+            const SizedBox(height: 16),
+            const Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  color: Colors.blue,
+                  size: 20,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Date: September 23, 2023',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white54,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

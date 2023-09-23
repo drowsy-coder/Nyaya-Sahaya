@@ -115,7 +115,7 @@ class _LawyerReadScreenState extends State<LawyerReadScreen> {
                 ),
                 title: Text(
                   article['title'],
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
                   _launchURL(article['url']);

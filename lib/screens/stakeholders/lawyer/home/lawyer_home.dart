@@ -1,12 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
 import 'package:law/screens/stakeholders/lawyer/home/show_cases.dart';
-
-import 'place_holder_column.dart';
 
 class LawyerHomePage extends StatelessWidget {
   const LawyerHomePage({super.key});
@@ -17,29 +13,33 @@ class LawyerHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Lawyer Home'),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          DashboardHeader(),
-          SizedBox(height: 20),
-          Text(
-            'Clients', // Add the header text here
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+      body: const Padding(
+        padding: EdgeInsets.all(14.0), // Add your desired padding here
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            DashboardHeader(),
+            SizedBox(height: 20),
+            Text(
+              'Clients', // Add the header text here
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Expanded(
-            child: CaseList(
-              showClosed: true,
-              showOpen: true,
+            Expanded(
+              child: CaseList(
+                showClosed: true,
+                showOpen: true,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
+
 class DashboardHeader extends StatefulWidget {
   const DashboardHeader({super.key});
 

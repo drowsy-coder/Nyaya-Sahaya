@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,8 +18,8 @@ class CaseList extends StatefulWidget {
 }
 
 class _CaseListState extends State<CaseList> {
-  late User currentUser; // To store the current user
-  List<DocumentSnapshot> cases = []; // To store the filtered cases
+  late User currentUser;
+  List<DocumentSnapshot> cases = [];
 
   @override
   void initState() {
@@ -31,21 +29,16 @@ class _CaseListState extends State<CaseList> {
 
   Future<void> fetchCases() async {
     currentUser = FirebaseAuth.instance.currentUser!;
-
-    // Query Firestore to get all cases
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
         .where('lawyerId', isEqualTo: currentUser.uid)
         .get();
-
-    // Filter cases based on the logged-in user's ID matching the lawyerId
     setState(() {
       cases = casesQuery.docs.toList();
     });
   }
 
   void _onCaseTap(String caseId) {
-    // Navigate to the CaseDetailScreen and pass the caseId
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CaseDetailScreen(caseId: caseId),
@@ -60,15 +53,43 @@ class _CaseListState extends State<CaseList> {
       itemBuilder: (context, index) {
         final caseData = cases[index].data() as Map<String, dynamic>;
         final clientName = caseData['clientName'] as String;
+        final nextHearingDate = caseData['nextHearingDate'] as String;
         final caseId = cases[index].id;
 
-        return ListTile(
-          onTap: () {
-            // When a list item is tapped, open the CaseDetailScreen
-            _onCaseTap(caseId);
-          },
-          title: Text('$clientName'),
-          subtitle: Text('Next hearing: ${caseData['nextHearingDate']}'),
+        return Card(
+          elevation: 3,
+          margin: const EdgeInsets.all(8.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: InkWell(
+            onTap: () {
+              _onCaseTap(caseId);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    clientName,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Next hearing: $nextHearingDate',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

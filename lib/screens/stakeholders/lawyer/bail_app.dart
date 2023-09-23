@@ -127,6 +127,10 @@ Dated: $dated
                     decoration: const InputDecoration(
                       labelText: 'Client Name',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter client name',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -138,11 +142,15 @@ Dated: $dated
                       clientName = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'IPC Sections',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter IPC sections',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -154,11 +162,15 @@ Dated: $dated
                       ipcSections = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
-                      labelText: 'Fir Number',
+                      labelText: 'FIR Number',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter FIR Number',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -170,11 +182,15 @@ Dated: $dated
                       firNumber = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Father\'s Name',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter Father\'s name',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -186,11 +202,15 @@ Dated: $dated
                       father = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'State',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter State',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -202,11 +222,15 @@ Dated: $dated
                       state = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'City',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter City',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -218,11 +242,15 @@ Dated: $dated
                       city = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Age',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter Age',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -234,11 +262,15 @@ Dated: $dated
                       age = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Police Station',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter Police Station',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -250,37 +282,16 @@ Dated: $dated
                       pS = value!;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 8.0),
                   TextFormField(
                     decoration: const InputDecoration(
                       labelText: 'Dated',
                       border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      hintText: 'Enter Date',
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Date';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      dated = value!;
-                    },
-                  ),
-                  const SizedBox(height: 16.0),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'OCC',
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter IPC sections';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      ipcSections = value!;
-                    },
                   ),
                   const SizedBox(height: 16.0),
                   ElevatedButton(
