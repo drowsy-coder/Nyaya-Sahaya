@@ -67,7 +67,7 @@ class _CaseListState extends State<CaseList> {
             // When a list item is tapped, open the CaseDetailScreen
             _onCaseTap(caseId);
           },
-          title: Text('Client: $clientName'),
+          title: Text('$clientName'),
           subtitle: Text('Next hearing: ${caseData['nextHearingDate']}'),
         );
       },
