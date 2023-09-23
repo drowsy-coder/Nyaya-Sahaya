@@ -65,7 +65,7 @@ class _LawyerChatScreenState extends State<LawyerChatScreen> {
                   onTap: () {
                     _onCaseTap(caseId);
                   },
-                  leading: CircleAvatar(
+                  leading: const CircleAvatar(
                     backgroundColor: Colors.blue,
                     child: Icon(
                       Icons.person,

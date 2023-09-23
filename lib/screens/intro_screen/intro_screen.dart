@@ -34,19 +34,19 @@ class _IntroScreenState extends State<IntroScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               color: Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                    child: Text(
+                    child: const Text(
                       "Back",
                       style: TextStyle(color: Colors.black),
                     ),
                     onTap: () {
                       _controller.previousPage(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                       );
                     },
@@ -58,19 +58,19 @@ class _IntroScreenState extends State<IntroScreen> {
                   GestureDetector(
                     child: Text(
                       onLastPage ? "Done" : "Next",
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                     onTap: () {
                       if (onLastPage) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => const LoginPage(),
                           ),
                         );
                       } else {
                         _controller.nextPage(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn,
                         );
                       }
@@ -91,7 +91,7 @@ class _IntroScreenState extends State<IntroScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Welcome to Nyaya Sahaya",
             style: TextStyle(
                 fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
@@ -105,16 +105,16 @@ class _IntroScreenState extends State<IntroScreen> {
                   width: 200,
                   height: 200,
                 ),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   "Empowering Undertrial Prisoners",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   "Nyaya Sahaya is here to provide you with vital support during your legal journey.",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                   textAlign: TextAlign.center,
@@ -133,7 +133,7 @@ class _IntroScreenState extends State<IntroScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Client Features",
             style: TextStyle(
                 fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
@@ -147,15 +147,15 @@ class _IntroScreenState extends State<IntroScreen> {
                   width: 200,
                   height: 200,
                 ),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   "Access Client Features",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -179,7 +179,7 @@ class _IntroScreenState extends State<IntroScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Lawyer Features",
             style: TextStyle(
                 fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
@@ -193,15 +193,15 @@ class _IntroScreenState extends State<IntroScreen> {
                   width: 200,
                   height: 200,
                 ),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   "Unlock Lawyer Features",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -222,20 +222,20 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget buildBulletPoint(String text) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
+          const Icon(
             Icons.check_circle,
             size: 16,
             color: Colors.white,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
               text,
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
           ),
         ],

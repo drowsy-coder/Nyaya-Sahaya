@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:law/screens/stakeholders/lawyer/home/case_details.dart';
 import 'package:law/screens/stakeholders/lawyer/home/show_cases.dart';
 
 import 'place_holder_column.dart';
@@ -13,22 +14,32 @@ class LawyerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Lawyer Home'),
-        ),
-        body: const Column(
-          children: [
-            SizedBox(height: 20),
-            DashboardHeader(),
-            SizedBox(height: 20),
-            Expanded(
-              child: PlaceholderCardsColumn(),
+      appBar: AppBar(
+        title: const Text('Lawyer Home'),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 20),
+          DashboardHeader(),
+          SizedBox(height: 20),
+          Text(
+            'Clients', // Add the header text here
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-          ],
-        ));
+          ),
+          Expanded(
+            child: CaseList(
+              showClosed: true,
+              showOpen: true,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
-
 class DashboardHeader extends StatefulWidget {
   const DashboardHeader({super.key});
 

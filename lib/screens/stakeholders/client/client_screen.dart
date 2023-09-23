@@ -30,7 +30,7 @@ class _ClientScreenState extends State<ClientScreen> {
 
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const ClientHomePage(), icon: Icons.home, text: "Home"),
-    ScreenModel(screen: ClientChatScreen(), icon: Icons.chat, text: "Chat"),
+    ScreenModel(screen: const ClientChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: const ClientSupportScreen(),
         icon: Icons.support_agent,

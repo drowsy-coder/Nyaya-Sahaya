@@ -31,14 +31,14 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 70,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
           ),
         ),
         elevation: 10,
-        title: Text("Dialog Flow Chatbot"),
+        title: const Text("Dialog Flow Chatbot"),
       ),
       body: Container(
         child: Column(
@@ -51,26 +51,26 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       messsages[index]["message"].toString(),
                       messsages[index]["data"])),
             ),
-            Divider(
+            const Divider(
               height: 6.0,
             ),
             Container(
-              padding: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Row(
                 children: <Widget>[
                   Flexible(
                       child: TextField(
                     controller: messageInsert,
-                    decoration: InputDecoration.collapsed(
+                    decoration: const InputDecoration.collapsed(
                         hintText: "Send your message",
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18.0)),
                   )),
                   Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
                       child: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.send,
                             size: 30.0,
                           ),
@@ -89,7 +89,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             )
           ],
@@ -100,15 +100,15 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
   Widget chat(String message, int data) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Bubble(
-        radius: Radius.circular(15.0),
+        radius: const Radius.circular(15.0),
         color: data == 0 ? Colors.blue : Colors.orangeAccent,
         elevation: 0.0,
         alignment: data == 0 ? Alignment.topLeft : Alignment.topRight,
         nip: data == 0 ? BubbleNip.leftBottom : BubbleNip.rightTop,
         child: Padding(
-          padding: EdgeInsets.all(2.0),
+          padding: const EdgeInsets.all(2.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -117,14 +117,14 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                     ? "assets/images/bot.png"
                     : "assets/images/profile.png"),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10.0,
               ),
               Flexible(
                   child: Text(
                 message,
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ))
             ],
           ),
