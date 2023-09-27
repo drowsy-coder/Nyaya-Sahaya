@@ -1,137 +1,293 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' show parse;
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: LawyerReadScreen(),
-  ));
-}
+class NewsScreen extends StatefulWidget {
+  const NewsScreen({Key? key}) : super(key: key);
 
-class LawyerReadScreen extends StatefulWidget {
   @override
-  _LawyerReadScreenState createState() => _LawyerReadScreenState();
+  _NewsScreenState createState() => _NewsScreenState();
 }
 
-class _LawyerReadScreenState extends State<LawyerReadScreen> {
-  List<Map<String, dynamic>> articleDetailsList = [
-    {
-      'title':
-          'Certified Copy Can Be Produced To Prove Original Sale Deed In Trial : Supreme Court',
-      'image': 'assets/images/news0.jpg',
-      'url':
-          'https://www.livelaw.in/supreme-court/certified-copy-can-be-produced-to-prove-original-sale-deed-in-trial-supreme-court-238454'
-    },
-    {
-      'title':
-          'Revision Of OBC Reservation List In Kerala: Supreme Court Issues Contempt Notice To Centre, Kerala Govt & KSCBC',
-      'image': 'assets/images/news1.jpg',
-      'url':
-          'https://www.livelaw.in/top-stories/suprem-court-hearing-contempt-plea-reservation-list-revision-indra-sawhney-judgement-238434'
-    },
-    {
-      'title':
-          'Krishna Janmabhoomi Case | Supreme Court Leaves It Open To Allahabad HC To Decide Plea For Survey Of Shahi Eidgah Mosque',
-      'image': 'assets/images/news2.jpg',
-      'url':
-          'https://www.livelaw.in/top-stories/supreme-court-krishna-janmabhoomi-shahi-eidgah-scientific-survey-238429'
-    },
-    {
-      'title':
-          'Prescribe Minimum Marks Requirement For Languages Other Than Tamil & English Also In TN Schools: Supreme Court In Linguistic Minorities\' Plea',
-      'image': 'assets/images/news3.jpg',
-      'url':
-          'https://www.livelaw.in/supreme-court/suprem-court-tamil-paper-mandatory-10th-class-exam-minority-linguistic-language-tamilnadu-tamil-learning-act-238394'
-    },
-    {
-      'title':
-          'Hindu Marriage Act | Every Amendment Sought To Pleadings Can\'t Be Allowed, Party Must Show Irreparable Injury: Allahabad High Court',
-      'image': 'assets/images/news4.jpg',
-      'url':
-          'https://www.livelaw.in/high-court/allahabad-high-court/allahabad-high-court-ruling-amendment-application-hindu-marriage-act-238450'
-    },
-    {
-      'title':
-          'Passport Act | Police Must Disclose Complete Status Of FIR In Police Verification: Punjab & Haryana High Court',
-      'image': 'assets/images/news5.jpg',
-      'url':
-          'https://www.livelaw.in/high-court/punjab-and-haryana-high-court/punjab-haryana-high-court-passport-police-verification-complete-status-fir-238445'
-    },
-    {
-      'title':
-          'Delhi Court Refuses To Acquit Rajasthan CM Ashok Gehlot In Defamation Case By Union Minister Gajendra Singh Shekhawat',
-      'image': 'assets/images/news6.jpg',
-      'url':
-          'https://www.livelaw.in/news-updates/delhi-court-acquit-rajasthan-chief-minister-ashok-gehlot-defamation-case-union-minister-gajendra-singh-shekhawat-238184'
-    },
-    {
-      'title':
-          'Principles To Prove Validity & Execution Of Will : Supreme Court Explains',
-      'image': 'assets/images/news7.jpg',
-      'url':
-          'https://www.livelaw.in/supreme-court/validity-execution-of-will-supreme-court-explains-238387'
-    },
-    {
-      'title':
-          'Motor Accidents | Legal Representatives Entitled To Compensation Even If Not Dependents Or Legal Heirs: Kerala High Court',
-      'image': 'assets/images/news8.jpg',
-      'url':
-          'https://www.livelaw.in/high-court/kerala-high-court/kerala-high-court-motor-accidents-legal-representatives-entitled-to-compensation-238452'
-    },
-    {
-      'title':
-          'Punjab & Haryana High Court Launches  RTI Portal, Virtual Court For Traffic Challan',
-      'image': 'assets/images/news9.jpg',
-      'url':
-          'https://www.livelaw.in/high-court/punjab-and-haryana-high-court/punjab-haryana-high-court-virtual-court-traffic-challan-rti-portal-238436'
-    },
-  ];
+class _NewsScreenState extends State<NewsScreen> {
+  List<Map<String, String>> articles = [];
+
+  bool showDropDown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse('https://www.livelaw.in/'));
+    if (response.statusCode == 200) {
+      final htmlContent = response.body;
+      setState(() {
+        articles = extractArticles(htmlContent);
+      });
+    }
+  }
+
+  List<Map<String, String>> extractArticles(String htmlContent) {
+    final document = parse(htmlContent);
+    List<Map<String, String>> articlesList = [];
+
+    final highlightLink = document.querySelector(
+        '#level_1 > div > div > div.col-xs-12.col-sm-12.col-md-4.homepage_col11 > div > a');
+    final highlightTitle = document.querySelector(
+        '#level_1 > div > div > div.col-xs-12.col-sm-12.col-md-4.homepage_col11 > div > a > div.col-xs-12.col-sm-7.col-md-12.tab_left > h1');
+    final highlightImage = document.querySelector(
+        '#level_1 > div > div > div.col-xs-12.col-sm-12.col-md-4.homepage_col11 > div > a > div.col-xs-12.col-sm-5.col-md-12 > div > img');
+
+    final otherArticles = extractOtherArticles(document);
+
+    String? imageUrl;
+
+    if (highlightImage != null) {
+      imageUrl = highlightImage.attributes['data-src'] ?? '';
+      if (!imageUrl.startsWith('http') && !imageUrl.startsWith('https')) {
+        imageUrl = 'https://www.livelaw.in$imageUrl';
+      }
+    }
+
+    String? linkUrl;
+
+    if (highlightLink != null) {
+      linkUrl =
+          'https://www.livelaw.in' + (highlightLink.attributes['href'] ?? '');
+    }
+
+    if (highlightLink != null &&
+        highlightTitle != null &&
+        highlightImage != null) {
+      articlesList.add({
+        'title': highlightTitle.text,
+        'link': linkUrl ?? '',
+        'imageSrc': imageUrl ?? '',
+      });
+    }
+
+    articlesList.addAll(otherArticles);
+
+    return articlesList;
+  }
+
+  List<Map<String, String>> extractOtherArticles(document) {
+    List<Map<String, String>> otherArticlesList = [];
+
+    for (int i = 1; i <= 9; i++) {
+      final otherLink = document.querySelector(
+          '#level_4 > div.container.homepage_supreme_court_cntr3 > div > div:nth-child($i) > a');
+      final otherTitle = document.querySelector(
+          '#level_4 > div.container.homepage_supreme_court_cntr3 > div > div:nth-child($i) > a > div > div.col-xs-7.col-sm-7.col-md-7 > h6');
+      final otherImage = document.querySelector(
+          '#level_4 > div.container.homepage_supreme_court_cntr3 > div > div:nth-child($i) > a > div > div.col-xs-5.col-sm-5.col-md-5 > div > img');
+
+      if (otherLink != null && otherTitle != null && otherImage != null) {
+        String? otherImageUrl = otherImage.attributes['data-src'] ?? '';
+        if (!otherImageUrl!.startsWith('http') &&
+            !otherImageUrl.startsWith('https')) {
+          otherImageUrl = 'https://www.livelaw.in$otherImageUrl';
+        }
+
+        String? otherLinkUrl =
+            'https://www.livelaw.in' + (otherLink.attributes['href'] ?? '');
+
+        otherArticlesList.add({
+          'title': otherTitle.text,
+          'link': otherLinkUrl,
+          'imageSrc': otherImageUrl,
+        });
+      }
+    }
+
+    return otherArticlesList;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Legal News'),
+        title: const Text('Legal News', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
       ),
+      backgroundColor: Colors.black,
       body: ListView(
-        padding: const EdgeInsets.all(10),
-        children: <Widget>[
-          for (var article in articleDetailsList)
-            Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+        children: [
+          if (articles.isNotEmpty)
+            InkWell(
+              onTap: () => launchUrl(Uri.parse(articles[0]['link']!)),
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        articles[0]['imageSrc']!,
+                        width: double.infinity,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[800],
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      articles[0]['title']!,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              margin: const EdgeInsets.all(10),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(10),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.asset(
-                    article['image'],
-                    width: 100,
-                    height: 199,
-                    fit: BoxFit.cover,
+            ),
+          // High Court Articles Section
+          if (articles.length > 1)
+            Column(
+              children: [
+                // Display the first two high court articles
+                for (var article in articles.sublist(1, 3))
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[800],
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: InkWell(
+                      onTap: () => launchUrl(Uri.parse(article['link']!)),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                article['imageSrc']!,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    article['title']!,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                // Show More Articles Button
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey[900])),
+                    onPressed: () {
+                      setState(() {
+                        showDropDown = !showDropDown;
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(showDropDown
+                            ? "Hide Articles"
+                            : "Show More Articles"),
+                        Icon(
+                          showDropDown
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                          size: 24,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                title: Text(
-                  article['title'],
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                onTap: () {
-                  _launchURL(article['url']);
-                },
-              ),
+              ],
+            ),
+          // Dropdown Articles (Hidden by Default)
+          if (showDropDown)
+            Column(
+              children: articles.sublist(3).map((article) {
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[800],
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: InkWell(
+                    onTap: () => launchUrl(Uri.parse(article['link']!)),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              article['imageSrc']!,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  article['title']!,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
         ],
       ),
     );
-  }
-
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
