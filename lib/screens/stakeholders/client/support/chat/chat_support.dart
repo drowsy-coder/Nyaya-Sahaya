@@ -55,7 +55,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               height: 6.0,
             ),
             Container(
-              padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
+              padding:
+                  const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Row(
                 children: <Widget>[
@@ -123,8 +124,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               Flexible(
                   child: Text(
                 message,
-                style:
-                    const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
               ))
             ],
           ),
