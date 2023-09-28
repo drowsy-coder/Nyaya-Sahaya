@@ -1,6 +1,6 @@
 enum UserRole {
   lawyer,
-  client,
+  client, courtOfficial,
 }
 
 String userRoleToString(UserRole role) {
