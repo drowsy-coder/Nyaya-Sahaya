@@ -6,7 +6,8 @@ class LawyerClientChat extends StatefulWidget {
   final String recvName;
   final String senderEmail;
 
-  LawyerClientChat({super.key, 
+  const LawyerClientChat({
+    super.key,
     required this.recvEmail,
     required this.recvName,
     required this.senderEmail,
@@ -53,10 +54,10 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat with ${widget.recvName}'),
-        backgroundColor: Colors.black, // Adjust the app bar color
+        backgroundColor: Colors.black,
       ),
       body: Container(
-        color: Colors.grey[900], // Adjust the background color
+        color: Colors.grey[900],
         child: Column(
           children: <Widget>[
             Expanded(
@@ -94,8 +95,7 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color:
-                      Colors.grey[800], // Adjust input field background color
+                  color: Colors.grey[800],
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
@@ -111,22 +111,22 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                     Expanded(
                       child: TextField(
                         controller: messageController,
-                        style:
-                            const TextStyle(color: Colors.white), // Adjust text color
+                        style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           hintText: 'Enter your message...',
-                          hintStyle: TextStyle(
-                              color: Colors.white70), // Adjust hint text color
+                          hintStyle: TextStyle(color: Colors.white70),
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 16, vertical: 14),
                           border: InputBorder.none,
                         ),
+                        minLines: 1,
+                        maxLines: 3,
                       ),
                     ),
                     IconButton(
                       icon: const Icon(Icons.send),
                       onPressed: sendMessage,
-                      color: Colors.blue, // Adjust send button color
+                      color: Colors.blue,
                     ),
                   ],
                 ),
@@ -144,7 +144,8 @@ class MessageWidget extends StatelessWidget {
   final bool isMe;
   final String recvName;
 
-  MessageWidget({super.key, 
+  const MessageWidget({
+    super.key,
     required this.text,
     required this.isMe,
     required this.recvName,
@@ -163,41 +164,44 @@ class MessageWidget extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
-              color: isMe ? Colors.blue : Colors.green, // Adjust text color
+              color: isMe ? Colors.blue : Colors.green,
             ),
           ),
           const SizedBox(height: 4),
           Hero(
             tag: 'chat_bubble_${text.hashCode}',
             child: Material(
-              color: isMe
-                  ? Colors.blue[700]
-                  : Colors.grey[700], // Adjust bubble color
+              color: isMe ? Colors.blue[700] : Colors.grey[700],
               borderRadius: BorderRadius.circular(16),
               elevation: 2,
               child: InkWell(
-                onTap: () {
-                  // Handle chat bubble tap
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (!isMe) const Icon(Icons.person, color: Colors.blue),
-                      const SizedBox(width: 8),
-                      Text(
-                        text,
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: isMe
-                                ? Colors.white
-                                : Colors.white, // Adjust text color
-                            fontWeight: FontWeight.w600),
-                      ),
-                      if (isMe)
-                        const Icon(Icons.check, color: Colors.green, size: 16),
-                    ],
+                onTap: () {},
+                child: FractionallySizedBox(
+                  widthFactor:
+                      0.6, // Adjust this value for the desired width (40-45%)
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (!isMe) const Icon(Icons.person, color: Colors.blue),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            text,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: isMe ? Colors.white : Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            softWrap: true, // Allow text to wrap to a new line
+                          ),
+                        ),
+                        if (isMe)
+                          const Icon(Icons.check,
+                              color: Colors.green, size: 16),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -207,14 +211,4 @@ class MessageWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: LawyerClientChat(
-      recvEmail: 'receiver@example.com',
-      recvName: 'Receiver Name',
-      senderEmail: 'sender@example.com',
-    ),
-  ));
 }

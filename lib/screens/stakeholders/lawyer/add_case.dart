@@ -75,15 +75,10 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: const Text('Add Case',
-            style: TextStyle(
-                fontFamily: 'Pacifico',
-                color: Colors.black,
-                fontWeight: FontWeight.w600)),
+        title: const Text('Add Case'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.black),
+            icon: Icon(Icons.add), // You can use any icon you prefer
             onPressed: () {
               Navigator.push(
                 context,
@@ -94,140 +89,130 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
         ],
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey[700],
-                  ),
-                  child: Image.asset('assets/images/2689736.png',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/2689736.png',
                       height: 120, width: 120),
-                ),
-                const SizedBox(height: 24),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.black,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[700]!.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Form(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextFormField(
-                          controller: _clientEmailController,
-                          decoration: InputDecoration(
-                            labelText: 'Client Email',
-                            border: const OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[900],
-                            icon: const Icon(Icons.email, color: Colors.blue),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter the client\'s email';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        TextFormField(
-                          controller: _clientNameController,
-                          decoration: InputDecoration(
-                            labelText: 'Client Name',
-                            border: const OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[900],
-                            icon: const Icon(Icons.person, color: Colors.red),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter the client\'s name';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        TextFormField(
-                          controller: _ipcSectionsController,
-                          decoration: InputDecoration(
-                            labelText: 'IPC Sections Violated',
-                            border: const OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[900],
-                            icon: const Icon(Icons.assignment, color: Colors.yellow),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter the IPC sections violated';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        GestureDetector(
-                          onTap: () => _selectDate(context),
-                          child: AbsorbPointer(
-                            child: TextFormField(
-                              controller: _nextHearingDateController,
-                              decoration: InputDecoration(
-                                labelText: 'Next Hearing Date',
-                                border: const OutlineInputBorder(),
-                                filled: true,
-                                fillColor: Colors.grey[900],
-                                suffixIcon: const Icon(
-                                  Icons.calendar_today,
-                                  color: Colors.green,
-                                ),
-                                icon: const Icon(
-                                  Icons.date_range,
-                                  color: Colors.purple,
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please select the next hearing date';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: _submitCase,
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.pinkAccent),
-                          ),
-                          child: const Text(
-                            'Submit',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                  const SizedBox(height: 16),
+                ],
+              ),
             ),
-          ),
+            Container(
+              width: 380,
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.grey[900],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[800]!,
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextFormField(
+                      controller: _clientEmailController,
+                      decoration: InputDecoration(
+                        labelText: 'Client Email',
+                        border: const OutlineInputBorder(),
+                        filled: true,
+                        fillColor: Colors.grey[900],
+                        icon: const Icon(Icons.email, color: Colors.blue),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the client\'s email';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _clientNameController,
+                      decoration: InputDecoration(
+                        labelText: 'Client Name',
+                        border: const OutlineInputBorder(),
+                        filled: true,
+                        fillColor: Colors.grey[900],
+                        icon: const Icon(Icons.person, color: Colors.red),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the client\'s name';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _ipcSectionsController,
+                      decoration: InputDecoration(
+                        labelText: 'IPC Sections Violated',
+                        border: const OutlineInputBorder(),
+                        filled: true,
+                        fillColor: Colors.grey[900],
+                        icon:
+                            const Icon(Icons.assignment, color: Colors.yellow),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the IPC sections violated';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    GestureDetector(
+                      onTap: () => _selectDate(context),
+                      child: AbsorbPointer(
+                        child: TextFormField(
+                          controller: _nextHearingDateController,
+                          decoration: InputDecoration(
+                            labelText: 'Next Hearing Date',
+                            border: const OutlineInputBorder(),
+                            filled: true,
+                            fillColor: Colors.grey[900],
+                            suffixIcon: const Icon(Icons.calendar_today,
+                                color: Colors.green),
+                            icon: const Icon(Icons.date_range,
+                                color: Colors.white),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please select the next hearing date';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _submitCase,
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.purple),
+                      ),
+                      child: const Text('Submit'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const Spacer(),
+          ],
         ),
       ),
     );
