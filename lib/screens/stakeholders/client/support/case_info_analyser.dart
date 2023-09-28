@@ -31,7 +31,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
 
   List<FirInfo> firData = [
     FirInfo(
-      ipcSection: '279',
+      ipcSection: '498A',
       nameOfCrime: 'Murder',
       punishment: 'Death or life sentence and fine',
       bailable: 'Non-bailable',
@@ -203,9 +203,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                 child: ElevatedButton(
                   onPressed: pickAndParsePDF,
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    padding: const EdgeInsets.all(16.0),
-                    backgroundColor: Colors.yellow,
+                    foregroundColor: Colors.black, padding: const EdgeInsets.all(16.0), backgroundColor: Colors.yellow,
                     elevation: 8.0,
                   ),
                   child: const Text(

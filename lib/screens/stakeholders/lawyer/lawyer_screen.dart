@@ -29,11 +29,11 @@ class LawyerScreen extends StatefulWidget {
 class _LawyerScreenState extends State<LawyerScreen> {
   int _selectedIndex = 0;
 
-  // Define your screens as a static list
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const LawyerHomePage(), icon: Icons.home, text: "Home"),
     ScreenModel(screen: LawyerChatScreen(), icon: Icons.chat, text: "Chat"),
-    ScreenModel(screen: const NewsScreen(), icon: Icons.read_more, text: "Read"),
+    ScreenModel(
+        screen: const NewsScreen(), icon: Icons.read_more, text: "Read"),
     ScreenModel(
         screen: const LawyerAddCase(), icon: Icons.add, text: "Add Case"),
   ];

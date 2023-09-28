@@ -22,17 +22,14 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   Future<void> fetchData() async {
-  final uri = Uri.https('www.livelaw.in', '');
-  final response = await http.get(uri);
-
-  if (response.statusCode == 200) {
-    final htmlContent = response.body;
-    setState(() {
-      articles = extractArticles(htmlContent);
-    });
+    final response = await http.get(Uri.parse('https://www.livelaw.in/'));
+    if (response.statusCode == 200) {
+      final htmlContent = response.body;
+      setState(() {
+        articles = extractArticles(htmlContent);
+      });
+    }
   }
-}
-
 
   List<Map<String, String>> extractArticles(String htmlContent) {
     final document = parse(htmlContent);

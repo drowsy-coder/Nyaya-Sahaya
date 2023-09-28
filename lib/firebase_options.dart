@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,7 +31,10 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -46,30 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA-g7v3SUbPfAGQmPpjSY0VJYzXjK0v1SU',
-    appId: '1:1034164058516:web:429070eb256899b861f781',
-    messagingSenderId: '1034164058516',
-    projectId: 'testlaw-7aced',
-    authDomain: 'testlaw-7aced.firebaseapp.com',
-    storageBucket: 'testlaw-7aced.appspot.com',
-    measurementId: 'G-P2EGY7LS6Y',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBJuTdzZWhPBFzOC8LmToGjmFpktA1ZEvw',
     appId: '1:1034164058516:android:0f6b48a5ea83e93461f781',
     messagingSenderId: '1034164058516',
     projectId: 'testlaw-7aced',
     storageBucket: 'testlaw-7aced.appspot.com',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDSEBY8SHQ6vRsTf3KM2UF0iiN8t79WVOE',
-    appId: '1:1034164058516:ios:af95afc66f36ccb261f781',
-    messagingSenderId: '1034164058516',
-    projectId: 'testlaw-7aced',
-    storageBucket: 'testlaw-7aced.appspot.com',
-    iosBundleId: 'com.sunflower.law.RunnerTests',
   );
 }
