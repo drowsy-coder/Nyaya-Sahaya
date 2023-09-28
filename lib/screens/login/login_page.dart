@@ -78,6 +78,8 @@ class _LoginPageState extends State<LoginPage> {
     _prefs.setString('email', email);
     _prefs.setString('identifier', identifier);
     _prefs.setString('userRole', userRoleToString(_userRole));
+    _prefs.setBool('isLoggedIn',
+        true); // Set login state for both new and existing accounts
   }
 
   Future<void> _signInWithEmail(
