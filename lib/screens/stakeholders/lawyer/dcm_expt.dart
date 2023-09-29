@@ -23,7 +23,7 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
   // Calculate the coefficient based on the formula
   double calculateCoefficient(Map<String, dynamic> caseData, int totalEntries) {
     // Extract necessary data from caseData map
-    String caseId = caseData['caseId'];
+    // String caseId = caseData['caseId'];
     String dateOfFiling = caseData['dateOfFiling'];
     int completedHearings = caseData['completedHearings'];
     int adjournments = caseData['adjournments'];
@@ -34,7 +34,7 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
         DateTime.parse(dateOfFiling).millisecondsSinceEpoch;
 
     // Calculate coefficient using the provided formula
-    double coefficient = timeDifferenceScore + (totalEntries * 0.2);
+    double coefficient = (timeDifferenceScore + (totalEntries * 0.2) + completedHearings + adjournments + advocates) ;
 
     return coefficient;
   }
