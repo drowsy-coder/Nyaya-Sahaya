@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: "1227dc3efc4ea571eebb2dfb814506ed2cfb1d4b1b89fb918abdddde617ead3c"
+      sha256: "20071638cbe4e5964a427cfa0e86dce55d060bc7d82d56f3554095d7239a8765"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.0"
+    version: "3.4.2"
   args:
     dependency: transitive
     description:
@@ -452,10 +452,10 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "6e703d5e2f8c63fb31a77753915c1ec8baebde8088844e0d29f71b8f0b108888"
+      sha256: "028f61960d56f26414eb616b48b04eb37d700cbe477b7fb09bf1d7ce57fd9271"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "4.1.3"
   image_picker:
     dependency: "direct main"
     description:
@@ -468,10 +468,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_android
-      sha256: "47da2161c2e9f8f8a9cbbd89d466d174333fbdd769aeed848912e0b16d9cb369"
+      sha256: "0c7b83bbe2980c8a8e36e974f055e11e51675784e13a4762889feed0f3937ff2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.8"
+    version: "0.8.8+1"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -636,10 +636,10 @@ packages:
     dependency: transitive
     description:
       name: open_filex
-      sha256: "854aefd72dfd74219dc8c8d1767c34ec1eae64b8399a5be317bddb1ec2108915"
+      sha256: a6c95237767c5647e68b71a476602fcf4f1bfc530c126265e53addae22ef5fc2
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.2"
+    version: "4.3.4"
   path:
     dependency: "direct main"
     description:
@@ -772,10 +772,10 @@ packages:
     dependency: transitive
     description:
       name: sanitize_html
-      sha256: "0a445f19bbaa196f5a4f93461aa066b94e6e025622eb1e9bc77872a5e25233a5"
+      sha256: "12669c4a913688a26555323fb9cec373d8f9fbe091f2d01c40c723b33caa8989"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1001,10 +1001,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: c97defd418eef4ec88c0d1652cdce84b9f7b63dd7198e266d06ac1710d527067
+      sha256: "350a11abd2d1d97e0cc7a28a81b781c08002aa2864d9e3f192ca0ffa18b06ed3"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.8"
+    version: "5.0.9"
   xdg_directories:
     dependency: transitive
     description:
