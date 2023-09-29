@@ -13,23 +13,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // final LocalAuthentication auth = LocalAuthentication();
-  // bool authenticated = false;
-
-  // try {
-  //   authenticated = await auth.authenticate(
-  //     localizedReason: 'Verify Fingerprint to Unlock the App',
-  //     options: const AuthenticationOptions(
-  //       stickyAuth: true,
-  //       biometricOnly: true,
-  //     ),
-  //   );
-  // } catch (e) {
-  // }
-
-  // if (authenticated) {
+ 
     runApp(const MyApp());
-  // }
+  
 }
 
 class MyApp extends StatelessWidget {
