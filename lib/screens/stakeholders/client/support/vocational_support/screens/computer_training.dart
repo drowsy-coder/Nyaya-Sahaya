@@ -3,9 +3,11 @@ import 'package:law/screens/stakeholders/client/support/mental/m_player.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: ComputerTrainingScreen(),
-  ));
+  runApp(
+    MaterialApp(
+      home: ComputerTrainingScreen(),
+    ),
+  );
 }
 
 class ComputerTrainingScreen extends StatelessWidget {

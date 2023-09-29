@@ -168,6 +168,14 @@ class _BailAppViewState extends State<BailAppView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Generate Bail Application'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout), // You can use any icon you prefer
+            onPressed: () {
+              LogoutButton();
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -178,7 +186,6 @@ class _BailAppViewState extends State<BailAppView> {
               style: TextStyle(fontSize: 24.0),
               textAlign: TextAlign.center,
             ),
-            LogoutButton(),
             const SizedBox(height: 8.0),
             Form(
               key: _formKey,

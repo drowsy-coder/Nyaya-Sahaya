@@ -112,9 +112,9 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Legal News', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black38,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black38,
       body: ListView(
         children: [
           if (articles.isNotEmpty)

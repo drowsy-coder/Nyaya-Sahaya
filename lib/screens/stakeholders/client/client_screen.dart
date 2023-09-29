@@ -5,6 +5,7 @@ import 'package:law/screens/stakeholders/client/client_chat/client_chat_screen.d
 import 'package:law/screens/stakeholders/client/client_home/client_home.dart';
 import 'package:law/screens/stakeholders/client/client_support_screen.dart';
 import 'package:law/screens/stakeholders/client/client_lawyer_map.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 
 class ScreenModel {
   final Widget screen;
@@ -30,7 +31,8 @@ class _ClientScreenState extends State<ClientScreen> {
 
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const ClientHomePage(), icon: Icons.home, text: "Home"),
-    ScreenModel(screen: const ClientChatScreen(), icon: Icons.chat, text: "Chat"),
+    ScreenModel(
+        screen: const ClientChatScreen(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: const ClientSupportScreen(),
         icon: Icons.support_agent,
@@ -43,34 +45,34 @@ class _ClientScreenState extends State<ClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[_selectedIndex].screen,
-      bottomNavigationBar: Container(
-        color: Colors.black38,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: GNav(
-            gap: 7,
-            padding: const EdgeInsets.all(16),
-            tabs: List.generate(
-              screens.length,
-              (index) => GButton(
-                icon: screens[index].icon,
-                text: screens[index].text,
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-                backgroundColor: _selectedIndex == index
-                    ? Colors.yellow
-                    : Colors.grey.shade800,
-                textColor:
-                    _selectedIndex == index ? Colors.black : Colors.white,
-                iconActiveColor: Colors.black,
-              ),
-            ),
-            selectedIndex: _selectedIndex,
+      extendBody: true,
+      bottomNavigationBar: DotNavigationBar(
+        backgroundColor: Colors.black,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: [
+          DotNavigationBarItem(
+            icon: const Icon(Icons.home),
+            selectedColor: Colors.yellow,
           ),
-        ),
+          DotNavigationBarItem(
+            icon: const Icon(Icons.chat),
+            selectedColor: Colors.yellow,
+          ),
+          DotNavigationBarItem(
+            icon: const Icon(Icons.read_more),
+            selectedColor: Colors.yellow,
+          ),
+          DotNavigationBarItem(
+            icon: const Icon(Icons.add),
+            selectedColor: Colors.yellow,
+          ),
+        ],
+        selectedItemColor: Colors.yellow,
+        unselectedItemColor: Colors.white,
       ),
     );
   }

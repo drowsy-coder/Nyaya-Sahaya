@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nyaya Sahaya',
       theme: ThemeData.dark(),
-      home: AuthWrapper(),
+      home: const AuthWrapper(),
       debugShowCheckedModeBanner: false,
     );
   }
