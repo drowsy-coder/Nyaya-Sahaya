@@ -99,7 +99,7 @@ class LoginUI extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () => onUserRoleChanged(UserRole.lawyer),
                       style: ElevatedButton.styleFrom(
-                        primary: userRole == UserRole.lawyer
+                        backgroundColor: userRole == UserRole.lawyer
                             ? Colors.orange
                             : Colors.grey[800],
                         padding: const EdgeInsets.symmetric(
@@ -123,7 +123,7 @@ class LoginUI extends StatelessWidget {
                       onPressed: () =>
                           onUserRoleChanged(UserRole.courtOfficial),
                       style: ElevatedButton.styleFrom(
-                        primary: userRole == UserRole.courtOfficial
+                        backgroundColor: userRole == UserRole.courtOfficial
                             ? Colors.white
                             : Colors.grey[800],
                         padding: const EdgeInsets.symmetric(
@@ -149,7 +149,7 @@ class LoginUI extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => onUserRoleChanged(UserRole.client),
                   style: ElevatedButton.styleFrom(
-                    primary: userRole == UserRole.client
+                    backgroundColor: userRole == UserRole.client
                         ? Colors.green
                         : Colors.grey[800],
                     padding: const EdgeInsets.symmetric(

@@ -18,7 +18,7 @@ class LawyerHomePage extends StatelessWidget {
         title: const Text('Lawyer Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               // Logout logic
             },
@@ -34,30 +34,30 @@ class LawyerHomePage extends StatelessWidget {
               SizedBox(
                 width: 250, // Adjust the card width as needed
                 height: cardHeight, // Set card height
-                child: DashboardHeader(
+                child: const DashboardHeader(
                   iconName: Icons.query_builder_outlined,
                   cardText: 'Cases Pending',
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               SizedBox(
                 width: 250, // Adjust the card width as needed
                 height: cardHeight, // Set card height
-                child: DashboardHeader(
+                child: const DashboardHeader(
                   iconName: Icons.star,
                   cardText: 'Starred Cases',
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               SizedBox(
                 width: 250, // Adjust the card width as needed
                 height: cardHeight, // Set card height
-                child: DashboardHeader(
+                child: const DashboardHeader(
                   iconName: Icons.check,
                   cardText: 'Completed Cases',
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
             ],
           ),
         ),
@@ -82,7 +82,7 @@ class DashboardHeader extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14.0),
-        side: BorderSide(color: Colors.blue),
+        side: const BorderSide(color: Colors.blue),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -102,7 +102,7 @@ class DashboardHeader extends StatelessWidget {
             child: Text(
               cardText,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 18.0),
             ),
           ),
         ],
