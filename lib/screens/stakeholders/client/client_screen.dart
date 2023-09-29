@@ -44,36 +44,35 @@ class _ClientScreenState extends State<ClientScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex].screen,
-      extendBody: true,
-      bottomNavigationBar: DotNavigationBar(
-        backgroundColor: Colors.black,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: [
-          DotNavigationBarItem(
-            icon: const Icon(Icons.home),
-            selectedColor: Colors.yellow,
-          ),
-          DotNavigationBarItem(
-            icon: const Icon(Icons.chat),
-            selectedColor: Colors.yellow,
-          ),
-          DotNavigationBarItem(
-            icon: const Icon(Icons.read_more),
-            selectedColor: Colors.yellow,
-          ),
-          DotNavigationBarItem(
-            icon: const Icon(Icons.add),
-            selectedColor: Colors.yellow,
-          ),
-        ],
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.white,
-      ),
-    );
+        body: screens[_selectedIndex].screen,
+        extendBody: true,
+        bottomNavigationBar: DotNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            backgroundColor: Colors.black,
+            items: [
+              DotNavigationBarItem(
+                icon: const Icon(Icons.home),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.chat),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.read_more),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.add),
+                selectedColor: Colors.yellow,
+              ),
+            ],
+            selectedItemColor: Colors.yellow,
+            unselectedItemColor: Colors.white));
   }
 }
