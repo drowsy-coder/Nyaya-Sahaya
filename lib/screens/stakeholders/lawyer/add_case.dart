@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:law/screens/stakeholders/lawyer/bail_app.dart';
+import 'package:law/widgets/buttons/logout_button.dart';
 
 class LawyerAddCase extends StatefulWidget {
   const LawyerAddCase({Key? key});
@@ -18,6 +19,12 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
   final TextEditingController _nextHearingDateController =
       TextEditingController();
   DateTime? _selectedDate;
+
+  // Variables to track focus status for each text field
+  bool _clientEmailFocused = false;
+  bool _clientNameFocused = false;
+  bool _ipcSectionsFocused = false;
+  bool _nextHearingDateFocused = false;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = (await showDatePicker(
@@ -72,18 +79,34 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Case'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add), // You can use any icon you prefer
+            icon: const Icon(Icons.book), // You can use any icon you prefer
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => BailAppView()),
               );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout), // You can use any icon you prefer
+            onPressed: () {
+              LogoutButton();
             },
           ),
         ],
@@ -125,17 +148,34 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                     TextFormField(
                       controller: _clientEmailController,
                       decoration: InputDecoration(
-                        labelText: 'Client Email',
-                        border: const OutlineInputBorder(),
-                        filled: true,
-                        fillColor: Colors.grey[900],
-                        icon: const Icon(Icons.email, color: Colors.blue),
-                      ),
+                          labelText: 'Client Email',
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              width: _clientEmailFocused ? 3 : 1,
+                              color: Colors.lightBlueAccent,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[900],
+                          icon: const Icon(
+                            Icons.email,
+                            color: Colors.lightBlueAccent,
+                          )),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter the client\'s email';
                         }
                         return null;
+                      },
+                      // Set a listener for focus changes
+                      onTap: () {
+                        setState(() {
+                          _clientEmailFocused = true;
+                          _clientNameFocused = false;
+                          _ipcSectionsFocused = false;
+                          _nextHearingDateFocused = false;
+                        });
                       },
                     ),
                     const SizedBox(height: 16),
@@ -143,7 +183,13 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                       controller: _clientNameController,
                       decoration: InputDecoration(
                         labelText: 'Client Name',
-                        border: const OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            width: _clientNameFocused ? 3 : 1,
+                            color: Colors.redAccent,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                         filled: true,
                         fillColor: Colors.grey[900],
                         icon: const Icon(Icons.person, color: Colors.red),
@@ -154,13 +200,28 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                         }
                         return null;
                       },
+                      // Set a listener for focus changes
+                      onTap: () {
+                        setState(() {
+                          _clientEmailFocused = false;
+                          _clientNameFocused = true;
+                          _ipcSectionsFocused = false;
+                          _nextHearingDateFocused = false;
+                        });
+                      },
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _ipcSectionsController,
                       decoration: InputDecoration(
                         labelText: 'IPC Sections Violated',
-                        border: const OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            width: _ipcSectionsFocused ? 3 : 1,
+                            color: Colors.yellowAccent,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                         filled: true,
                         fillColor: Colors.grey[900],
                         icon:
@@ -172,6 +233,15 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                         }
                         return null;
                       },
+                      // Set a listener for focus changes
+                      onTap: () {
+                        setState(() {
+                          _clientEmailFocused = false;
+                          _clientNameFocused = false;
+                          _ipcSectionsFocused = true;
+                          _nextHearingDateFocused = false;
+                        });
+                      },
                     ),
                     const SizedBox(height: 16),
                     GestureDetector(
@@ -181,7 +251,13 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                           controller: _nextHearingDateController,
                           decoration: InputDecoration(
                             labelText: 'Next Hearing Date',
-                            border: const OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                width: _nextHearingDateFocused ? 3 : 1,
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                             filled: true,
                             fillColor: Colors.grey[900],
                             suffixIcon: const Icon(Icons.calendar_today,
@@ -195,6 +271,15 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                             }
                             return null;
                           },
+                          // Set a listener for focus changes
+                          onTap: () {
+                            setState(() {
+                              _clientEmailFocused = false;
+                              _clientNameFocused = false;
+                              _ipcSectionsFocused = false;
+                              _nextHearingDateFocused = true;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -203,9 +288,12 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
                       onPressed: _submitCase,
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.purple),
+                            MaterialStateProperty.all(Colors.amberAccent),
                       ),
-                      child: const Text('Submit'),
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                      ),
                     ),
                   ],
                 ),
@@ -218,3 +306,63 @@ class _LawyerAddCaseState extends State<LawyerAddCase> {
     );
   }
 }
+
+
+
+/**
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:law/screens/stakeholders/lawyer/bail_app.dart';
+import 'package:law/widgets/buttons/logout_button.dart';
+
+class LawyerAddCase extends StatefulWidget {
+  const LawyerAddCase({Key? key});
+
+  @override
+  _LawyerAddCaseState createState() => _LawyerAddCaseState();
+}
+
+class _LawyerAddCaseState extends State<LawyerAddCase> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _clientEmailController = TextEditingController();
+  final TextEditingController _clientNameController = TextEditingController();
+  final TextEditingController _ipcSectionsController = TextEditingController();
+  final TextEditingController _nextHearingDateController =
+      TextEditingController();
+  DateTime? _selectedDate;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            Container(
+              width: 380,
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.grey[900],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[800]!,
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              ,
+            ),
+            const Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+**/

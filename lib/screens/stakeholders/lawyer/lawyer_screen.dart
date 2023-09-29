@@ -6,6 +6,7 @@ import 'package:law/screens/stakeholders/lawyer/add_case.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_chat/lawyer_chat.dart';
 import 'package:law/screens/stakeholders/lawyer/home/lawyer_home.dart';
 import 'package:law/screens/stakeholders/lawyer/lawyer_read.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 
 class ScreenModel {
   final Widget screen;
@@ -41,11 +42,39 @@ class _LawyerScreenState extends State<LawyerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex].screen,
-      bottomNavigationBar: Container(
-        color: Colors.black38,
+        body: screens[_selectedIndex].screen,
+        extendBody: true,
+        bottomNavigationBar: DotNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            backgroundColor: Colors.black,
+            items: [
+              DotNavigationBarItem(
+                icon: const Icon(Icons.home),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.chat),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.read_more),
+                selectedColor: Colors.yellow,
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(Icons.add),
+                selectedColor: Colors.yellow,
+              ),
+            ],
+            selectedItemColor: Colors.yellow,
+            unselectedItemColor: Colors.white
+            /**,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          ,
           child: GNav(
             gap: 7,
             padding: const EdgeInsets.all(16),
@@ -69,8 +98,7 @@ class _LawyerScreenState extends State<LawyerScreen> {
             ),
             selectedIndex: _selectedIndex,
           ),
-        ),
-      ),
-    );
+          **/
+            ));
   }
 }
