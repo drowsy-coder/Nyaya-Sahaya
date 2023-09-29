@@ -169,7 +169,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ),
       body: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.8,
+        height: MediaQuery.of(context).size.height,
         child: GoogleMap(
           initialCameraPosition: _initialCameraPosition,
           markers: Set<Marker>.of(_markers),
