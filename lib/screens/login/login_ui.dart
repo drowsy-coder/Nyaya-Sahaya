@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../models/user_role.dart';
 
 class LoginUI extends StatelessWidget {
@@ -51,18 +52,17 @@ class LoginUI extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16.0),
               child: Material(
-                elevation: 10, // Adjust the elevation for depth
-                borderRadius: BorderRadius.circular(15), // Add rounded corners
+                elevation: 10,
+                borderRadius: BorderRadius.circular(15),
                 child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.circular(15), // Add rounded corners
+                  borderRadius: BorderRadius.circular(15),
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
                           Colors.black,
                           Colors.grey[800]!,
-                        ], // Add gradient colors
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -72,18 +72,45 @@ class LoginUI extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(
-                          'assets/images/law.png',
-                          width: 60,
-                          height: 60,
+                          'assets/images/402-legal-balance-legal-unscreen.gif',
+                          width: 70,
+                          height: 70,
                         ),
-                        const Text(
-                          'न्याय Sahaya',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        RichText(
+                          text: const TextSpan(
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'न्याय ',
+                                style: TextStyle(
+                                    color: Colors.lightBlueAccent,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 26),
+                              ),
+                              TextSpan(
+                                text: 'Sa',
+                                style: TextStyle(
+                                  color: Colors.orange,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'ha',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'ya',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),
@@ -136,7 +163,7 @@ class LoginUI extends StatelessWidget {
                         'Court Official',
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.bold,
                           color: userRole == UserRole.courtOfficial
                               ? Colors.blueAccent
                               : Colors.grey[600],
@@ -179,26 +206,38 @@ class LoginUI extends StatelessWidget {
             if (userRole == UserRole.lawyer)
               _buildTextFormField(identifierController, 'Bar Number'),
             if (userRole == UserRole.client) const SizedBox(height: 20),
-            if (userRole == UserRole.client)
-              _buildTextFormField(identifierController, 'Case Number'),
             if (userRole == UserRole.courtOfficial) const SizedBox(height: 20),
             if (userRole == UserRole.courtOfficial)
               _buildTextFormField(identifierController, 'Court ID Number'),
             const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: onFormSubmitted,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent,
-                padding: const EdgeInsets.all(16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: Text(
-                isLoginForm ? 'Login' : 'Create Account',
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                child: ElevatedButton(
+                  onPressed: onFormSubmitted,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding: const EdgeInsets.all(16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Image.asset(
+                        isLoginForm
+                            ? 'assets/images/key.png'
+                            : 'assets/images/plus.png',
+                        width: 30,
+                        height: 30,
+                      ),
+                      Text(
+                        isLoginForm ? 'Login' : 'Create Account',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                )),
             const SizedBox(height: 10),
             TextButton(
               onPressed: onToggleFormMode,
@@ -208,7 +247,7 @@ class LoginUI extends StatelessWidget {
               ),
             ),
             if (isLoading) const SizedBox(height: 20),
-            if (isLoading) const CircularProgressIndicator(),
+            // if (isLoading) const CircularProgressIndicator(),
           ],
         ),
       ),
@@ -217,18 +256,21 @@ class LoginUI extends StatelessWidget {
 
   Widget _buildTextFormField(TextEditingController controller, String labelText,
       {bool isPassword = false}) {
-    return TextFormField(
-      controller: controller,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        labelText: labelText,
-        filled: true,
-        fillColor: Colors.grey[800],
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: TextFormField(
+        controller: controller,
+        style: const TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          labelText: labelText,
+          filled: true,
+          fillColor: Colors.grey[800],
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
         ),
+        obscureText: isPassword,
       ),
-      obscureText: isPassword,
     );
   }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "law",
-    "short_name": "law",
+    "name": "law_help",
+    "short_name": "law_help",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

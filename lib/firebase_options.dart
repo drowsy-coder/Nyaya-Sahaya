@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,39 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBaU3fqDowonA0UoZy3Uz9VcZPntoggVG0',
+    appId: '1:371108091839:web:6e510ed45e404adef3730a',
+    messagingSenderId: '371108091839',
+    projectId: 'law-help-d64da',
+    authDomain: 'law-help-d64da.firebaseapp.com',
+    storageBucket: 'law-help-d64da.appspot.com',
+    measurementId: 'G-DBCJDYM31C',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBJuTdzZWhPBFzOC8LmToGjmFpktA1ZEvw',
-    appId: '1:1034164058516:android:0f6b48a5ea83e93461f781',
-    messagingSenderId: '1034164058516',
-    projectId: 'testlaw-7aced',
-    storageBucket: 'testlaw-7aced.appspot.com',
+    apiKey: 'AIzaSyBet6WxEQ2tHcK6XjM8Lrdjiy_zV4gWph8',
+    appId: '1:371108091839:android:20c91bad385e1efff3730a',
+    messagingSenderId: '371108091839',
+    projectId: 'law-help-d64da',
+    storageBucket: 'law-help-d64da.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCS6nOshCdV03r9pKAFMeDvAAcBtsUJ0lI',
+    appId: '1:371108091839:ios:a6cbeb74ce3124aef3730a',
+    messagingSenderId: '371108091839',
+    projectId: 'law-help-d64da',
+    storageBucket: 'law-help-d64da.appspot.com',
+    iosBundleId: 'com.sunflower.lawHelp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCS6nOshCdV03r9pKAFMeDvAAcBtsUJ0lI',
+    appId: '1:371108091839:ios:e9b418e987d9b782f3730a',
+    messagingSenderId: '371108091839',
+    projectId: 'law-help-d64da',
+    storageBucket: 'law-help-d64da.appspot.com',
+    iosBundleId: 'com.sunflower.lawHelp.RunnerTests',
   );
 }

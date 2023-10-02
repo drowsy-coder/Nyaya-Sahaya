@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../screens/login/login_page.dart';
+import '../../screens/login/login_method.dart';
 
 class LogoutButton extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;

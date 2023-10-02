@@ -1,10 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:law/screens/intro_screen/intro_screen.dart';
-import 'package:law/screens/login/login_page.dart';
-import 'package:local_auth/local_auth.dart';
 import 'firebase_options.dart';
+import 'package:law_help/screens/login/login_method.dart';
+import 'package:law_help/screens/Intro/intro_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,9 +12,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
- 
-    runApp(const MyApp());
-  
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

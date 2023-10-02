@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1034164058516",
-    "project_id": "testlaw-7aced",
-    "storage_bucket": "testlaw-7aced.appspot.com"
+    "project_number": "371108091839",
+    "project_id": "law-help-d64da",
+    "storage_bucket": "law-help-d64da.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1034164058516:android:0f6b48a5ea83e93461f781",
+        "mobilesdk_app_id": "1:371108091839:android:20c91bad385e1efff3730a",
         "android_client_info": {
-          "package_name": "com.sunflower.law"
+          "package_name": "com.sunflower.law_help"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBJuTdzZWhPBFzOC8LmToGjmFpktA1ZEvw"
+          "current_key": "AIzaSyBet6WxEQ2tHcK6XjM8Lrdjiy_zV4gWph8"
         }
       ],
       "services": {
