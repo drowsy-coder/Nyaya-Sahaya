@@ -1,6 +1,6 @@
   Checklist for app description   
 
-current draft completion status - all sections incomplete - indicate status on readme when done: Statuses: a) To be done: Not yet started, if possible work on it; b) In phase [NAME]: being worked upon by NAME; c) Complete [NAME] - completed by name
+current draft completion status - all sections incomplete - indicate status on readme when done: Statuses: a) To be done: Not yet started, if possible work on it; b) In phase [NAME]: being worked upon by NAME; c) Complete [NAME] - completed by name; d) COMP[TIME] - completed, no need to touch again
 current target - 36000 characters (should be increased)
 maximum allowed - 50000 characters
 
