@@ -32,14 +32,26 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
   List<FirInfo> firData = [
     FirInfo(
       ipcSection: '498A',
-      nameOfCrime: 'Murder',
-      punishment: 'Death or life sentence and fine',
+      nameOfCrime: 'Dowry',
+      punishment: 'Life sentence and fine',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '323',
+      nameOfCrime: 'Intentionally causing physical harm',
+      punishment: '1 Year or Fine or Both',
       bailable: 'Non-bailable',
     ),
     FirInfo(
       ipcSection: '375',
       nameOfCrime: 'Sexual Assault',
       punishment: '7 years to life sentence in jail',
+      bailable: 'Non-bailable',
+    ),
+    FirInfo(
+      ipcSection: '13',
+      nameOfCrime: 'Mutinous Activities',
+      punishment: '3 years in jail',
       bailable: 'Non-bailable',
     ),
     FirInfo(
@@ -88,6 +100,30 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
       ipcSection: '415',
       nameOfCrime: 'Cheating',
       punishment: '1 year and fine',
+      bailable: 'Bailable',
+    ),
+    FirInfo(
+      ipcSection: '279',
+      nameOfCrime: 'Negligent Driving',
+      punishment: '6 month and fine',
+      bailable: 'Bailable',
+    ),
+    FirInfo(
+      ipcSection: '337',
+      nameOfCrime: 'Rash Driving',
+      punishment: '6 month and fine',
+      bailable: 'Bailable',
+    ),
+    FirInfo(
+      ipcSection: '143',
+      nameOfCrime: 'Unlawful Assembly',
+      punishment: '1 year and fine',
+      bailable: 'Bailable',
+    ),
+    FirInfo(
+      ipcSection: '341',
+      nameOfCrime: 'Wrongful restraint',
+      punishment: '1 month and fine',
       bailable: 'Bailable',
     ),
   ];
