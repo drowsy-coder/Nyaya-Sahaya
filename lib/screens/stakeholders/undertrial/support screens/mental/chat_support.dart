@@ -4,8 +4,10 @@ import 'dart:io';
 
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:gemini_flutter/gemini_flutter.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
@@ -24,11 +26,16 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       print('No \$API_KEY environment variable');
       exit(1);
     }
-    final model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
-    final prompt = TextPart(query);
-    final response = await model.generateContent([Content.text(prompt.text)]);
-    setState(() {
-      messsages.insert(0, {"data": 0, "message": response.text});
+
+    final gemini = Gemini.init(apiKey: apiKey);
+    gemini.streamGenerateContent(query).listen((response) {
+      setState(() {
+        if (messsages.isNotEmpty && messsages[0]["data"] == 0) {
+          messsages[0]["message"] += "\n${response.output}";
+        } else {
+          messsages.insert(0, {"data": 0, "message": response.output});
+        }
+      });
     });
   }
 
