@@ -1,9 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:io';
+
 import 'package:bubble/bubble.dart';
-import 'package:dialogflow_flutter/googleAuth.dart';
 import 'package:flutter/material.dart';
-import 'package:dialogflow_flutter/dialogflowFlutter.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
@@ -17,15 +19,16 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   List<Map<String, dynamic>> messsages = [];
 
   void response(query) async {
-    AuthGoogle authGoogle =
-        await AuthGoogle(fileJson: "assets/json/dialog_flow_auth.json").build();
-    DialogFlow dialogflow = DialogFlow(authGoogle: authGoogle, language: "en");
-    AIResponse aiResponse = await dialogflow.detectIntent(query);
+    final apiKey = "AIzaSyDfRqoM3eCvhjpxtOfZE_BzuD3eGVojXPU";
+    if (apiKey == null) {
+      print('No \$API_KEY environment variable');
+      exit(1);
+    }
+    final model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
+    final prompt = TextPart(query);
+    final response = await model.generateContent([Content.text(prompt.text)]);
     setState(() {
-      messsages.insert(0, {
-        "data": 0,
-        "message": aiResponse.getListMessage()![0]["text"]["text"][0].toString()
-      });
+      messsages.insert(0, {"data": 0, "message": response.text});
     });
   }
 
@@ -42,7 +45,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
           ),
         ),
         elevation: 10,
-        title: const Text("Dialog Flow Chatbot"),
+        title: const Text("Gemini-Powered Chatbot"),
       ),
       body: Column(
         children: <Widget>[
@@ -58,8 +61,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             height: 6.0,
           ),
           Container(
-            padding:
-                const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
             margin: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
               children: <Widget>[
@@ -123,11 +125,23 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 width: 10.0,
               ),
               Flexible(
-                  child: Text(
-                message,
-                style: const TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ))
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  decoration: BoxDecoration(
+                    color: data == 0 ? Colors.blue : Colors.orangeAccent,
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 20,
+                  ),
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: MarkdownBody(
+                    selectable: true,
+                    data: message,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
