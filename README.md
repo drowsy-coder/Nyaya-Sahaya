@@ -19,7 +19,7 @@ Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the g
 
 India's legal system, designed to protect the rights of its citizens, is plagued by inefficiencies and outdated practices. With over 50 million pending cases at all levels, the process has become sluggish, hindering justice for those involved. Undertrials, unaware of their rights, are vulnerable to exploitation. Lawyers and clients face difficulties in communication and connectivity. Navigating the complex paperwork is a challenge for all stakeholders. Furthermore, the prolonged duration of trials takes a toll on the mental health, vocational prospects, and societal standing of undertrials.
 
-<h2>User Survey</h2>
+<h2>📊 User Survey</h2>
 
 In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
 
@@ -70,7 +70,7 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
   <tr>
     <td><img src="https://imgur.com/UMlSvYu.gif" alt="Response 1"></td>
     <td><img src="https://imgur.com/tVikxHR.gif" alt="Response 1"></td>
-    <td><img src="https://imgur.com/L5PzqyW.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/YQ8IHbw.gif" alt="Response 1"></td>
   </tr>
 </table>
 
