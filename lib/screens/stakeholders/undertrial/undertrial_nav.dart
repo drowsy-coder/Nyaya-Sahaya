@@ -53,18 +53,18 @@ class _ClientScreenState extends State<ClientScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800], // Change the selected item color
-        unselectedItemColor: Colors.grey, // Change the unselected item color
-        backgroundColor: Colors.deepPurple, // Change the background color
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey, 
+        backgroundColor: Colors.deepPurple, 
         type: BottomNavigationBarType
-            .shifting, // Change the type of animation and layout
-        elevation: 20.0, // Add elevation (shadow) to the navigation bar
-        iconSize: 30, // Change the size of icons
+            .shifting, 
+        elevation: 20.0,
+        iconSize: 30, 
         showUnselectedLabels:
-            false, // Decide if you want to show labels for unselected items
-        selectedFontSize: 15, // Change the font size for selected item labels
+            false,
+        selectedFontSize: 15, 
         unselectedFontSize:
-            12, // Change the font size for unselected item labels
+            12, 
         onTap: _onItemTapped,
       ),
     );
