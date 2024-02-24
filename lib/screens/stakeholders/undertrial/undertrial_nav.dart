@@ -1,68 +1,72 @@
-// ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:law_help/screens/stakeholders/undertrial/ut%20map/ut_map.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_chat.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_home.dart';
-import 'package:law_help/screens/stakeholders/undertrial/ut%20map/ut_map.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_support.dart';
 
-import '../../../models/screen_model.dart';
-
 class ClientScreen extends StatefulWidget {
-  const ClientScreen({super.key});
+  const ClientScreen({Key? key}) : super(key: key);
 
   @override
-  _ClientScreenState createState() => _ClientScreenState();
+  State<ClientScreen> createState() => _ClientScreenState();
 }
 
 class _ClientScreenState extends State<ClientScreen> {
   int _selectedIndex = 0;
 
-  static final List<ScreenModel> screens = [
-    ScreenModel(screen: const UTHome(), icon: Icons.home, text: "Home"),
-    ScreenModel(
-        screen: const UTChat(), icon: Icons.chat, text: "Chat"),
-    ScreenModel(
-        screen: const UTSupport(),
-        icon: Icons.support_agent,
-        text: "Support"),
-    ScreenModel(
-        screen: const UTMap(), icon: Icons.gps_fixed, text: "Find Lawyer"),
+  static final List<Widget> _widgetOptions = [
+    const UTHome(),
+    const UTChat(),
+    const UTSupport(),
+    const UTMap(),
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex].screen,
-      extendBody: true,
-      bottomNavigationBar: DotNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          backgroundColor: Colors.black,
-          items: [
-            DotNavigationBarItem(
-              icon: const Icon(Icons.home),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.chat),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.read_more),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.add),
-              selectedColor: Colors.yellow,
-            ),
-          ],
-          selectedItemColor: Colors.yellow,
-          unselectedItemColor: Colors.white),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.support_agent),
+            label: 'Support',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.gps_fixed),
+            label: 'Find Lawyer',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800], // Change the selected item color
+        unselectedItemColor: Colors.grey, // Change the unselected item color
+        backgroundColor: Colors.deepPurple, // Change the background color
+        type: BottomNavigationBarType
+            .shifting, // Change the type of animation and layout
+        elevation: 20.0, // Add elevation (shadow) to the navigation bar
+        iconSize: 30, // Change the size of icons
+        showUnselectedLabels:
+            false, // Decide if you want to show labels for unselected items
+        selectedFontSize: 15, // Change the font size for selected item labels
+        unselectedFontSize:
+            12, // Change the font size for unselected item labels
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
