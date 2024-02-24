@@ -193,7 +193,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                       ElevatedButton(
                         onPressed: _submitCase,
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.deepPurple, // Button color
+                          backgroundColor: Colors.deepPurple, // Button color
                         ),
                         child: const Text('Submit'),
                       ),
