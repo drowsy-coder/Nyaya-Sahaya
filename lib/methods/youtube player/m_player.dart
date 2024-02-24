@@ -33,7 +33,7 @@ class VideoPlayerScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mental Health Video Player'),
+        title: const Text('Video Player'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

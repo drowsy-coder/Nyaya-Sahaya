@@ -165,8 +165,8 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                     gradient: LinearGradient(
                       colors: [
                         Colors.black,
-                        Colors.grey[850]!
-                      ], // Gradient colors
+                        Colors.grey[850]!,
+                      ],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                     ),
@@ -202,7 +202,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                       ),
                       const SizedBox(height: 8.0),
                       Text(
-                        'Baillable: ${info.bailable}',
+                        'Bailable: ${info.bailable}',
                         style: const TextStyle(
                           fontSize: 16.0,
                           color: Colors.white,
