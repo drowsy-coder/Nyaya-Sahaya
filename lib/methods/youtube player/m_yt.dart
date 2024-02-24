@@ -66,14 +66,13 @@ class VideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(16.0),
-      elevation: 12, // Increased elevation for a stronger card effect
+      elevation: 12,
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(16.0), // Rounded corners for the card
+            BorderRadius.circular(16.0), 
       ),
       child: InkWell(
         onTap: () {
-          // Navigate to the player screen with the selected video
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -88,12 +87,12 @@ class VideoCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
-                16.0), // Rounded corners for the container
+                16.0),
             gradient: LinearGradient(
               colors: [
                 Colors.grey[700]!.withOpacity(0.8),
                 Colors.grey[850]!.withOpacity(0.9)
-              ], // Grey gradient
+              ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),

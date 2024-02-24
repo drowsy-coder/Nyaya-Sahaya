@@ -247,7 +247,6 @@ class LoginUI extends StatelessWidget {
               ),
             ),
             if (isLoading) const SizedBox(height: 20),
-            // if (isLoading) const CircularProgressIndicator(),
           ],
         ),
       ),

@@ -82,7 +82,6 @@ class _DashboardHeaderState extends State<DashboardHeader> {
         builder: (context) => CaseListScreen(
           showClosed: showClosed,
           showOpen: showOpen,
-          // lawyerEmail: lawyerEmail,
         ),
       ),
     );

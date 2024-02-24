@@ -121,8 +121,6 @@ class _CourtAddCaseState extends State<CourtAddCase> {
           rethrow;
         }
       }
-      // Implementation for submitting the case
-      // This is where you will handle the form submission logic
     }
   }
 
@@ -131,14 +129,13 @@ class _CourtAddCaseState extends State<CourtAddCase> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Case'),
-        backgroundColor: Colors.deepPurple, // Improved app bar color
+        backgroundColor: Colors.deepPurple, 
         actions: [
           IconButton(
               onPressed: () => _logout(context), icon: const Icon(Icons.logout))
         ],
       ),
       body: SingleChildScrollView(
-        // Allows the form to be scrollable
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +143,6 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             Image.asset('assets/images/2689736-2.png', height: 140, width: 140),
             const SizedBox(height: 20),
             Card(
-              // Using Card for a cleaner look
               elevation: 5,
               shadowColor: Colors.deepPurpleAccent,
               shape: RoundedRectangleBorder(

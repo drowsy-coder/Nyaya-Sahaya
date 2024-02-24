@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'cardScreens/vakNam.dart';
-// import 'cardScreens/pray.dart';
 import 'cardScreens/bailApp.dart';
 import '../../login/login_method.dart';
 
@@ -131,10 +130,6 @@ class _LawyerDocumentState extends State<LawyerDocument> {
             builder: (context) => const VakalatnamaGeneratorPage()),
       );
     } else if (cardTitle == 'Prayer Generator') {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const PrayerGeneratorPage()),
-      // );
     } else {}
   }
 

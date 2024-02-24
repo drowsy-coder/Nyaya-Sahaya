@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../universal chat/chat.dart';
-// import 'package:law/chat/lawyer_client_chat.dart';
 
 class LawyerChat extends StatefulWidget {
   const LawyerChat({super.key});

@@ -45,10 +45,8 @@ class VideoPlayerScreen extends StatelessWidget {
             builder: (context, player) {
               return Column(
                 children: [
-                  // Video player
                   player,
                   const SizedBox(height: 16),
-                  // Video title
                   Text(
                     title,
                     style: const TextStyle(
@@ -57,7 +55,6 @@ class VideoPlayerScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // Video description
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
