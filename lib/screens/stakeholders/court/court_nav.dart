@@ -1,7 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
@@ -23,7 +20,7 @@ class CourtScreen extends StatefulWidget {
   const CourtScreen({super.key});
 
   @override
-  _CourtScreenState createState() => _CourtScreenState();
+  State<CourtScreen> createState() => _CourtScreenState();
 }
 
 class _CourtScreenState extends State<CourtScreen> {
@@ -46,36 +43,33 @@ class _CourtScreenState extends State<CourtScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex].screen,
-      extendBody: true,
-      bottomNavigationBar: DotNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          backgroundColor: Colors.black,
-          items: [
-            DotNavigationBarItem(
-              icon: const Icon(Icons.home),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.read_more),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.book),
-              selectedColor: Colors.yellow,
-            ),
-            DotNavigationBarItem(
-              icon: const Icon(Icons.add),
-              selectedColor: Colors.yellow,
-            ),
-          ],
-          selectedItemColor: Colors.yellow,
-          unselectedItemColor: Colors.white),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: screens.map((screen) => screen.screen).toList(),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.deepPurple,
+        type: BottomNavigationBarType.shifting,
+        elevation: 20.0,
+        iconSize: 30,
+        showUnselectedLabels: false,
+        selectedFontSize: 15,
+        unselectedFontSize: 12,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: screens
+            .map((screen) => BottomNavigationBarItem(
+                  icon: Icon(screen.icon),
+                  label: screen.text,
+                ))
+            .toList(),
+      ),
     );
   }
 }
