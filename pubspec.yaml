@@ -2,7 +2,7 @@ name: law_help
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.2 <4.0.0'
+  sdk: ">=3.2.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -28,60 +28,49 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_text_kit: ^4.2.2
+  bubble: ^1.2.1
+  card_slider: ^1.0.5
+  cloud_firestore: ^4.9.2
+  cupertino_icons: ^1.0.2
+  dot_navigation_bar: ^1.0.2
+  expansion_tile_card: ^3.0.0
+  file_picker: ^5.5.0
+  firebase_auth: ^4.10.0
+  firebase_core: ^2.16.0
+  firebase_storage: ^11.2.7
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.16.0
-  local_auth: ^2.1.7
-  firebase_auth: ^4.10.0
-  cloud_firestore: ^4.9.2
-  shared_preferences: ^2.2.1
-  dot_navigation_bar: ^1.0.2
-  introduction_screen: ^3.1.11
-  url_launcher: ^6.1.14
-  google_maps_flutter: ^2.5.0
-  smooth_page_indicator: ^1.1.0
-  http: ^0.13.3
-  html: ^0.15.4
-  youtube_player_flutter: ^8.1.2
-  card_slider: ^1.0.5
-  expansion_tile_card: ^3.0.0
-  bubble: ^1.2.1
-  dialogflow_flutter: ^1.0.0
-  file_picker: ^5.5.0
-  read_pdf_text: ^0.2.1
-  animated_text_kit: ^4.2.2
-  pdf: ^3.10.4
+  flutter_gemini: ^2.0.3
+  flutter_markdown: 0.6.20
   flutter_pdfview: ^1.3.1
-  firebase_storage: ^11.2.7
+  gemini_flutter: ^0.1.1
+  google_generative_ai: ^0.2.0
+  google_maps_flutter: ^2.5.0
+  html: ^0.15.4
+  http: ^1.1.0
+  in_app_webview: ^0.0.3
+  introduction_screen: ^3.1.11
+  local_auth: ^2.1.7
   path: ^1.8.3
   path_provider: ^2.1.1
-  in_app_webview: ^0.0.3
-  syncfusion_flutter_pdfviewer: ^20.4.54
-
-
+  pdf: ^3.10.4
+  read_pdf_text: ^0.2.1
+  shared_preferences: ^2.2.1
+  smooth_page_indicator: ^1.1.0
+  syncfusion_flutter_pdfviewer: ^22.1.38
+  url_launcher: ^6.1.14
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -92,13 +81,10 @@ flutter:
     - assets/images/
     - assets/json/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
