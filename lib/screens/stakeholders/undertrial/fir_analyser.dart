@@ -142,86 +142,92 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
       try {
         String text = await ReadPdfText.getPDFtext(file.path ?? '');
 
-        List<FirInfo> matchingFirs = [];
+        List<FirInfo> matchingFirs =
+            firData.where((info) => text.contains(info.ipcSection)).toList();
 
-        for (FirInfo info in firData) {
-          if (text.contains(info.ipcSection)) {
-            matchingFirs.add(info);
-          }
-        }
-
-        if (matchingFirs.isNotEmpty) {
-          setState(() {
-            pdfText = '';
-            displayedCards = matchingFirs.map((info) {
-              return Card(
-                elevation: 5.0,
-                margin: const EdgeInsets.all(10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.grey[850]!,
-                      ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'IPC Section: ${info.ipcSection}',
-                        style: const TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Name of Crime: ${info.nameOfCrime}',
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Punishment: ${info.punishment}',
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Bailable: ${info.bailable}',
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }).toList();
-          });
-        } else {
-          setState(() {
-            pdfText = 'No matching FIR information found in the PDF';
-            displayedCards = [];
-          });
-        }
+        setState(() {
+          pdfText = matchingFirs.isNotEmpty
+              ? ''
+              : 'No matching FIR information found in the PDF';
+          displayedCards = _buildCardsFromFirInfo(matchingFirs);
+        });
       } catch (e) {}
     }
+  }
+
+  List<Widget> _buildCardsFromFirInfo(List<FirInfo> firs) {
+    return firs.map((info) {
+      return Card(
+        elevation: 8.0,
+        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.grey[850]!, Colors.grey[900]!],
+            ),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: const CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Icon(Icons.gavel, size: 24.0, color: Colors.white),
+                ),
+                title: Text(
+                  info.nameOfCrime,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                ),
+                subtitle: Text(
+                  'Section: ${info.ipcSection}',
+                  style: const TextStyle(color: Colors.white70),
+                ),
+                trailing:
+                    const Icon(Icons.navigate_next, color: Colors.white70),
+                onTap: () {},
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 72.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Punishment: ${info.punishment}',
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4.0),
+                    Text(
+                      'Bailable: ${info.bailable}',
+                      style:
+                          const TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                    const SizedBox(height: 4.0),
+                    Text(
+                      'Contact: ${info.contact}',
+                      style:
+                          const TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }).toList();
   }
 
   @override
@@ -230,44 +236,41 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
       appBar: AppBar(
         title: const Text('FIR Information Analyzer'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: pickAndParsePDF,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    padding: const EdgeInsets.all(16.0),
-                    backgroundColor: Colors.yellow,
-                    elevation: 8.0,
-                  ),
-                  child: const Text(
-                    'Upload FIR',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              onPressed: pickAndParsePDF,
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 24.0),
+                textStyle: const TextStyle(fontSize: 18.0),
               ),
-              Text(
+              child: const Text('Upload FIR'),
+            ),
+          ),
+          if (pdfText.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
                 pdfText,
                 style: const TextStyle(
                   fontSize: 16.0,
-                  color: Colors.black87,
+                  color: Colors.redAccent,
                 ),
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20.0),
-              Expanded(
-                child: ListView(
-                  children: displayedCards,
-                ),
-              ),
-            ],
+            ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(8.0),
+              children: displayedCards,
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
