@@ -112,14 +112,34 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 - **Multilingual Support**: Breaking language barriers to make legal support accessible to a wider audience.
 - **Accessibility Features**: Making the system usable for individuals with disabilities.
+- **Document Repository**: Digital and Encrypted handling of all documents related to a trial.
 
-## Data Security and Privacy
+## 🧑‍💻 Data Security and Privacy
 
-Robust measures are in place to protect sensitive information, ensuring the confidentiality and trust of all stakeholders.
+Firebase security rules are in place to protect sensitive information, ensuring the confidentiality and trust of all stakeholders. We also are working on a distributed architecture for redundancy.
 
-## Getting Started
+## 🏃‍♀️ Getting Started
 
-// Flutter Setup Guide Here
+Download Femunity directly from our [GitHub repository](https://github.com/drowsy-coder/Nyaya-Sahaya). After downloading the app, you can sign up for an account using email credentials.
+
+### 📝 Prerequisites
+
+Before you start, make sure you have installed the following on your system:
+
+- Flutter SDK
+- VS Code
+- Dart and Flutter extensions for VS Code
+- Android emulator or physical device
+
+### 🛠️ Installation
+
+1. Clone the Femunity repository from GitHub: https://github.com/drowsy-coder/Nyaya-Sahaya.git
+
+2. Open the project folder in VS Code.
+
+3. In VS Code, open the command palette (View > Command Palette) and type "Flutter: Run Flutter Doctor". This will check your system to make sure everything is set up correctly.
+
+4. In VS Code, open the main.dart file and click the "Run" button. This will launch the app in the emulator or on your physical device.
 
 ## How to Contribute
 
