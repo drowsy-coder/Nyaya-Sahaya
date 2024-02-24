@@ -14,7 +14,7 @@ India's legal system, designed to protect the rights of its citizens, is plagued
 
 <h2>User Survey</h2>
 
-In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system. It underscored an urgent need for a comprehensive solution that is not only adaptable across different regions and communities but is also straightforward for all potential users. 
+In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
 
 <h3>Undertrial Survey</h3>
 
@@ -139,9 +139,9 @@ Before you start, make sure you have installed the following on your system:
 
 4. In VS Code, open the main.dart file and click the "Run" button. This will launch the app in the emulator or on your physical device.
 
-## How to Contribute
+## 🤝 How to Contribute
 
-// Contribution Guide here
+To contribute to this project, fork this on github and connect your own firebase.
 
 ## Acknowledgments
 
@@ -151,7 +151,7 @@ Before you start, make sure you have installed the following on your system:
 
 ## License
 
-Nyaya - Sahaya is licensed under the MIT License. See [LICENSE](LICENSE.txt) for more information.
+Nyaya - Sahaya is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ---
 
