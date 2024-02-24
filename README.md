@@ -1,6 +1,13 @@
 # Nyaya - Sahaya: Revolutionizing Legal Support for a Just Society
 
-<img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200">
+<table>
+    <tr>
+        <th><img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200"></th>
+        <th><img src="https://imgur.com/squLeUA.png" width="476" height="200"</th>
+    </tr>
+</table>
+
+
 
 Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the gap between legal services and those in need. By leveraging technology, we aim to enhance the efficiency, accessibility, and transparency of legal processes for undertrials, lawyers, and court officials. Our mission is to empower individuals with the tools they need for a fair legal defense, streamline case management for legal professionals, and optimize judicial operations.
 
@@ -12,9 +19,9 @@ Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the g
 
 India's legal system, designed to protect the rights of its citizens, is plagued by inefficiencies and outdated practices. With over 50 million pending cases at all levels, the process has become sluggish, hindering justice for those involved. Undertrials, unaware of their rights, are vulnerable to exploitation. Lawyers and clients face difficulties in communication and connectivity. Navigating the complex paperwork is a challenge for all stakeholders. Furthermore, the prolonged duration of trials takes a toll on the mental health, vocational prospects, and societal standing of undertrials.
 
-<h2>User Survey</h2>
+<h2>📊 User Survey</h2>
 
-In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system. It underscored an urgent need for a comprehensive solution that is not only adaptable across different regions and communities but is also straightforward for all potential users. 
+In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
 
 <h3>Undertrial Survey</h3>
 
@@ -61,9 +68,9 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/UMlSvYu.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/tVikxHR.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/YQ8IHbw.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -75,9 +82,9 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/iSgiGLh.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/EAAD1Np.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/e5v5YQi.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -89,8 +96,7 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/eKlH5Ex.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -102,9 +108,8 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/TBrv3nk.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/oLN5s2J.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -112,18 +117,38 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 - **Multilingual Support**: Breaking language barriers to make legal support accessible to a wider audience.
 - **Accessibility Features**: Making the system usable for individuals with disabilities.
+- **Document Repository**: Digital and Encrypted handling of all documents related to a trial.
 
-## Data Security and Privacy
+## 🧑‍💻 Data Security and Privacy
 
-Robust measures are in place to protect sensitive information, ensuring the confidentiality and trust of all stakeholders.
+Firebase security rules are in place to protect sensitive information, ensuring the confidentiality and trust of all stakeholders. We also are working on a distributed architecture for redundancy.
 
-## Getting Started
+## 🏃‍♀️ Getting Started
 
-// Flutter Setup Guide Here
+Download Nyaya Sahaya directly from our [GitHub repository](https://github.com/drowsy-coder/Nyaya-Sahaya). After downloading the app, you can sign up for an account using email credentials.
 
-## How to Contribute
+### 📝 Prerequisites
 
-// Contribution Guide here
+Before you start, make sure you have installed the following on your system:
+
+- Flutter SDK
+- VS Code
+- Dart and Flutter extensions for VS Code
+- Android emulator or physical device
+
+### 🛠️ Installation
+
+1. Clone the Nyaya Sahaya repository from GitHub: https://github.com/drowsy-coder/Nyaya-Sahaya.git
+
+2. Open the project folder in VS Code.
+
+3. In VS Code, open the command palette (View > Command Palette) and type "Flutter: Run Flutter Doctor". This will check your system to make sure everything is set up correctly.
+
+4. In VS Code, open the main.dart file and click the "Run" button. This will launch the app in the emulator or on your physical device.
+
+## 🤝 How to Contribute
+
+To contribute to this project, fork this on github and connect your own firebase.
 
 ## Acknowledgments
 
@@ -133,7 +158,7 @@ Robust measures are in place to protect sensitive information, ensuring the conf
 
 ## License
 
-Nyaya - Sahaya is licensed under the MIT License. See [LICENSE](LICENSE.txt) for more information.
+Nyaya - Sahaya is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ---
 
