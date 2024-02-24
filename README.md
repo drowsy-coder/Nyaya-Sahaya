@@ -61,9 +61,9 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/UMlSvYu.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/tVikxHR.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/L5PzqyW.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -75,9 +75,9 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/iSgiGLh.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/EAAD1Np.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/e5v5YQi.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -89,8 +89,7 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/eKlH5Ex.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -102,9 +101,8 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/TBrv3nk.gif" alt="Response 1"></td>
+    <td><img src="https://imgur.com/oLN5s2J.gif" alt="Response 1"></td>
   </tr>
 </table>
 
@@ -120,7 +118,7 @@ Firebase security rules are in place to protect sensitive information, ensuring 
 
 ## 🏃‍♀️ Getting Started
 
-Download Femunity directly from our [GitHub repository](https://github.com/drowsy-coder/Nyaya-Sahaya). After downloading the app, you can sign up for an account using email credentials.
+Download Nyaya Sahaya directly from our [GitHub repository](https://github.com/drowsy-coder/Nyaya-Sahaya). After downloading the app, you can sign up for an account using email credentials.
 
 ### 📝 Prerequisites
 
@@ -133,7 +131,7 @@ Before you start, make sure you have installed the following on your system:
 
 ### 🛠️ Installation
 
-1. Clone the Femunity repository from GitHub: https://github.com/drowsy-coder/Nyaya-Sahaya.git
+1. Clone the Nyaya Sahaya repository from GitHub: https://github.com/drowsy-coder/Nyaya-Sahaya.git
 
 2. Open the project folder in VS Code.
 
