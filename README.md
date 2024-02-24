@@ -1,6 +1,13 @@
 # Nyaya - Sahaya: Revolutionizing Legal Support for a Just Society
 
-<img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200">
+<table>
+    <tr>
+        <th><img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200"></th>
+        <th><img src="https://imgur.com/squLeUA.png" width="476" height="200"</th>
+    </tr>
+</table>
+
+
 
 Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the gap between legal services and those in need. By leveraging technology, we aim to enhance the efficiency, accessibility, and transparency of legal processes for undertrials, lawyers, and court officials. Our mission is to empower individuals with the tools they need for a fair legal defense, streamline case management for legal professionals, and optimize judicial operations.
 
