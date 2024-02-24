@@ -38,7 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         });
       }
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> _downloadFile(String downloadURL) async {
@@ -53,7 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
       final File file = File(savePath);
 
       await file.writeAsBytes(response.bodyBytes);
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override

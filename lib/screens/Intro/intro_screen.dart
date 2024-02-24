@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:law_help/screens/login/login_method.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

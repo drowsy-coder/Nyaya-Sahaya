@@ -1,13 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'dart:io';
-
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:gemini_flutter/gemini_flutter.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
@@ -21,11 +16,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   List<Map<String, dynamic>> messsages = [];
 
   void response(query) async {
-    final apiKey = "AIzaSyDfRqoM3eCvhjpxtOfZE_BzuD3eGVojXPU";
-    if (apiKey == null) {
-      print('No \$API_KEY environment variable');
-      exit(1);
-    }
+    const apiKey = "AIzaSyDfRqoM3eCvhjpxtOfZE_BzuD3eGVojXPU";
 
     final gemini = Gemini.init(apiKey: apiKey);
     gemini.streamGenerateContent(query).listen((response) {

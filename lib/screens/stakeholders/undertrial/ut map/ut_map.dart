@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:law_help/screens/login/login_method.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../universal chat/chat.dart';
 import 'ut_map_alert.dart';
 
 class UTMap extends StatefulWidget {

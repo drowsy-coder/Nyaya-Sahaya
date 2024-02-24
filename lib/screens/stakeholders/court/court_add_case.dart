@@ -118,7 +118,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             _selectedDate = null;
           }
         } catch (error) {
-          print('Error: $error');
+          rethrow;
         }
       }
       // Implementation for submitting the case

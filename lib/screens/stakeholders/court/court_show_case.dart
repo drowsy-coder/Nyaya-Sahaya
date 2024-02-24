@@ -143,7 +143,7 @@ class _CourtCaseListState extends State<CourtCaseList> {
                                 color: Colors.white,
                               ),
                             ),
-                            TextSpan(text: 'Ongoing\n'),
+                            const TextSpan(text: 'Ongoing\n'),
                             const TextSpan(
                               text: '• ',
                             ),

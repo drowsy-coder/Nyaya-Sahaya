@@ -94,6 +94,7 @@ class _CourtManageState extends State<CourtManage> {
           _adjournmentsController.clear();
           _advocatesController.clear();
         } catch (error) {
+          rethrow;
         }
       }
     }
@@ -151,8 +152,8 @@ class _CourtManageState extends State<CourtManage> {
               TextFormField(
                 controller: _completedHearingsController,
                 keyboardType: TextInputType.number,
-                decoration:
-                    const InputDecoration(labelText: 'Number of Completed Hearings'),
+                decoration: const InputDecoration(
+                    labelText: 'Number of Completed Hearings'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the number of completed hearings';
@@ -177,7 +178,8 @@ class _CourtManageState extends State<CourtManage> {
               TextFormField(
                 controller: _advocatesController,
                 keyboardType: TextInputType.number,
-                decoration: const InputDecoration(labelText: 'Number of Advocates'),
+                decoration:
+                    const InputDecoration(labelText: 'Number of Advocates'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the number of advocates';

@@ -1,8 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:law_help/screens/stakeholders/undertrial/support screens/vocational/educational_courses.dart'
-    as eduCourses;
+import 'package:law_help/screens/stakeholders/undertrial/support screens/vocational/educational_courses.dart';
 import 'computer_training.dart';
 import 'featured_programs.dart';
 import 'vocational_training.dart';
@@ -120,7 +119,7 @@ class VocationalSupportScreen extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              const eduCourses.EducationalCoursesScreen(),
+                              const EducationalCoursesScreen(),
                         ),
                       );
                     },
