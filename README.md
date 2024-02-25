@@ -1,18 +1,24 @@
 # Nyaya - Sahaya: Revolutionizing Legal Support for a Just Society
-
+<div align="center">
 <table>
     <tr>
         <th><img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200"></th>
         <th><img src="https://imgur.com/squLeUA.png" width="476" height="200"</th>
     </tr>
 </table>
+</div>
 
 Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the gap between legal services and those in need. By leveraging technology, we aim to enhance the efficiency, accessibility, and transparency of legal processes for undertrials, lawyers, and court officials. Our mission is to empower individuals with the tools they need for a fair legal defense, streamline case management for legal professionals, and optimize judicial operations.
 
+<div align="center">
 <a href="LINK" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">
+    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">   
 </a>
 
+<a href="LINK" target="_blank">
+    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="YouTube">   
+</a>
+</div>
 <hr>
 
 ## 🕣 Project Milestones
@@ -47,6 +53,7 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
     <td><img src="https://imgur.com/A5r0QRn.png" alt="Response 3"></td>
   </tr>
 </table>
+
 
 <h3>Lawyer Survey</h3>
 
