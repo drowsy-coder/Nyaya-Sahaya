@@ -7,13 +7,21 @@
     </tr>
 </table>
 
-
-
 Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the gap between legal services and those in need. By leveraging technology, we aim to enhance the efficiency, accessibility, and transparency of legal processes for undertrials, lawyers, and court officials. Our mission is to empower individuals with the tools they need for a fair legal defense, streamline case management for legal professionals, and optimize judicial operations.
 
 <a href="LINK" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">
 </a>
+
+<hr>
+
+## 🕣 Project Milestones
+
+- <b>5th September - 2023</b> : Development Started
+- [Won Best Project @ VIT Internal Student Hackathon - Out of 278 Teams](https://media.licdn.com/dms/image/D562DAQEVrvPd3VCMfA/profile-treasury-image-shrink_800_800/0/1704365001030?e=1709460000&v=beta&t=30JJ5sEdG2vRpowH7Ti8SSQKIUuYPdBCmhT6dBNDLUQ)
+- <b>12th November 2023</b> : Working and interacting with local lawyers, judges, undertrials and begin closed testing.
+- <b>25th February 2024</b> : Submitted for GDSC Solution Challenge 2024.
+- <b>End of March 2024</b> : Complete work on Multilingual Methods and Document Storage System.
 
 ## 🇮🇳 India's Inefficient Legal System
 
