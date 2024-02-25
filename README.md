@@ -27,16 +27,16 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/41vClXQ.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/YI0ajUS.png" alt="Response 1"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response2.png" alt="Response 2"></td>
+    <td><img src="https://imgur.com/Ya95HaE.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/ScVyscK.png" alt="Response 2"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response3.png" alt="Response 3"></td>
+    <td><img src="https://imgur.com/UyQjtU1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/A5r0QRn.png" alt="Response 3"></td>
   </tr>
 </table>
 
@@ -44,16 +44,16 @@ In our detailed investigation, we engaged with nearly 847 individuals awaiting t
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/LLmrtvM.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/UdOjzO3.png" alt="Response 1"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response2.png" alt="Response 2"></td>
+    <td><img src="https://imgur.com/57u1ihp.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/Lj4zYst.png" alt="Response 2"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response3.png" alt="Response 3"></td>
+    <td><img src="https://imgur.com/luSCvuK.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/4MjBf9h.png" alt="Response 3"></td>
   </tr>
 </table>
 
