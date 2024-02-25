@@ -35,7 +35,7 @@ India's legal system, designed to protect the rights of its citizens, is plagued
 
 <h2>📊 User Survey</h2>
 
-In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
+In our detailed investigation, we engaged with nearly 659 individuals awaiting trial and 152 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
 
 <h3>Undertrial Survey</h3>
 
@@ -167,9 +167,9 @@ To contribute to this project, fork this on github and connect your own firebase
 
 ## Acknowledgments
 
-- To all the legal professionals and court officials who provided invaluable insights.
-- Our technology partners for their unwavering support.
-- The community of users whose feedback shapes the future of Nyaya - Sahaya.
+- To all the legal professionals and court officials who provided invaluable insights. Special thanks to [Prakhar Gupta Sir](https://www.linkedin.com/in/prakhar291/) for his guidance.
+- [VIT School of Law](https://chennai.vit.ac.in/law-college-chennai/)
+- Our anonymous closed testing group who helped shape our application.
 
 ## License
 
