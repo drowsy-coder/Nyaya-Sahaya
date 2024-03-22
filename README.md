@@ -1,19 +1,33 @@
 # Nyaya - Sahaya: Revolutionizing Legal Support for a Just Society
-
+<div align="center">
 <table>
     <tr>
         <th><img src="https://imgur.com/nv8Y0pU.gif" alt="Nyaya - Sahaya Logo" width="200" height="200"></th>
         <th><img src="https://imgur.com/squLeUA.png" width="476" height="200"</th>
     </tr>
 </table>
-
-
+</div>
 
 Nyaya - Sahaya is a groundbreaking legal support system designed to bridge the gap between legal services and those in need. By leveraging technology, we aim to enhance the efficiency, accessibility, and transparency of legal processes for undertrials, lawyers, and court officials. Our mission is to empower individuals with the tools they need for a fair legal defense, streamline case management for legal professionals, and optimize judicial operations.
 
+<div align="center">
 <a href="LINK" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">
+    <img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white" alt="YouTube">   
 </a>
+
+<a href="LINK" target="_blank">
+    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="YouTube">   
+</a>
+</div>
+<hr>
+
+## 🕣 Project Milestones
+
+- <b>5th September - 2023</b> : Development Started
+- [Won Best Project @ VIT Internal Student Hackathon - Out of 278 Teams](https://media.licdn.com/dms/image/D562DAQEVrvPd3VCMfA/profile-treasury-image-shrink_800_800/0/1704365001030?e=1709460000&v=beta&t=30JJ5sEdG2vRpowH7Ti8SSQKIUuYPdBCmhT6dBNDLUQ)
+- <b>12th November 2023</b> : Working and interacting with local lawyers, judges, undertrials and begin closed testing.
+- <b>25th February 2024</b> : Submitted for GDSC Solution Challenge 2024.
+- <b>End of March 2024</b> : Complete work on Multilingual Methods and Document Storage System.
 
 ## 🇮🇳 India's Inefficient Legal System
 
@@ -21,39 +35,40 @@ India's legal system, designed to protect the rights of its citizens, is plagued
 
 <h2>📊 User Survey</h2>
 
-In our detailed investigation, we engaged with nearly 847 individuals awaiting trial and 124 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
+In our detailed investigation, we engaged with nearly 659 individuals awaiting trial and 152 legal professionals to delve into the systemic issues they face. Our approach involved a nuanced analysis, taking into account how their experiences varied with geographical location and educational background. The insights gained from this exercise highlighted a significant gap in the current system.
 
 <h3>Undertrial Survey</h3>
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/41vClXQ.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/YI0ajUS.png" alt="Response 1"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response2.png" alt="Response 2"></td>
+    <td><img src="https://imgur.com/Ya95HaE.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/ScVyscK.png" alt="Response 2"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response3.png" alt="Response 3"></td>
+    <td><img src="https://imgur.com/UyQjtU1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/A5r0QRn.png" alt="Response 3"></td>
   </tr>
 </table>
+
 
 <h3>Lawyer Survey</h3>
 
 <table>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/LLmrtvM.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/UdOjzO3.png" alt="Response 1"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response2.png" alt="Response 2"></td>
+    <td><img src="https://imgur.com/57u1ihp.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/Lj4zYst.png" alt="Response 2"></td>
   </tr>
   <tr>
-    <td><img src="https://example.com/response1.png" alt="Response 1"></td>
-    <td><img src="https://example.com/response3.png" alt="Response 3"></td>
+    <td><img src="https://imgur.com/luSCvuK.png" alt="Response 1"></td>
+    <td><img src="https://imgur.com/4MjBf9h.png" alt="Response 3"></td>
   </tr>
 </table>
 
@@ -152,9 +167,9 @@ To contribute to this project, fork this on github and connect your own firebase
 
 ## Acknowledgments
 
-- To all the legal professionals and court officials who provided invaluable insights.
-- Our technology partners for their unwavering support.
-- The community of users whose feedback shapes the future of Nyaya - Sahaya.
+- To all the legal professionals and court officials who provided invaluable insights. Special thanks to [Prakhar Gupta Sir](https://www.linkedin.com/in/prakhar291/) for his guidance.
+- [VIT School of Law](https://chennai.vit.ac.in/law-college-chennai/)
+- Our anonymous closed testing group who helped shape our application.
 
 ## License
 
