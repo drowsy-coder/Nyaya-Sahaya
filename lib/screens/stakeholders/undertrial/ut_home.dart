@@ -115,8 +115,6 @@ class _UTHomeState extends State<UTHome> {
               'assets/images/schedule.png'),
           _buildSectionInfo(
               "Case Status:", "Ongoing", 'assets/images/loading.png'),
-          // _buildSectionInfo("Sections Violated:", document['ipcSections'],
-          //     'assets/images/orange-error-icon-0.png'),
           const SizedBox(height: 20),
         ],
       ),

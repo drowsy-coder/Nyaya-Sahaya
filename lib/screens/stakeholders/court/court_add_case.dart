@@ -129,7 +129,6 @@ class _CourtAddCaseState extends State<CourtAddCase> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Case'),
-        backgroundColor: Colors.deepPurple, 
         actions: [
           IconButton(
               onPressed: () => _logout(context), icon: const Icon(Icons.logout))

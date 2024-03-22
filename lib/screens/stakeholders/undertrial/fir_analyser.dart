@@ -50,18 +50,12 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
         punishment: '7 years to life sentence in jail',
         bailable: 'Non-bailable',
         contact: 'Contact Criminal Lawyer'),
-    FirInfo(
-        ipcSection: '13',
-        nameOfCrime: 'Mutinous Activities',
-        punishment: '3 years in jail',
-        bailable: 'Non-bailable',
-        contact: 'Contact Civil Lawyer'),
-    FirInfo(
-        ipcSection: '307',
-        nameOfCrime: 'Attempted Murder',
-        punishment: '10 years to life imprisonment',
-        bailable: 'Non-bailable',
-        contact: 'Contact Criminal Lawyer'),
+    // FirInfo(
+    //     ipcSection: '307',
+    //     nameOfCrime: 'Attempted Murder',
+    //     punishment: '10 years to life imprisonment',
+    //     bailable: 'Non-bailable',
+    //     contact: 'Contact Criminal Lawyer'),
     FirInfo(
         ipcSection: '359',
         nameOfCrime: 'Attempted Kidnapping',
@@ -145,13 +139,21 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
         List<FirInfo> matchingFirs =
             firData.where((info) => text.contains(info.ipcSection)).toList();
 
+        // Print the IPC sections of matching FIRs
+        for (var fir in matchingFirs) {
+          print('IPC Section: ${fir.ipcSection} - ${fir.nameOfCrime}');
+        }
+
         setState(() {
           pdfText = matchingFirs.isNotEmpty
               ? ''
               : 'No matching FIR information found in the PDF';
           displayedCards = _buildCardsFromFirInfo(matchingFirs);
         });
-      } catch (e) {}
+      } catch (e) {
+        // Handle the error or print it
+        print('Error reading PDF: $e');
+      }
     }
   }
 
@@ -216,7 +218,7 @@ class _CaseInfoAnalyzerState extends State<CaseInfoAnalyzer> {
                     ),
                     const SizedBox(height: 4.0),
                     Text(
-                      'Contact: ${info.contact}',
+                      '${info.contact}',
                       style:
                           const TextStyle(fontSize: 16.0, color: Colors.white),
                     ),

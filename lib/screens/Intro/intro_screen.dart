@@ -46,6 +46,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     "Your Ultimate Legal Toolkit",
                     "Effortless Case Management",
                     "Courtroom Preparation",
+                    "Generate documents with ease",
                     "Stay Updated on Legal Trends",
                   ],
                   'assets/images/lawyer2.png'),
@@ -181,7 +182,7 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget buildFeaturePage(
       String title, List<String> features, String imageAsset) {
     return Container(
-      color: Colors.grey[800], 
+      color: Colors.grey[800],
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

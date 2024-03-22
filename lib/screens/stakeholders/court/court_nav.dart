@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:law_help/screens/stakeholders/court/case_search.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
-import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
-import 'case_search.dart';
 
 class ScreenModel {
   final Widget screen;
@@ -29,24 +28,23 @@ class _CourtScreenState extends State<CourtScreen> {
   static final List<ScreenModel> screens = [
     ScreenModel(screen: const CourtHome(), icon: Icons.home, text: "Home"),
     ScreenModel(
-        screen: const LawyerNews(), icon: Icons.read_more, text: "News"),
-    ScreenModel(
         screen: const WebViewExample(),
         icon: Icons.search,
-        text: "Search Precedents"),
+        text: "Search Precedents"), // Assuming CaseSearch is your search screen
     ScreenModel(
-        screen: const CourtAddCase(),
-        icon: Icons.document_scanner_sharp,
-        text: "Add Case"),
+        screen: const CourtAddCase(), icon: Icons.add_box, text: "Add Case"),
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: screens.map((screen) => screen.screen).toList(),
-      ),
+      body: screens[_selectedIndex].screen,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
